@@ -5,6 +5,6 @@
 <mapper namespace="kogile.example.Mapper.ExampleMapper">
 	<cache />
 	<insert id="test">
-		insert into inter_m_info values(4, 'a', 'a', 'b') 
+		insert into checklist values(18,'title101',1)
 	</insert>
 </mapper>
