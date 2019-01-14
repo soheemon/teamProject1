@@ -1,4 +1,4 @@
-package kogile.example.Service;
+package kogile.checklist.Service;
 
 public class ActionForward {
 	String path;
@@ -27,7 +27,6 @@ public class ActionForward {
 	public void setRedirect(boolean isRedirect) {
 		this.isRedirect = isRedirect;
 	}
-	
 	
 
 }

@@ -23,7 +23,7 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="kogile/example/Mapper/Example.xml" />
+		<mapper resource="kogile/checklist/Mapper/CheckList.xml" />
 	</mappers>
 
 </configuration>

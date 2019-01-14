@@ -1,4 +1,4 @@
-package kogile.example.Controller;
+package kogile.checklist.Controller;
 
 import java.io.IOException;
 
@@ -11,36 +11,43 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.io.Resources;
 
-import kogile.example.Service.Action;
-import kogile.example.Service.ActionForward;
-
+import kogile.checklist.Service.Action;
+import kogile.checklist.Service.ActionForward;
+import kogile.checklist.Service.InsertAction;
+import kogile.checklist.Service.InsertActionForm;
 
 @WebServlet("*.do")
-public class exampleController extends HttpServlet {
+public class CheckListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
-    public exampleController() {
+    public CheckListController() {
         super();
     }
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//insertForm.do, insertAction.do, list.do, detail.do
+		String requetURI = request.getRequestURI();
+		// mvc/insert.do
+		String contextPath = request.getContextPath();
 		String command = request.getRequestURI().substring(request.getContextPath().length()+1);
-		System.out.println(command);
 		
 		Action action = null;
-		ActionForward forward = null;
+		ActionForward forward =null;
 		
-		if(command != null) {
-			if(command.equals("*.do")) {
-//				Action action = *Action();
+			if(command.equals("insertcheck.do")) {
+				action = new InsertActionForm();
 				try {
+					forward = action.excute(request, response);
+				} catch (Exception e) {
+				e.printStackTrace();
+				}
+			}else if(command.equals("insertcheckAction.do")){
+	    		action = new InsertAction();
+	    		try {
 					forward = action.excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}
 		}
 		
 		if(forward != null) {
@@ -51,9 +58,7 @@ public class exampleController extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		}
-		
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
