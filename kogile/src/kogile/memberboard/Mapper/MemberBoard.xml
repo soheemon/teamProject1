@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kogile.memberboard.Mapper.MemberBoardMapper">
+	<cache />
+	<select id="memberBoard" parameterType="MemberBoard" resultType="MemberBoard">
+		select exter_mem_name as name, exter_m_email as mail
+		from external_m_info
+	</select>
+
+</mapper>

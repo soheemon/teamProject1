@@ -1,18 +1,21 @@
-package kogile.example.DAO;
+package kogile.memberboard.DAO;
 
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import kogile.example.Mapper.ExampleMapper;
+import kogile.memberboard.Mapper.MemberBoardMapper;
+import kogile.memberboard.Service.MemberBoard;
+import kogile.memberboard.Service.MemberSearch;
 
-public class ExampleDao {
-	private static ExampleDao dao = new ExampleDao();
+public class MemberBoardDao {
+	private static MemberBoardDao dao = new MemberBoardDao();
 	
-	public static ExampleDao getInstance() {
+	public static MemberBoardDao getInstance() {
 		return dao;
 	}
 	
@@ -28,20 +31,21 @@ public class ExampleDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 	
-	public void test() {
-		SqlSession sql = dao.getSql().openSession();
-		int re = -1;
+	public List<MemberBoard> memberBoard() {
+		
+		List<MemberBoard> list = null;
+		
+		SqlSession sqlSession = getSql().openSession();
 		try {
-			re = sql.getMapper(ExampleMapper.class).test();
-			if(re >0) {
-				sql.commit();
-			}else {
-				sql.rollback();
-			}
+			list = sqlSession.getMapper(MemberBoardMapper.class).memberBoard();
+
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			sql.close();
 		}
+		
+		return list;
 	}
+	
+	
+
 }

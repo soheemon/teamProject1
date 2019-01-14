@@ -5,7 +5,8 @@
 
 <configuration>
 	<typeAliases>
-		<!-- <typeAlias type="*" alias="*"/> -->
+		<typeAlias type="kogile.memberboard.Service.MemberBoard" alias="MemberBoard"/>
+		<typeAlias type="kogile.memberboard.Service.MemberSearch" alias="MemberSearch"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -23,7 +24,7 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="kogile/example/Mapper/Example.xml" />
+		<mapper resource="kogile/memberboard/Mapper/MemberBoard.xml" />
 	</mappers>
 
 </configuration>

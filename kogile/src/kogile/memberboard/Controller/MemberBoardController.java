@@ -1,4 +1,4 @@
-package kogile.example.Controller;
+package kogile.memberboard.Controller;
 
 import java.io.IOException;
 
@@ -11,47 +11,49 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.io.Resources;
 
-import kogile.example.Service.Action;
-import kogile.example.Service.ActionForward;
+import kogile.memberboard.Service.Action;
+import kogile.memberboard.Service.ActionForward;
+import kogile.memberboard.Service.MemberBoardAction;
 
 
 @WebServlet("*.do")
-public class exampleController extends HttpServlet {
+public class MemberBoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public exampleController() {
+    public MemberBoardController() {
         super();
     }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String command = request.getRequestURI().substring(request.getContextPath().length()+1);
+		String requestURI = request.getRequestURI(); // URI를 요청한 값
+    	String contextPath = request.getContextPath();
+    	String command = requestURI.substring(contextPath.length()+6);
 		System.out.println(command);
 		
 		Action action = null;
 		ActionForward forward = null;
 		
-		if(command != null) {
-			if(command.equals("*.do")) {
-//				Action action = *Action();
-				try {
-					forward = action.excute(request, response);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		
+		if (command.equals("memberBoardAction.do")) {
+			action = new MemberBoardAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
-		
-		if(forward != null) {
-			if(forward.isRedirect()) {
+
+		if (forward != null) {
+			if (forward.isRedirect()) {
 				response.sendRedirect(forward.getPath());
-			}else {
+			} else {
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(request, response);
 			}
 		}
-		
+
 	}
 
 
