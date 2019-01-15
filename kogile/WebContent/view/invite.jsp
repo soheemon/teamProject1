@@ -28,7 +28,7 @@
 			<td><a href="#" id="aa">${memberBoard.mail }</a></td>
 		</tr>
 	</c:forEach>
-	
+
 	</table>
 
 </body>

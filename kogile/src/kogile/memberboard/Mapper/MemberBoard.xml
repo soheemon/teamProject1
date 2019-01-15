@@ -5,10 +5,20 @@
 <mapper namespace="kogile.memberboard.Mapper.MemberBoardMapper">
 	<cache />
 	<select id="memberBoard" parameterType="MemberSearch" resultType="MemberBoard">
-		select exter_m_no as no, exter_mem_name as name, exter_m_email as mail, interlinked_info_num as infoNum
-		from external_m_info
+		select distinct e.exter_mem_name as name, e.exter_m_email as mail
+		from external_m_info e join total_member t
+		on t.EXTER_M_NO = e.EXTER_M_NO
 			<where>
-					exter_m_email LIKE #{search}
+					e.exter_m_email LIKE #{search}
+			</where>
+	</select>
+	
+	<select id="memberBoard2" parameterType="MemberSearch" resultType="MemberBoard">
+			select distinct i.member_name as name, i.email as mail 
+			from inter_m_info i join total_member t
+			on t.member_no = i.member_no
+			<where>
+					i.email LIKE #{search}
 			</where>
 	</select>
 </mapper>

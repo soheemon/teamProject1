@@ -1,8 +1,5 @@
 package kogile.memberboard.Service;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import kogile.memberboard.DAO.MemberBoardDao;
 
 public class ExampleService {

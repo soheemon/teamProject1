@@ -19,7 +19,7 @@ public class MemberBoardAction implements Action {
 		MemberSearch search = new MemberSearch();
 		search.setSearch('%' + request.getParameter("search") + '%');
 		List<MemberBoard> list = dao.memberBoard(search);
-	
+		
 		request.setAttribute("list", list);
 		
 		ActionForward forward = new ActionForward();

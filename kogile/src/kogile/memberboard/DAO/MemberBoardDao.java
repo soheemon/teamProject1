@@ -34,10 +34,14 @@ public class MemberBoardDao {
 	public List<MemberBoard> memberBoard(MemberSearch search) {
 		
 		List<MemberBoard> list = null;
+		List<MemberBoard> list2 = null;
 		
 		SqlSession sqlSession = getSql().openSession();
 		try {
 			list = sqlSession.getMapper(MemberBoardMapper.class).memberBoard(search);
+			list2 = sqlSession.getMapper(MemberBoardMapper.class).memberBoard2(search);
+			
+			list.addAll(list2);
 			System.out.println("dao¸®½ºÆ® : " + list.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -46,6 +50,7 @@ public class MemberBoardDao {
 		return list;
 	}
 	
+
 	
 
 }
