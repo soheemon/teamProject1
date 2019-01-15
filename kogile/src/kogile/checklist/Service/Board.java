@@ -3,9 +3,9 @@ package kogile.checklist.Service;
 import java.io.Serializable;
 
 public class Board implements Serializable{
-	int checklist_no;
-	String check_title;
-	int p_no;
+	private int checklist_no;
+	private String check_title;
+	private int p_no;
 	
 	public Board() {
 		super();

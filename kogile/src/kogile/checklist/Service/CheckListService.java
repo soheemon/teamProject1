@@ -21,7 +21,7 @@ public class CheckListService {
 		Board board = new Board();
 		board.setChecklist_no(Integer.parseInt(request.getParameter("checklist_no")));
 		board.setCheck_title(request.getParameter("checklist_title"));
-		board.setChecklist_no(Integer.parseInt(request.getParameter("p_no")));
+		board.setP_no(Integer.parseInt(request.getParameter("p_no")));
 		
 		return dao.insertchecklist(board);
 	}
