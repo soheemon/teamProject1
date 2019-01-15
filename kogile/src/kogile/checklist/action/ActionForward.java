@@ -1,4 +1,4 @@
-package kogile.checklist.Service;
+package kogile.checklist.action;
 
 public class ActionForward {
 	String path;

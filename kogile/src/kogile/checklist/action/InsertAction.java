@@ -1,7 +1,9 @@
-package kogile.checklist.Service;
+package kogile.checklist.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import kogile.checklist.Service.CheckListService;
 
 public class InsertAction implements Action {
 
