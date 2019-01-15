@@ -9,6 +9,10 @@ import kogile.checklist.Service.Search;
 
 public interface CheckListMapper {
 	int insertchecklist(Board board);
+	
+	int insertchecklist1();
+	
+	
 	List<Board> listBoard(RowBounds row, Search search);
 	
 }

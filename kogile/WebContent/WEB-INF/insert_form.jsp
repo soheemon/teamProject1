@@ -10,9 +10,12 @@
 <h3>글쓰기</h3>
 <hr>
 <form action="insertAction.do" method="post" >
-	체크리스트_No : <input type="text" name="checklist_no"><br>
+	작성자 : <input type="text" name="checklist_no"><br>
 	제목 : <input type="text" name="check_title"><br>
-	포스트 No  : <input type="number" name="p_no"><br>
+	파일 : <input type ="file" name ="p_no"><br>
+	내용 <br>
+	<textarea rows="6" cols="70" name="contents"></textarea>
+	
 	<br>
 	<input type="submit" value="등록">
 </form>

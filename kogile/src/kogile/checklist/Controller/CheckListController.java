@@ -9,12 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.io.Resources;
+import kogile.checklist.action.Action;
+import kogile.checklist.action.ActionForward;
+import kogile.checklist.action.InsertAction;
+import kogile.checklist.action.InsertActionForm;
 
-import kogile.checklist.Service.Action;
-import kogile.checklist.Service.ActionForward;
-import kogile.checklist.Service.InsertAction;
-import kogile.checklist.Service.InsertActionForm;
 
 @WebServlet("*.do")
 public class CheckListController extends HttpServlet {
@@ -41,14 +40,14 @@ public class CheckListController extends HttpServlet {
 				} catch (Exception e) {
 				e.printStackTrace();
 				}
-			}else if(command.equals("insertcheckAction.do")){
-	    		action = new InsertAction();
-	    		try {
+			}else if(command.equals("insertAction.do")) {
+				action = new InsertAction();
+				try {
 					forward = action.excute(request, response);
 				} catch (Exception e) {
-					e.printStackTrace();
+				e.printStackTrace();
 				}
-		}
+			}
 		
 		if(forward != null) {
 			if(forward.isRedirect()) {

@@ -6,6 +6,9 @@
 <configuration>
 	<typeAliases>
 		<!-- <typeAlias type="*" alias="*"/> -->
+		<typeAlias type = "kogile.checklist.Service.Board" alias ="Board"/>
+		<typeAlias type = "kogile.checklist.Service.Search" alias ="Search"/>
+		
 	</typeAliases>
 
 	<environments default="development">

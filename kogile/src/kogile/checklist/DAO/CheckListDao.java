@@ -15,12 +15,11 @@ import kogile.checklist.Service.Search;
 
 public class CheckListDao {
 	private static CheckListDao dao = new CheckListDao();
-	
 	public static CheckListDao getInstance() {
 		return dao;
 	}
 
-	public SqlSessionFactory getSqlSessionFactory() {
+	public SqlSessionFactory getSql(){
 		String resource = "mybatis-config.xml";
 		InputStream in = null;
 		try {
@@ -30,9 +29,11 @@ public class CheckListDao {
 		}
 		return new SqlSessionFactoryBuilder().build(in);
 	}
+
 	
+	// ------------------------------------------------------------------------------------------
 	public int insertchecklist(Board board) {
-		SqlSession sql = dao.getSqlSessionFactory().openSession();
+		SqlSession sql = dao.getSql().openSession();
 		int re = -1;
 		
 		try {
@@ -51,11 +52,31 @@ public class CheckListDao {
 	}
 	
 	
+	// ------------------------------------------------------------------------------------------
+	public void insertchecklist1() {
+		SqlSession sql = dao.getSql().openSession();
+		int re = -1;
+		
+		try {
+			re = sql.getMapper(CheckListMapper.class).insertchecklist1();
+			if(re >0) {
+				sql.commit();
+			}else {
+				sql.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sql.close();
+		}
+	}
+	
+	
 	// --------------------------------------------------------------------------------------------	
 		// 글갯수 추가하기. 
 		public List<Board> listBoard(Search search, int startRow){
 //		public List<Board> listBoard(Search search){
-			SqlSession sqlSession = getSqlSessionFactory().openSession();
+			SqlSession sqlSession = getSql().openSession();
 			List<Board> list = null;
 			
 			try {

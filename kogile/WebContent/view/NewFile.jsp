@@ -1,4 +1,4 @@
-<%@page import="kogile.example.DAO.ExampleDao"%>
+<%-- <%@page import="kogile.example.DAO.ExampleDao"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,9 +9,9 @@
 </head>
 <body>
 	<%
-	ExampleDao dao = ExampleDao.getInstance();
+/* 	ExampleDao dao = ExampleDao.getInstance();
 	
-	dao.test();
+	dao.test(); */
 	%>
 </body>
 </html>
