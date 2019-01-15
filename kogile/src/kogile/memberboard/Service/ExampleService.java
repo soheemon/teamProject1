@@ -14,16 +14,5 @@ public class ExampleService {
 		return service;
 	}
 	
-	public ListMember listMemberService(HttpServletRequest request){
-		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
-		
-		dao.memberList();
-		
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("list.jsp");
-		
-		return forward;
-	}
+	
 }

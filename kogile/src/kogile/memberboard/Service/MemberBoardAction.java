@@ -16,16 +16,15 @@ public class MemberBoardAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		MemberBoardDao dao = MemberBoardDao.getInstance();
 		
-		//MemberSearch search = new MemberSearch();
-		//search.setSearch('%' + request.getParameter("memberSearch") + '%');
-		
-		List<MemberBoard> list = dao.memberBoard();
-		System.out.println("»Ì¾Æ¿À±â : " + list);
+		MemberSearch search = new MemberSearch();
+		search.setSearch('%' + request.getParameter("search") + '%');
+		List<MemberBoard> list = dao.memberBoard(search);
+	
 		request.setAttribute("list", list);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("member_board.jsp");
+		forward.setPath("invite.jsp");
 		
 		return forward;
 	}

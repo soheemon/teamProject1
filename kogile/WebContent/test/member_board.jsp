@@ -18,6 +18,19 @@
 		}
 	}
 	
+	$(function(){
+		var list = new Array();
+		
+		for(var i=1; i<=list.length; i++){
+			var data = new Object();
+			
+			data.mail = ${memberBoard.name};
+			list.push(data);
+		}
+		var jsonData = JSON.stringify(list);
+		alert(jsonData);
+	});
+	
 </script>
 </head>
 <body>

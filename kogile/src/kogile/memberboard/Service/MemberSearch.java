@@ -10,4 +10,11 @@ public class MemberSearch {
 	public void setSearch(String search) {
 		this.search = search;
 	}
+
+	@Override
+	public String toString() {
+		return "MemberSearch [search=" + search + "]";
+	}
+	
+	
 }

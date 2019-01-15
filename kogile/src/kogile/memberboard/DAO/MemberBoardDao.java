@@ -31,14 +31,14 @@ public class MemberBoardDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 	
-	public List<MemberBoard> memberBoard() {
+	public List<MemberBoard> memberBoard(MemberSearch search) {
 		
 		List<MemberBoard> list = null;
 		
 		SqlSession sqlSession = getSql().openSession();
 		try {
-			list = sqlSession.getMapper(MemberBoardMapper.class).memberBoard();
-
+			list = sqlSession.getMapper(MemberBoardMapper.class).memberBoard(search);
+			System.out.println("dao¸®½ºÆ® : " + list.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

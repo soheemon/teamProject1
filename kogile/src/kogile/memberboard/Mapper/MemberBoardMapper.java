@@ -8,6 +8,6 @@ import kogile.memberboard.Service.MemberSearch;
 
 public interface MemberBoardMapper {
 
-	List<MemberBoard> memberBoard();
+	List<MemberBoard> memberBoard(MemberSearch search);
 	
 }
