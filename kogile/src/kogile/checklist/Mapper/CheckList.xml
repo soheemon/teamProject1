@@ -20,19 +20,5 @@
 		insert into checklist values(19,'title102',2)		
 	</insert>
  -->	
-<!-- 		<select id="listBoard" resultType="Board" parameterType="Search">
-		select * from checklist 
-			<if test ="area">
-			 <where>
-			  title LIKE %aa% OR writer LIKE %aa%
-			  <foreach collection="area" item="item" separator="OR"
-			  	open = "("  close = ")">
-			  	${item} LIKE #{searchKey} 
-			  	</foreach>
-			 </where>
-			</if>
-		order by seq desc
-	</select> -->
-	
 	
 </mapper>

@@ -25,10 +25,15 @@ public class CheckListController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//insertForm.do, insertAction.do, list.do, detail.do
-		String requetURI = request.getRequestURI();
+		String requestURI = request.getRequestURI();
+		System.out.println("requestURI :" + requestURI);
+//		http://localhost:8082/git_SourceTree01/list.do
 		// mvc/insert.do
+		
 		String contextPath = request.getContextPath();
+		System.out.println("contextPath: " + contextPath);
 		String command = request.getRequestURI().substring(request.getContextPath().length()+1);
+		System.out.println("command :" + command);
 		
 		Action action = null;
 		ActionForward forward =null;

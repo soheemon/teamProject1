@@ -21,4 +21,18 @@ public class InsertAction implements Action {
 		return forward;
 	}
 
+/*	@Override
+	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		CheckListService service = CheckListService.getInstance();
+		
+		service.insertCheckBoardService(request);
+		
+		ActionForward forward = new ActionForward();
+		forward.setRedirect(true);
+		forward.setPath("list.do");
+		
+		return forward;
+	}*/
+
 }

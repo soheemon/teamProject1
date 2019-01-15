@@ -17,7 +17,6 @@ public class CheckListService {
 	public int insertCheckBoardService(HttpServletRequest request)throws Exception {
 		request.setCharacterEncoding("utf-8");
 
-		
 		Board board = new Board();
 //		board.setChecklist_no(Integer.parseInt(request.getParameter("checklist_no")));
 		
