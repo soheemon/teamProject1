@@ -5,7 +5,7 @@
 
 <configuration>
 	<typeAliases>
-		<!-- <typeAlias type="*" alias="*"/> -->
+		<typeAlias type="kogile.module.ExterMember" alias="ExterMember"/> 
 	</typeAliases>
 
 	<environments default="development">
@@ -23,7 +23,7 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="kogile/example/Mapper/Example.xml" />
+		<mapper resource="kogile/kakaoOauth/Mapper/kakaoOauth.xml" />
 	</mappers>
 
 </configuration>

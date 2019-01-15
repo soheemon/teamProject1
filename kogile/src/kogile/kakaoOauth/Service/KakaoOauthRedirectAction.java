@@ -11,7 +11,7 @@ public class KakaoOauthRedirectAction implements Action {
 		
 		forward.setPath("https://kauth.kakao.com/oauth/authorize?"
 				+ "client_id=e16764ac8ecc77d571c58088d37b119b&"
-				+ "redirect_uri=http://localhost:8082/kogile/login.kakaoOauth&"
+				+ "redirect_uri=" + KakaoApi.KOFILE_HOST + KakaoApi.KOGILE_REDIRECT_URI +"&"
 				+ "response_type=code");
 		
 		forward.setRedirect(true);

@@ -30,6 +30,8 @@ public class KakaoApi {
 	private static final String LOGOUT_URL ="/v1/user/logout";
 	private static final String TOKEN_INFO = "/v1/user/access_token_info";
 	
+	public static final String KOFILE_HOST = "http://localhost:8082";
+	public static final String KOGILE_REDIRECT_URI = "/kogile/login.kakaoOauth";
 	public KakaoApi(){};
 	
 	HttpsURLConnection con = null;
@@ -66,7 +68,7 @@ public class KakaoApi {
 	private String getAsTkenFromSession() {
 		HttpSession session = request.getSession();
 		String accessToken ="";
-		if((accessToken = (String) session.getAttribute("access_token")) != null) {
+		if((accessToken = (String) session.getAttribute("access_token")) == null) {
 			System.out.println("세션에 Access Token이 없습니다.");
 		}
 		return accessToken;
@@ -76,7 +78,7 @@ public class KakaoApi {
 		String param =
 				"grant_type=" + "authorization_code" + "&" +
 	            "client_id=" + "e16764ac8ecc77d571c58088d37b119b" + "&" +
-	            "redirect_uri=" +"http://localhost:8082/MVC/oauth_kakao" + "&" +
+	            "redirect_uri=" + KakaoApi.KOFILE_HOST + KakaoApi.KOGILE_REDIRECT_URI +"&" +
 	            "code=" + code;
 		
 		System.out.println("파라미터" + param);
@@ -93,18 +95,25 @@ public class KakaoApi {
 
 	}
 	//AccessToken을 통해서 사용자 정보 가져오기.
-	public void tokenValidationCk() {
+	public int tokenValidationCk() {
+		int id = -1;
 		String accessToken = null;
 		if((accessToken = getAsTkenFromSession()) == null) {
 			System.out.println("로그인이 안되어있네요.");
-			return;
+			return id;
 		}
 		
 		HashMap<String, String> header = new HashMap<String, String>();
 		header.put("Authorization", "Bearer " + accessToken);
+		System.out.println("Authorization Bearer " + accessToken);
 		doRequest(HttpMethodType.GET, API_SERVER_HOST + TOKEN_INFO, header, false);
 		JSONObject res = (JSONObject) getResponse();
-		System.out.println(res.get("id"));
+		
+		if(res.get("id") != null) {
+			id = Integer.parseInt((String)res.get("id").toString());
+		}
+		
+		return id;
 	}
 	
 	public void logOut() {
@@ -118,7 +127,12 @@ public class KakaoApi {
 		header.put("Authorization", "Bearer " + getAsTkenFromSession());
 		doRequest(HttpMethodType.POST, API_SERVER_HOST + LOGOUT_URL, header, false);
 		String res = (String) getResponse();
-		System.out.println(res);
+	}
+	
+	public void register() {
+		//로그인시켜서 Access 토근도 가져온다.
+		//우리 회원이야? = 아무것도 안한다.
+		//우리 회원이 아니야? = request 날린다.
 	}
 	
 	private void doRequest(HttpMethodType method, String url, Object param, boolean isBodyData) {
@@ -144,11 +158,9 @@ public class KakaoApi {
 		con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 		con.setRequestProperty("charset", "utf-8");
 		
-		//datatype이 Post일때 처리
-		if (method.toString().equals(HttpMethodType.POST.toString())) {
-			
+		//datatype이 Post일때 처리		
 			//데이터를 Body에 담아야 할때
-			if(isBodyData){
+			if(isBodyData == true){
 				DataOutputStream out = null;
 				try {
 					out = new DataOutputStream(con.getOutputStream());
@@ -165,7 +177,6 @@ public class KakaoApi {
 			        con.setRequestProperty(key, header.get(key));
 			    }
 			}
-		}	
 	}
 	
 	private String readAll(Reader rd) {
@@ -195,13 +206,18 @@ public class KakaoApi {
 			// TODO: handle exception
 		}
 		
+		if(br == null) {
+			System.out.println("br is null!");
+			return null;
+		}
+		
 		String jsonText = readAll(br);
 		System.out.println(jsonText);
 		
 		//데이터 타입이 json일때만.. 파싱
 		Object obj = null; // 결과는 Object 형식으로 return 합니다.
 		//1) Json일때 파싱해서 전달합니다.
-		if(con.getContentType().equals("application/json;charset=utf-8")) {
+		if(con.getContentType().contains("application/json;")) {
 			JSONParser parser = new JSONParser();
 			
 			try {

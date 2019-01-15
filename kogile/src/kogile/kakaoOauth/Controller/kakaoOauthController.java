@@ -13,7 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import kogile.kakaoOauth.Service.Action;
 import kogile.kakaoOauth.Service.ActionForward;
+import kogile.kakaoOauth.Service.KakaoChKogileMemAction;
+import kogile.kakaoOauth.Service.KakaoOauthLogoutAction;
 import kogile.kakaoOauth.Service.KakaoOauthRedirectAction;
+import kogile.kakaoOauth.Service.kakaoInsertMemberAction;
+import kogile.kakaoOauth.Service.kakaoOauthLoginAction;
 
 
 @WebServlet("*.kakaoOauth")
@@ -48,11 +52,34 @@ public class kakaoOauthController extends HttpServlet {
 					e.printStackTrace();
 				}
 			}else if(command.equals("login.kakaoOauth")) {
-				System.out.println("login");
+				action = (Action) new kakaoOauthLoginAction();
+				try {
+					forward = ((kakaoOauthLoginAction) action).excute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}else if(command.equals("logout.kakaoOauth")) {
-				System.out.println("logout");
+				action = (Action) new KakaoOauthLogoutAction();
+				try {
+					forward = ((KakaoOauthLogoutAction) action).excute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}else if(command.equals("register.kakaoOauth")) {
 				System.out.println("register");
+				action = (Action) new kakaoInsertMemberAction();
+				try {
+					forward = ((kakaoInsertMemberAction) action).excute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if(command.equals("ckKogileMem.kakaoOauth")) {
+				action = (Action) new KakaoChKogileMemAction();
+				try {
+					forward = ((KakaoChKogileMemAction) action).excute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		
@@ -75,7 +102,7 @@ public class kakaoOauthController extends HttpServlet {
 				}
 			}
 		}else {
-			System.out.println("test");
+			System.out.println("forward가 null이네? 일단 참아줄게.");
 		}
     }
 

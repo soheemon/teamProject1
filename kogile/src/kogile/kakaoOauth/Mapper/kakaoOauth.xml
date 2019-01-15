@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kogile.kakaoOauth.Mapper.kakaoOauthMapper">
+	<cache />
+	<insert id="insertExterMember" parameterType="ExterMember">
+		insert into external_m_info values(exter_m_no_seq.nextval,#{exter_mem_name}, #{exter_m_email}, #{interlinked_type}, #{interlinked_info})
+	</insert>
+	
+	<select id="selectExterMember" resultType="ExterMember" parameterType="int">
+		select * from external_m_info where interlinked_info = #{interlinked_info}
+	</select>
+	
+</mapper>
