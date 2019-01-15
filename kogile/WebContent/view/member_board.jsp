@@ -10,12 +10,13 @@
 <title>Insert title here</title>
 <script type = "text/javascript">
 
-	window.onload = function(){ 
-		var link = document.getElementsById('aa').textContent; 
-			link.onclick = function(){
-				document.getElementById("bb").value=link;
+	function winClose(){ 
+		var link = document.getElementsById("aa").innerText; 
+			alert(link);
+			alert("jhi");
+				window.opener.document.fmt.memberSearch.value=link;
 				self.close(); 
-		}
+		
 	}
 	
 </script>
@@ -30,7 +31,7 @@
 	<c:forEach var="memberBoard" items="${list}">
 		<tr>
 			<td>${memberBoard.name }</td>
-			<td><a href="#" id="aa">${memberBoard.mail }</a></td>
+			<td><a href="#" id="aa" onclick="winClose()">${memberBoard.mail }</a></td>
 		</tr>
 	</c:forEach>
 	
