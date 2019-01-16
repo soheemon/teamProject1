@@ -18,15 +18,15 @@
 	<br></br>
 	<form action="insertMemberBoardAction.me" method="post">
 	<c:forEach var="memberBoard" items="${list}">
-<<<<<<< HEAD
+
 			<input type="text" name="no" value=${memberBoard.no }>
 			<input type="text" name="name" value=${memberBoard.name }>
 			<input type="text" name="mail" value=${memberBoard.mail }>
-=======
+
 			${memberBoard.no }
 			${memberBoard.name }
 			${memberBoard.mail }
->>>>>>> branch 'geun-yeol' of https://github.com/cyr9210/Project_kogile.git
+
 		<br>
 	</c:forEach>
 
