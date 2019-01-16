@@ -17,14 +17,11 @@
 	<br></br>
 	<br></br>
 	<form action="insertMemberBoardAction.me" method="post">
-	
-	
 	<c:forEach var="memberBoard" items="${list}">
-		
 			${memberBoard.no }
 			${memberBoard.name }
 			${memberBoard.mail }
-		<br></br>
+		<br>
 	</c:forEach>
 
 
