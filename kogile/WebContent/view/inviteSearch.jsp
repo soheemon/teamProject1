@@ -10,26 +10,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-	  <form action="memberBoardAction.do" method = "post">
+	  <form action="memberBoardAction.me" method = "post">
 		초대 <input type="text" name="search" size="25" id="autocomplete" placeholder="초대 할 회원의 메일주소 입력"></input>
 		<input type="submit"value="검색" ></input>
 	  </form>
 	<br></br>
 	<br></br>
-		<h3>회원찾기</h3>
-	<table width="500" border="1" cellpadding="0" cellspacing="0">
-	<tr>
-		<td>이름</td>
-		<td>이메일</td>
-	</tr>
+	<form action="insertMemberBoardAction.me" method="post">
+	
+	
 	<c:forEach var="memberBoard" items="${list}">
-		<tr>
-			<td>${memberBoard.name }</td>
-			<td><a href="#" id="aa">${memberBoard.mail }</a></td>
-		</tr>
+		
+			${memberBoard.no }
+			${memberBoard.name }
+			${memberBoard.mail }
+		<br></br>
 	</c:forEach>
 
-	</table>
 
+	</table>
+	<input type="submit" value="초대">
+	</form>
+	
 </body>
 </html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kogile.memberboard.Mapper.InviteListMapper">
+	<cache />
+	<select id="inviteList" parameterType="InviteList" resultType="InviteList">
+	select distinct t.total_m_no as no, e.EXTER_MEM_NAME as name, e.exter_m_email as mail, i.grade as grade
+	from invite i join total_member t
+	on i.total_m_no = t.total_m_no
+	join external_m_info e
+	on e.exter_m_no = t.exter_m_no
+		<where> 
+		i.TOTAL_M_NO = t.TOTAL_M_NO
+		</where>
+	</select>
+
+	<select id="inviteList2" parameterType="InviteList" resultType="InviteList">
+		select distinct t.total_m_no as no, e.EXTER_MEM_NAME as name, e.exter_m_email as mail, i.grade as grade
+		from invite i join total_member t
+		on i.total_m_no = t.total_m_no
+		join inter_m_info n
+		on n.MEMBER_NO = t.MEMBER_NO
+		<where>
+			i.TOTAL_M_NO = t.TOTAL_M_NO;
+		</where>
+	</select>
+	
+		
+
+
+</mapper>

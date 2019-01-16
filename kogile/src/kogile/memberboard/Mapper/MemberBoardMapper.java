@@ -10,4 +10,6 @@ public interface MemberBoardMapper {
 
 	List<MemberBoard> memberBoard(MemberSearch search);
 	List<MemberBoard> memberBoard2(MemberSearch search);
+	
+	int insertMemberBoard(MemberBoard board);
 }

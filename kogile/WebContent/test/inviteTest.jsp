@@ -17,7 +17,7 @@
 /*     $("#memName").autocomplete({
         source: function(request, response){
             $.ajax({	
-                url     : 'memberBoardAction.do', 
+                url     : 'memberBoardAction.json', 
                 dataType : 'json', 
                 success : function(data){  
                 	response(function (item) {

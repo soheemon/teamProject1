@@ -31,6 +31,24 @@ public class MemberBoardDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 	
+	public int insertMemberBoard(MemberBoard board){
+		int re = -1;
+		SqlSession sqlSession = getSql().openSession();
+		try {
+			re = sqlSession.getMapper(MemberBoardMapper.class).insertMemberBoard(board);
+			if(re>0){
+				sqlSession.commit();
+			}else{
+				sqlSession.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			sqlSession.close();
+		}
+		return re;
+	}
+	
 	public List<MemberBoard> memberBoard(MemberSearch search) {
 		
 		List<MemberBoard> list = null;
@@ -42,7 +60,7 @@ public class MemberBoardDao {
 			list2 = sqlSession.getMapper(MemberBoardMapper.class).memberBoard2(search);
 			
 			list.addAll(list2);
-			System.out.println("dao¸®½ºÆ® : " + list.toString());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

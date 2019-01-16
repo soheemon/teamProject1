@@ -13,18 +13,17 @@ import org.apache.ibatis.io.Resources;
 
 import kogile.memberboard.Service.Action;
 import kogile.memberboard.Service.ActionForward;
+import kogile.memberboard.Service.InsertMemberBoardAction;
 import kogile.memberboard.Service.MemberBoardAction;
 
 
-@WebServlet("*.do")
+@WebServlet("*.me")
 public class MemberBoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
     public MemberBoardController() {
         super();
     }
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String requestURI = request.getRequestURI(); // URI를 요청한 값
@@ -36,8 +35,15 @@ public class MemberBoardController extends HttpServlet {
 		ActionForward forward = null;
 		
 		
-		if (command.equals("memberBoardAction.do")) {
+		if (command.equals("memberBoardAction.me")) {
 			action = new MemberBoardAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("insertMemberBoardAction.me")){
+			action = new InsertMemberBoardAction();
 			try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {
