@@ -23,7 +23,11 @@
 	</select>
 
 	<insert id="insertMemberBoard" parameterType="MemberBoard">
+<<<<<<< HEAD
 		insert into invite values(invite_seq.nextval, 'normal', 1, #{no})
+=======
+		insert into invite values(invite_seq.nextval, #{name}, #{mail}, 'normal')
+>>>>>>> branch 'geun-yeol' of https://github.com/cyr9210/Project_kogile.git
 	</insert>
 	
 </mapper>
