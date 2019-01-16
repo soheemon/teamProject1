@@ -12,4 +12,8 @@
 		select * from external_m_info where interlinked_info = #{interlinked_info}
 	</select>
 	
+	<select id="selectTotalMemNumWithExMem" resultType="int" parameterType="int">
+		select total_m_no from TOTAL_MEMBER where exter_m_no = #{exter_m_no}
+	</select>
+	
 </mapper>

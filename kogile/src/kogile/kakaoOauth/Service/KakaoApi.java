@@ -37,6 +37,8 @@ public class KakaoApi {
 	HttpsURLConnection con = null;
 	HttpServletRequest request = null;
 	
+	private boolean debuglog = false;
+	
 	public void setRequest(HttpServletRequest request) {
 		this.request = request;
 	}
@@ -81,15 +83,17 @@ public class KakaoApi {
 	            "redirect_uri=" + KakaoApi.KOFILE_HOST + KakaoApi.KOGILE_REDIRECT_URI +"&" +
 	            "code=" + code;
 		
-		System.out.println("파라미터" + param);
-		System.out.println("URL" + KAKAO_AUTH + OAUTH_TOKEN);
+		if(debuglog){System.out.println("전송 파라미터: " + param);}
+		if(debuglog){System.out.println("전송 URL: " + KAKAO_AUTH + OAUTH_TOKEN);}
+		
 		doRequest(HttpMethodType.POST, KAKAO_AUTH + OAUTH_TOKEN, param, true);
+		
 		//get code!
 		JSONObject resResponse = null;
 		resResponse = (JSONObject) getResponse();
 		
 		String accessToken = (String) resResponse.get("access_token");
-		System.out.println(accessToken);
+		if(debuglog){System.out.println("AccessToken: " + accessToken);}
 		
 		setAsTkenFromSession(accessToken);
 

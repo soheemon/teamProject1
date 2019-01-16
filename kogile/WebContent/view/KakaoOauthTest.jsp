@@ -7,8 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="redirect.kakaoOauth"> 카카오 로그인 </a>
-	<a href="logout.kakaoOauth"> 카카오 로그아웃 </a>
-	<a href="register.kakaoOauth"> 카카오 회원가입 </a>
+		<form action="#" accept-charset="utf-8" method="POST" >
+	        <fieldset style = "width:150px">
+                <legend>login to kogile</legend>
+                <a href="#">or create an account</a>
+         email: <input type = "text" name = "email"/><br><br>
+         password: <input type = "text" name = "password"/><br><br>
+               <input type = "submit" value="제출"/>
+               <input type ="button" onclick="location.href='redirect.kakaoOauth'" value="Log in with Kakao"/>
+            </fieldset>
+	</form>
 </body>
 </html>

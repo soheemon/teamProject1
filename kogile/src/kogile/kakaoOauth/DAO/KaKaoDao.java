@@ -63,5 +63,20 @@ public class KaKaoDao {
 		return exterMember;
 	}
 	
+	public int selectTotalMemNumWithExMem(int exter_m_no) {
+		int total_m_no = -1;
+		SqlSession sql = dao.getSql().openSession();
+
+		try {
+			total_m_no = sql.getMapper(kakaoOauthMapper.class).selectTotalMemNumWithExMem(exter_m_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sql.close();
+		}
+		
+		return total_m_no;
+	}
+	
 	
 }

@@ -9,7 +9,7 @@
 <body>
 	<form action="register.kakaoOauth" accept-charset="utf-8" method="POST" >
 	        <fieldset style = "width:150px">
-                <legend>외부계정 회원가입</legend>
+                <legend>kakao 회원가입</legend>
                     이름 : <input type = "text" name = "name"/><br><br>
                     이메일: <input type = "text" name = "email"/><br><br>
                <input type = "submit" value="제출"/>

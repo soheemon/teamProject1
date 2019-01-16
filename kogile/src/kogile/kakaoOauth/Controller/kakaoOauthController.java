@@ -38,34 +38,35 @@ public class kakaoOauthController extends HttpServlet {
     	if(regexMatcher.find()) {
     		command = regexMatcher.group();
     	}
-		System.out.println(command);
+		
+    	System.out.println("실행 command:" + command);
 		
 		Action action = null;
 		ActionForward forward = null;
 		
 		if(command != null) {
-			if(command.equals("redirect.kakaoOauth")) {
+			if(command.equals("redirect.kakaoOauth")) { //카카오톡 로그인폼 띄우기
 				 action = (Action) new KakaoOauthRedirectAction();
 				 try {
 					forward = ((KakaoOauthRedirectAction) action).excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("login.kakaoOauth")) {
+			}else if(command.equals("login.kakaoOauth")) { //로그인처리
 				action = (Action) new kakaoOauthLoginAction();
 				try {
 					forward = ((kakaoOauthLoginAction) action).excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("logout.kakaoOauth")) {
+			}else if(command.equals("logout.kakaoOauth")) { //로그아웃
 				action = (Action) new KakaoOauthLogoutAction();
 				try {
 					forward = ((KakaoOauthLogoutAction) action).excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("register.kakaoOauth")) {
+			}else if(command.equals("register.kakaoOauth")) { //회원가입
 				System.out.println("register");
 				action = (Action) new kakaoInsertMemberAction();
 				try {
@@ -73,7 +74,7 @@ public class kakaoOauthController extends HttpServlet {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("ckKogileMem.kakaoOauth")) {
+			}else if(command.equals("ckKogileMem.kakaoOauth")) { //우리 회원인지 확인하기
 				action = (Action) new KakaoChKogileMemAction();
 				try {
 					forward = ((KakaoChKogileMemAction) action).excute(request, response);

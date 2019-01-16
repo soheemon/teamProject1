@@ -13,10 +13,8 @@ public class kakaoInsertMemberAction implements Action {
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		//세션에 kakaoId가 있습니다.
-		//form에서 건네받은 parameter로는 id와 email이 있습니다.
-		//이거를 합쳐서 가입을 시켜야 합니다.
+		
+		//세션에서 kakaoId를 가져온 상태에서 email과 이름을 받습니다.
 		request.setCharacterEncoding("utf-8");
 		
 		HttpSession session = request.getSession();
