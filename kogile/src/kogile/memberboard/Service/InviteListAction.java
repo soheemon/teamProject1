@@ -5,26 +5,22 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kogile.memberboard.DAO.MemberBoardDao;
+import kogile.memberboard.DAO.InviteListDao;
 
-
-
-public class MemberBoardAction implements Action {
+public class InviteListAction implements Action {
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		MemberBoardDao dao = MemberBoardDao.getInstance();
+		InviteListDao dao = InviteListDao.getInstance();
 		
-		MemberSearch search = new MemberSearch();
-		search.setSearch('%' + request.getParameter("search") + '%');
-		List<MemberBoard> list = dao.memberBoard(search);
+		List<InviteList> list3 = dao.inviteLists();
 		
-		request.setAttribute("list", list);
+		request.setAttribute("list3", list3);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("inviteSearch.jsp");
+		forward.setPath("inviteList.jsp");
 		
 		return forward;
 	}

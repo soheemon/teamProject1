@@ -8,20 +8,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
-<script type="text/javascript">
-  function winOpen(){
-     window.open('memberBoardAction.do','사람찾기','width=550, height=300');
-  } 
-</script>
 </head>
-
 <body>
-	  <form id="fmt">
-		초대 <input type="text" name="memberSearch" size="10" id="bb"></input>
-		<input type="button"value="검색" onclick="winOpen()"></input>
-	  </form>
-	<br></br>
-	<br></br>
-
+	<h3>초대리스트</h3>
+	<table width="500" border="1" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>회원번호</td>
+		<td>이름</td>
+		<td>이메일</td>
+		<td>Grade</td>
+	</tr>
+	<c:forEach var="inviteList" items="${list3}">
+		<tr>
+			<td>${inviteList.no }</td>
+			<td>${inviteList.name }</td>
+			<td>${inviteList.mail }</td>
+			<td>${inviteList.grade}</td>
+		</tr>
+	</c:forEach>
+	</table>
 </body>
 </html>
