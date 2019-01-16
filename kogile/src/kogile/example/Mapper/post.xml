@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kogile.example.Mapper.PostMapper">
+	<cache />
+	<!-- 디스크립션 넘버 시퀀스,내용, 포스트넘바 -->
+	<insert id="insertDescription" parameterType="Description">
+		insert into description values(description_seq.nextval, #{d_contents}, #{p_no}) 
+	</insert>
+	
+	<select id="descriptionList" parameterType="int" resultType="Description">
+		select * from description where p_no = #{p_no}
+	</select>
+	
+	<delete id="deleteDescription" parameterType="Description">
+		delete from description where p_no=#{p_no}
+	</delete>
+	
+	<update id="updateDescription" parameterType="Description">
+		update description set d_contents = #{d_contents} where p_no = #{p_no}
+	</update>
+	<!-- 리플시퀀스, 내용, 작성일, 디스크립션 넘버,info넘버 -->
+	
+	<insert id="insertReply" parameterType="Reply">
+		insert into reply values(reply_seq.nextval,#{r_contents},sysdate,#{p_no},#{info_no})
+	</insert>
+	
+	<select id="replyList" parameterType="int" resultType="Reply">
+		SELECT * from reply where p_no = #{p_no}
+	</select>
+	
+	<delete id="deleteReply" parameterType="Reply">
+		delete from reply where r_no=#{r_no} and info_no=#{info_no}
+	</delete>
+	
+	<select id="replyUpdateSearch" parameterType="ReplyUpdateSearch" resultType="Reply">
+		select * from reply where r_no = #{search_r_no} and info_no = #{search_info_no}
+	</select>
+	<update id="updateReply" parameterType="Reply">
+		update reply set r_contents = #{r_contents} 
+				where r_no = #{r_no} and info_no = #{info_no}
+	</update>
+	
+	
+</mapper>

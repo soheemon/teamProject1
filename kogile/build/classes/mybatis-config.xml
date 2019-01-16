@@ -5,7 +5,9 @@
 
 <configuration>
 	<typeAliases>
-		<!-- <typeAlias type="*" alias="*"/> -->
+		<typeAlias type="kogile.Module.Description" alias="Description"/>
+		<typeAlias type="kogile.Module.Reply" alias="Reply"/>
+		<typeAlias type="kogile.Module.ReplyUpdateSearch" alias="ReplyUpdateSearch"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -23,7 +25,7 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="kogile/example/Mapper/Example.xml" />
+		<mapper resource="kogile/example/Mapper/post.xml" />
 	</mappers>
 
 </configuration>
