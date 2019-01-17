@@ -5,20 +5,23 @@ public class MemberBoard {
 	private String name;
 	private String mail;
 	private String interNum;
+	private int pjt_no;
 	
 	public MemberBoard(){}
 
-	public MemberBoard(int no, String name, String mail, String interNum) {
+	public MemberBoard(int no, String name, String mail, String interNum, int pjt_no) {
 		super();
 		this.no = no;
 		this.name = name;
 		this.mail = mail;
 		this.interNum = interNum;
+		this.pjt_no = pjt_no;
 	}
 
 	@Override
 	public String toString() {
-		return "MemberBoard [no=" + no + ", name=" + name + ", mail=" + mail + ", interNum=" + interNum + "]";
+		return "MemberBoard [no=" + no + ", name=" + name + ", mail=" + mail + ", interNum=" + interNum + ", pjt_no="
+				+ pjt_no + "]";
 	}
 
 	public int getNo() {
@@ -52,5 +55,15 @@ public class MemberBoard {
 	public void setInterNum(String interNum) {
 		this.interNum = interNum;
 	}
+
+	public int getPjt_no() {
+		return pjt_no;
+	}
+
+	public void setPjt_no(int pjt_no) {
+		this.pjt_no = pjt_no;
+	}
+
+	
 
 }

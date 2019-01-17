@@ -8,28 +8,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
+<script type= "text/javascript">
+	function yesNo(){
+		var a = confirm("초대하시겠습니까?");
+			if(a==true){
+				alert("초대됐습니다.");
+				}
+			else{
+				alert("초대가 취소됐습니다.");
+				return false;
+			}
+	}
+</script>
 </head>
 <body>
-	<form action="insertMemberBoardAction.me" method="post">
-	<input type="text" name="pjt_no" value=2>
-	</form>
+	
 	  <form action="memberBoardAction.me" method = "post">
 		초대 <input type="text" name="search" size="25" id="autocomplete" placeholder="초대 할 회원의 메일주소 입력"></input>
 		<input type="submit"value="검색" ></input>
 	  </form>
-	<br></br>
-	<br></br>
-	<form action="insertMemberBoardAction.me" method="post">
+	<br>
+	
 	<c:forEach var="memberBoard" items="${list}">
-
-			<input type="text" name="no" value=${memberBoard.no }>
-			<input type="text" name="name" value=${memberBoard.name }>
-			<input type="text" name="mail" value=${memberBoard.mail }>		
-		<br>
+	<form action="insertMemberBoardAction.me" method="post">
+			<input type="hidden" name="pjt_no" value=2>
+			<input type="hidden" name="no" value=${memberBoard.no }>
+			<input type="hidden" name="name" value=${memberBoard.name }>
+			${memberBoard.name } ||
+			<input type="hidden" name="mail" value=${memberBoard.mail }>
+			${memberBoard.mail }		
+		<input type="submit" value="초대" onclick="return yesNo()">
+		</form>
 	</c:forEach>
-		
-	<input type="submit" value="초대">
-	</form>
+		<br>
+	
+	
 	
 </body>
 </html>

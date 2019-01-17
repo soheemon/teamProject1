@@ -16,6 +16,7 @@ public class InsertMemberBoardAction implements Action {
 		MemberBoardDao dao = MemberBoardDao.getInstance();
 		
 		board.setNo(Integer.parseInt(request.getParameter("no")));
+		board.setPjt_no(Integer.parseInt(request.getParameter("pjt_no")));
 		
 		dao.insertMemberBoard(board);
 		
