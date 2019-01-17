@@ -16,7 +16,6 @@
 			<h3>프로젝트 생성</h3>
 			<form action="proFormAction.do" method="post">
 				<div class="form_box">
-					<span><label>작성자 </label><input type="text" name="writer" style="width:320px;"></span>
 					<span><label>제목</label><input type="text" name="title" style="width:320px;"></span>
 					<span><label>내용</label><textarea name="contents"></textarea></span>
 					<div class="btn_area">

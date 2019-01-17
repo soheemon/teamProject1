@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import kogile.startPage.DTO.InviteDTO;
 import kogile.startPage.DTO.ProjectBoard;
 import kogile.startPage.Mapper.PbMapper;
 
@@ -33,15 +34,24 @@ public class ProjectBoardDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 	
-	public int insertBoard(ProjectBoard pb){
+	public void insertBoard(ProjectBoard pb){
 		System.out.println(pb);
-		int re = -1;
+		int re1 = 0;
+		int re2= 0;
+		int re3= 0;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		
 		try {
-			re = sqlSession.getMapper(PbMapper.class).insertBoard(pb);
-			if(re >0){
-				sqlSession.commit();
+			re1 = sqlSession.getMapper(PbMapper.class).insertBoard(pb);
+			InviteDTO invite = sqlSession.getMapper(PbMapper.class).selectPjt();
+			re2 = sqlSession.getMapper(PbMapper.class).insertInvite(invite);
+			int invite_no = sqlSession.getMapper(PbMapper.class).selectInvite();
+			re3 = sqlSession.getMapper(PbMapper.class).insertPjt_Info(invite_no);
+			
+			int re = re1 * re2 * re3;
+			
+			if(re >0) {
+			sqlSession.commit();
 			}else{
 				sqlSession.rollback();
 			}
@@ -50,8 +60,7 @@ public class ProjectBoardDao {
 		}finally {
 			sqlSession.close();
 		} 
-		System.out.println(re);
-		return re;
+		
 	} 
 
 	public List<ProjectBoard> listBoard() {

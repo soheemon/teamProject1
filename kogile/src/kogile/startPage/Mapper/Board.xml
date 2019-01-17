@@ -6,7 +6,15 @@
 	<cache />
 
 	<insert id="insertBoard" parameterType="ProjectBoard">
-		insert into	PROJECT values(pjt_no.nextval , sysdate , #{pjt_title},  #{pjt_writer} , #{pjt_contents}  )
+		insert into	PROJECT values(pjt_no.nextval , sysdate , #{pjt_title}, #{total_m_no} , #{pjt_contents})
+	</insert>
+
+	<insert id="insertInvite" parameterType="InviteDTO">
+		insert into invite values(invite_seq.nextval, 'master', #{pjt_no}, #{total_m_no})
+	</insert>
+	
+	<insert id="insertPjt_Info" parameterType="int">
+		insert into prj_info values(info_no_seq.nextval, #{invite_no})
 	</insert>
 	
 	<select id="projectList" resultType="ProjectBoard">
@@ -16,6 +24,20 @@
 	<select id="mainDetail" resultType="ProjectBoard" parameterType="int">
 		select * from PROJECT where pjt_no = #{seq}
 	</select>
+	<!-- 최근생성된 프로젝트 넘버, 작성자 번호 추출 --> 
+	<select id="selectPjt" resultType="InviteDTO">
+		select pjt_no, total_m_no from Project
+		where rownum = 1
+		order by pjt_no desc
+	</select>
+	<!-- 최근생성된 초대번호 추출 -->
+	<select id="selectInvite" resultType="int">
+		select invite_no from invite
+		where rownum =1
+		order by invite_no desc
+	</select>
+	
+	
 </mapper>
 
 

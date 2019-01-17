@@ -7,6 +7,7 @@
 	<typeAliases>
 		<typeAlias type="kogile.chat.DTO.ChatDTO" alias="ChatDTO"/>
 		<typeAlias type="kogile.startPage.DTO.ProjectBoard" alias="ProjectBoard"/>
+		<typeAlias type="kogile.startPage.DTO.InviteDTO" alias="InviteDTO"/>
 	</typeAliases>
 
 	<environments default="development">

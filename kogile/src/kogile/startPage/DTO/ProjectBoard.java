@@ -6,10 +6,23 @@ public class ProjectBoard implements Serializable{
 	int pjt_no;
 	String pjt_date;
 	String pjt_title;
-	String pjt_writer;
+	int total_m_no;
 	String pjt_contents;
 	
 	public ProjectBoard() {}
+	
+	
+
+	public ProjectBoard(int pjt_no, String pjt_date, String pjt_title, int total_m_no, String pjt_contents) {
+		super();
+		this.pjt_no = pjt_no;
+		this.pjt_date = pjt_date;
+		this.pjt_title = pjt_title;
+		this.total_m_no = total_m_no;
+		this.pjt_contents = pjt_contents;
+	}
+
+
 
 	public int getPjt_no() {
 		return pjt_no;
@@ -35,12 +48,14 @@ public class ProjectBoard implements Serializable{
 		this.pjt_title = pjt_title;
 	}
 
-	public String getPjt_writer() {
-		return pjt_writer;
+	
+	
+	public int getTotal_m_no() {
+		return total_m_no;
 	}
 
-	public void setPjt_writer(String pjt_writer) {
-		this.pjt_writer = pjt_writer;
+	public void setTotal_m_no(int total_m_no) {
+		this.total_m_no = total_m_no;
 	}
 
 	public String getPjt_contents() {
@@ -54,7 +69,7 @@ public class ProjectBoard implements Serializable{
 	@Override
 	public String toString() {
 		return "ProjectBoard [pjt_no=" + pjt_no + ", pjt_date=" + pjt_date + ", pjt_title=" + pjt_title
-				+ ", pjt_writer=" + pjt_writer + ", pjt_contents=" + pjt_contents + "]";
+				+ ", pjt_writer=" + total_m_no + ", pjt_contents=" + pjt_contents + "]";
 	}
 
 

@@ -31,6 +31,8 @@ public class startPageController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
 		String command = request.getRequestURI().substring(request.getContextPath().length()+1);
 		System.out.println(command);
 		

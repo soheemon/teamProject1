@@ -16,13 +16,13 @@ public class ProjectService {
 		return service;
 	}
 	
-	public int insertProjectService(HttpServletRequest request) {
+	public void insertProjectService(HttpServletRequest request)throws Exception{
 		ProjectBoard pb = new ProjectBoard();
-		pb.setPjt_writer(request.getParameter("writer"));
+		pb.setTotal_m_no(3);
 		pb.setPjt_title(request.getParameter("title"));
 		pb.setPjt_contents(request.getParameter("contents"));
 		
-		return dao.insertBoard(pb);
+		dao.insertBoard(pb);
 	}
 	
 	public List<ProjectBoard> listProjectService(HttpServletRequest request){
