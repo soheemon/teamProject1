@@ -1,4 +1,4 @@
-package kogile.memberboard.DAO;
+package kogile.invitelist.DAO;
 
 import java.io.InputStream;
 import java.util.List;
@@ -8,8 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import kogile.memberboard.Mapper.InviteListMapper;
-import kogile.memberboard.Service.InviteList;
+import kogile.invitelist.Mapper.InviteListMapper;
+import kogile.invitelist.Service.InviteList;
 
 public class InviteListDao {
 	private static InviteListDao dao = new InviteListDao();

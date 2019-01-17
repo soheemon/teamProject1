@@ -1,4 +1,4 @@
-package kogile.memberboard.Controller;
+package kogile.invitelist.Controller;
 
 import java.io.IOException;
 
@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kogile.memberboard.Service.Action;
-import kogile.memberboard.Service.ActionForward;
-import kogile.memberboard.Service.InviteListAction;
+import kogile.invitelist.Service.InviteListAction;
+import kogile.invitelist.Service.Action;
+import kogile.invitelist.Service.ActionForward;
 
 @WebServlet("*.in")
 public class InviteListController extends HttpServlet {

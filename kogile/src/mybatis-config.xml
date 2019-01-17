@@ -7,7 +7,7 @@
 	<typeAliases>
 		<typeAlias type="kogile.memberboard.Service.MemberBoard" alias="MemberBoard"/>
 		<typeAlias type="kogile.memberboard.Service.MemberSearch" alias="MemberSearch"/>
-		<typeAlias type="kogile.memberboard.Service.InviteList" alias="InviteList"/>
+		<typeAlias type="kogile.invitelist.Service.InviteList" alias="InviteList"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -26,7 +26,7 @@
 
 	<mappers>
 		<mapper resource="kogile/memberboard/Mapper/MemberBoard.xml" />
-		<mapper resource="kogile/memberboard/Mapper/InviteList.xml" />
+		<mapper resource="kogile/invitelist/Mapper/InviteList.xml" />
 	</mappers>
 
 </configuration>

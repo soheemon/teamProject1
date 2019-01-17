@@ -1,4 +1,4 @@
-package kogile.memberboard.Service;
+package kogile.invitelist.Service;
 
 public class InviteList {
 

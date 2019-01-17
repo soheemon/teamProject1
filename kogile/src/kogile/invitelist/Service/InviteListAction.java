@@ -1,11 +1,13 @@
-package kogile.memberboard.Service;
+package kogile.invitelist.Service;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kogile.memberboard.DAO.InviteListDao;
+import kogile.invitelist.DAO.InviteListDao;
+import kogile.invitelist.Service.Action;
+import kogile.invitelist.Service.ActionForward;
 
 public class InviteListAction implements Action {
 
