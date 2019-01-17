@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<a href="InviteListAction.in?pjt_no=2">리스트 확인</a>
 	<h3>초대리스트</h3>
 	<table width="500" border="1" cellpadding="0" cellspacing="0">
 	<tr>

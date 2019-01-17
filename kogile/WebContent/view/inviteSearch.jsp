@@ -10,6 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form action="insertMemberBoardAction.me" method="post">
+	<input type="text" name="pjt_no" value=2>
+	</form>
 	  <form action="memberBoardAction.me" method = "post">
 		초대 <input type="text" name="search" size="25" id="autocomplete" placeholder="초대 할 회원의 메일주소 입력"></input>
 		<input type="submit"value="검색" ></input>
@@ -21,17 +24,10 @@
 
 			<input type="text" name="no" value=${memberBoard.no }>
 			<input type="text" name="name" value=${memberBoard.name }>
-			<input type="text" name="mail" value=${memberBoard.mail }>
-
-			${memberBoard.no }
-			${memberBoard.name }
-			${memberBoard.mail }
-
+			<input type="text" name="mail" value=${memberBoard.mail }>		
 		<br>
 	</c:forEach>
-
-
-	</table>
+		
 	<input type="submit" value="초대">
 	</form>
 	

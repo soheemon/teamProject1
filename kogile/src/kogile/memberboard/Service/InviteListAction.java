@@ -14,7 +14,14 @@ public class InviteListAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		InviteListDao dao = InviteListDao.getInstance();
 		
-		List<InviteList> list3 = dao.inviteLists();
+		String str = request.getParameter("pjt_no");
+		int pjt_no = 0;
+		if(str!=null){
+			pjt_no=Integer.parseInt(str);
+		}
+		
+		List<InviteList> list3 = dao.inviteLists(pjt_no);
+		System.out.println("action list3 : "+ list3);
 		
 		request.setAttribute("list3", list3);
 		

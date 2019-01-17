@@ -23,11 +23,7 @@
 	</select>
 
 	<insert id="insertMemberBoard" parameterType="MemberBoard">
-
-		insert into invite values(invite_seq.nextval, 'normal', 1, #{no})
-
-		insert into invite values(invite_seq.nextval, #{name}, #{mail}, 'normal')
-
+		insert into invite values(invite_seq.nextval, 'normal', #{pjt_no}, #{no})
 	</insert>
 	
 </mapper>

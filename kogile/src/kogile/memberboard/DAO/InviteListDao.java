@@ -30,14 +30,14 @@ public class InviteListDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 	
-	public List<InviteList> inviteLists(){
+	public List<InviteList> inviteLists(int pjt_no){
 		List<InviteList> list3 = null;
 		List<InviteList> list4 = null;
 		
 		SqlSession sqlSession = getsql().openSession();
 		try {
-			list3 = sqlSession.getMapper(InviteListMapper.class).inviteList();
-			list4 = sqlSession.getMapper(InviteListMapper.class).inviteList2();
+			list3 = sqlSession.getMapper(InviteListMapper.class).inviteList(pjt_no);
+			list4 = sqlSession.getMapper(InviteListMapper.class).inviteList2(pjt_no);
 		
 			list3.addAll(list4);
 			
