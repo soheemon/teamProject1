@@ -5,7 +5,10 @@
 
 <configuration>
 	<typeAliases>
-		<!-- <typeAlias type="*" alias="*"/> -->
+		<typeAlias type="kogile.post.Model.PostDTO" alias="PostDTO"/>
+		<typeAlias type="kogile.post.Model.CardDTO" alias="CardDTO"/>
+		<typeAlias type="kogile.post.Model.MemberDTO" alias="MemberDTO"/>
+		<typeAlias type="kogile.post.Model.ChargeDTO" alias="ChargeDTO"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -23,7 +26,7 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="kogile/example/Mapper/Example.xml" />
+		<mapper resource="kogile/post/Mapper/Post.xml"/>
 	</mappers>
 
 </configuration>

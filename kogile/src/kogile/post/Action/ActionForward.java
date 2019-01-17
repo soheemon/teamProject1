@@ -1,4 +1,4 @@
-package kogile.example.Service;
+package kogile.post.Action;
 
 public class ActionForward {
 	String path;
