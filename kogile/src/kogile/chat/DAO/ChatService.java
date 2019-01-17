@@ -21,7 +21,7 @@ public class ChatService {
 	public int insertChatService(HttpServletRequest request) {
 		ChatDTO chat = new ChatDTO();
 		
-		chat.setChat_name(request.getParameter("chatName"));
+		chat.setInfo_no((Integer.parseInt(request.getParameter("info_no"))));
 		chat.setChat_contents(request.getParameter("chatContent"));
 		
 		return dao.insertChat(chat);
@@ -29,7 +29,7 @@ public class ChatService {
 
 	public void listChatService(HttpServletResponse response) throws IOException{
 		
-		System.out.println("È®ÀÎ");
+		System.out.println("È®ï¿½ï¿½");
 
 		JSONArray jsonArr = new JSONArray();
 		List<ChatDTO> list =dao.listChat();

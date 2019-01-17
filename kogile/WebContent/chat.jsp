@@ -35,7 +35,7 @@
 
 	/*입력값을컨트롤로 보냅니다.*/
 	function submitFunction() {
-		var chatName = $('#chatName').val();
+		var chatName = $('#info_no').val();
 		var chatContent = $('#chatContent').val();
 		$.ajax({
 			type : "POST",
@@ -43,7 +43,7 @@
 			data : {//데이터가공 에러방지위해서  하나의 객체로 묶어서보냄 데이터라는걸로
 				/* 	chatName : encodeURIComponent(chatName),
 					chatContent : encodeURIComponent(chatContent) */
-				chatName : chatName,
+				info_no : chatName,
 				chatContent : chatContent
 			},
 		});
@@ -51,7 +51,7 @@
 	}
 
 	function chatListFunction() {
-		var chatName = $('#chatName').val();
+		var chatName = $('#info_no').val();
 		var chatContent = $('#chatContent').val();
 				$
 				.ajax({
@@ -62,7 +62,7 @@
 					success : function(data) {
 						var txt="";
 						for (var i = 0; i < data.length; i++) {
-						txt +="<p>"+data[i].chat_name
+						txt +="<p>"+data[i].info_no
 									+data[i].chat_contents
 									+data[i].chat_date +"</p>";
 						}
@@ -127,8 +127,8 @@
 							<div class="portlet-footer">
 								<div class="row">
 									<div class="form-group col-xs-4">
-										<input style="height: 40px;" type="text" id="chatName"
-											class="form-control" placeholder="name" maxlength="20">
+										<input style="height: 40px;" type="hidden" id="info_no"
+											class="form-control" maxlength="20" value="1">
 									</div>
 								</div>
 

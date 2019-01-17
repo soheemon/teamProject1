@@ -6,11 +6,12 @@
 	<cache />
 
 	<insert id="insertChat" parameterType="ChatDTO">
-		insert into CHAT values(chat_no.nextval ,  #{chat_name} , #{chat_contents} , sysdate )
+		insert into CHAT values(chat_no.nextval , #{info_no} , #{chat_contents} , sysdate )
 	</insert>
 	
 	<select id="listChat" resultType="ChatDTO">
 		select * from CHAT
+		order by chat_date
 	</select>
 	
 	<!-- <select id="mainDetail" resultType="ProjectBoard" parameterType="int">
