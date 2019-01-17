@@ -1,0 +1,46 @@
+@charset "EUC-KR";
+
+/*default*/
+body, h1, h2, h3, h4, h5, h6, p, a, ul, li,button,dl,dt,dd,form,fieldset,legend,table,thead,tbody,tfoot,tr,td,th{margin:0; padding:0;font-size:17px;color:#333;} 
+em,address{font-style:normal;}
+ul, li{list-style:none;}
+a{text-decoration:none;color:#333;}
+button{border:0;background:none;cursor:pointer;}/*버튼의 default값 수정*/
+a img{border:0;}/*a태그 안에 img태그가 존재하면 파란 border를 제거해줘야함*/
+fieldset{border:0;}
+legend{display:none;}
+table{width:100%;}
+table caption{display:none;}
+textarea{vertical-align:top;}
+input{padding:5px;}
+textarea{width:320px;height:100px;padding:5px;}
+
+.wrap{width:1200px;margin:0 auto;overflow:hidden;margin-top:50px;}
+.popup{text-align:center;}
+header{height:40px;background:#026aa7;width:100%;}
+.nav{float:left;width:210px;}
+.nav ul li{padding:10px 10px;}
+.nav ul li:nth-child(1){margin-bottom:10px;}
+.nav ul li a{display:block;padding-left:30px;}
+.nav ul li:nth-child(1) a{background:url(../images/home.png)left center no-repeat;}
+/* .nav ul li:nth-child(2) a{background:url(../images/board.png)left center no-repeat;} */
+.nav ul li:hover{background-color: rgba(9,45,66,.13);}
+.nav ul li.on{background:#e4f0f6;}
+.nav ul li.on a{color:#026aa7;font-weight:600;}
+
+.contents{float:left;margin-left:100px;}
+.contents h2{font-size:19px;background:url(../images/people.png)left center no-repeat;padding-left:30px;}
+.create{overflow:hidden;margin-top:20px;}
+.create li{float:left;width:186px;height:96px;background-color: rgba(9,45,66,.08);margin-right:10px;}
+.create li:last-child{margin-right:0;}
+.create li a{display:block;line-height:96px;font-size:15px;text-align:center;}
+.create li.add_create{display:block;}
+
+.project_box{width:500px;height:378px;display:inline-block;text-align:left;padding:30px;box-sizing:border-box;background:#ededed;}
+.project_box h3{font-size:19px;background:url(../images/people.png)left center no-repeat;padding-left:30px;margin-bottom:30px;}
+.form_box{}
+.form_box label{width:75px;display:inline-block;}
+.form_box span{display:block;margin-bottom:10px;font-size:15px;}
+
+.btn_area{text-align:right;margin-top:30px;}
+.btn1{border:none;background:#026aa7;padding:10px 15px;color:#fff;}

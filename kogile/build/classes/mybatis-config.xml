@@ -5,7 +5,8 @@
 
 <configuration>
 	<typeAliases>
-		<!-- <typeAlias type="*" alias="*"/> -->
+		<typeAlias type="kogile.chat.DTO.ChatDTO" alias="ChatDTO"/>
+		<typeAlias type="kogile.startPage.DTO.ProjectBoard" alias="ProjectBoard"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -23,7 +24,8 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="kogile/example/Mapper/Example.xml" />
+		<mapper resource="kogile/chat/Mapper/Chat.xml" />
+		<mapper resource="kogile/startPage/Mapper/Board.xml" />
 	</mappers>
 
 </configuration>

@@ -1,0 +1,24 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body, h1, h2, h3, h4, h5, h6, p, ul, li,button,dl,dt,dd,form,fieldset,legend,table,thead,tbody,tfoot,tr,td,th{margin:0; padding:0; word-break:keep-all;} 
+em,address{font-style:normal;}
+ul, li{list-style:none;}
+button{border:0;background:none;cursor:pointer;}/*버튼의 default값 수정*/
+a img{border:0;}/*a태그 안에 img태그가 존재하면 파란 border를 제거해줘야함*/
+fieldset{border:0;}
+legend{display:none;}
+table{border-collapse: collapse;width:100%;}
+table caption{display:none;}
+select{border:0;background:0;background:url(../images/common/select_bg.png)right 50% no-repeat;-webkit-appearance:none;-moz-appearance:none;appearance:none;}
+select::-ms-expand{display:none;}
+.clearfix:after{display:block;clear:both;content:".";visibility:hidden;height:0;}
+.clearfix{display:block;}
+body,button,select,input{font-family: 'Noto Sans KR', sans-serif; font-size:16px; color:#555; font-weight:400; line-height:1.3; letter-spacing:-0.5px;}
+body{overflow-x:hidden;}
+a{text-decoration:none;color:#555;}
+input{ -webkit-appearance: none;-webkit-border-radius: 0;}/*아이폰 설정*/
+.blind{display:none !important;}
+.bg_no { background:none !important;}
+.f_left {float:left;}
+.f_right {float:right;}
+
+.wrap{margin:0 auto;width: 1280px;}

@@ -1,0 +1,55 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body, h1, h2, h3, h4, h5, h6, p, ul, li,button,dl,dt,dd,form,fieldset,legend,table,thead,tbody,tfoot,tr,td,th{margin:0; padding:0; word-break:keep-all;} 
+em,address{font-style:normal;}
+ul, li{list-style:none;}
+button{border:0;background:none;cursor:pointer;}/*버튼의 default값 수정*/
+a img{border:0;}/*a태그 안에 img태그가 존재하면 파란 border를 제거해줘야함*/
+fieldset{border:0;}
+legend{display:none;}
+table{border-collapse: collapse;width:100%;}
+table caption{display:none;}
+body,button,select,input{font-family: 'Noto Sans KR', sans-serif; font-size:16px; color:#555; font-weight:400; line-height:1.3; letter-spacing:-0.5px;}
+body{overflow-x:hidden;}
+a{text-decoration:none;color:#555;}
+
+.wrap{margin:0 auto;width: 1280px;}
+.wrap2{padding:20px;width: 100%;box-sizing: border-box;height: 98vh;}
+
+header{height: 40px;background: #026aa7;width: 100%;}
+.main{background: #0079bf;}
+.top_menu{overflow: hidden;color: #fff;}
+.top_menu a{color: #fff;display: block;height: 100%;}
+.top_menu a:hover{text-decoration: underline;}
+.top_menu .menu_left{float: left;}
+.top_menu .menu_left h2{display: inline-block;font-size: 18px;background: url(../images/board_w.png)left center no-repeat;padding-left: 30px;background-size: 20px;}
+.top_menu .menu_left span{display: inline-block;margin-left: 20px;}
+.top_menu .menu_left span.a_1{background: url(../images/traval_w.png)left center no-repeat;padding-left: 25px;}
+.top_menu .menu_left span.a_2{background: url(../images/star_w.png)left center no-repeat;height: 18px;width:18px;}
+.top_menu .menu_left span.a_3{background: url(../images/team_w.png)left center no-repeat;padding-left: 25px;}
+.top_menu .menu_right{float: right;}
+
+.cts_board{margin-top: 20px;/*overflow: hidden;*/}
+.grid{position: relative;}
+.item{background: #dfe3e6;border-radius: 5px;width: 280px;margin: 0 2.5px;position: absolute;display: block;z-index: 1;}
+.item.muuri-item-releasing {z-index: 2;}
+.item.muuri-item-dragging {z-index: 3;cursor: move;}
+.heading{position:relative;padding: 10px;box-sizing: border-box;overflow: hidden;}
+.board_title{color: #17394d;font-size: 14px;font-weight: 700;display: inline-block;}
+.more{float: right;font-size: 11px;line-height: 20px;}
+.item_content{position: relative;width: 92%;height: 100%;min-height:20px;margin: 10px;box-sizing:border-box;}
+.post{background: #fff;border-radius: 5px;margin-bottom: 10px;padding: 6px 8px 2px;position: absolute;width:100%;box-sizing:border-box;}
+.post.muuri-item-releasing {z-index: 9998;}
+.post.muuri-item-dragging {z-index: 9999;cursor: move;}
+.post.muuri-item-hidden {z-index: 0;}
+.post_item{position:relative;background:#fff;display:block;}
+.post_item h4{font-size: 14px;color: #17394d;}
+.post_item .btn_box{margin: 5px 0 20px 0;}
+.post_item .btn_box span{font-size: 12px;display: inline-block;opacity: 0.5;height: 18px;padding-top: 2px;vertical-align: middle;margin-right: 15px;}
+.post_item .btn_box span:last-child{margin-right:0;}
+.post_item .btn_box .list{background: url(../images/note.png)left top no-repeat;width:18px;}
+.post_item .btn_box .check{background: url(../images/check.png)left top no-repeat;padding-left: 20px;}
+.post_item .btn_box .date{background: url(../images/time.png)left top no-repeat;padding-left: 20px;}
+.post_item .btn_box .clip{background: url(../images/clip.png)left top no-repeat;padding-left: 25px;}
+.peo_box{position: absolute;right:8px;bottom: 2px;}
+.peo_box img{width: 30px;}
+.add_txt{color: #6b808c;font-size: 13px;background: url(../images/add.png)left center no-repeat;padding-left: 20px;margin:0 0 20px 10px;}
