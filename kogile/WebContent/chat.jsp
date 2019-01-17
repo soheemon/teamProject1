@@ -23,14 +23,15 @@
 	var lastID = 0;
 
 	$(document).ready(function() {
+		chatListFunction();
 		getInfiniteChat();
 	});
 
-	function getInfiniteChat() {
+	 function getInfiniteChat() {
 		setInterval(function() {
-			chatListFunction(lastID);
+			chatListFunction();
 		}, 1000);
-	}
+	} 
 
 	/*입력값을컨트롤로 보냅니다.*/
 	function submitFunction() {
@@ -49,36 +50,23 @@
 		$('#chatContent').val('');
 	}
 
-	function chatListFunction(type) {
+	function chatListFunction() {
 		var chatName = $('#chatName').val();
 		var chatContent = $('#chatContent').val();
-		$
+				$
 				.ajax({
 					type : "POST",
 					url : "chatList.post",
 					dataType : "JSON",
 
 					success : function(data) {
+						var txt="";
 						for (var i = 0; i < data.length; i++) {
-							$('#chatList')
-									.append(
-											'<div class="row">'
-													+ '<div class="col-lg-12">'
-													+ '<div class="media">'
-													+ '<a class="pull-left" href="#">'
-													+ '<img class="media-object img-circle" src = "images/icon.jpg" alt="">'
-													+ '</a>'
-													+ '<div class="media-body">'
-													+ '<h4 class="media-heading">'
-													+ data[i].chat_name
-													+ '<span class="small pull-right">'
-													+ data[i].chat_contents + '</span>'
-													+ '</h4>' + '<p>'
-													+ data[i].chat_date + '</p>'
-													+ '</div>' + '</div>'
-													+ '</div>' + '</div>'
-													+ '<br>');
+						txt +="<p>"+data[i].chat_name
+									+data[i].chat_contents
+									+data[i].chat_date +"</p>";
 						}
+						$("#chatList").html(txt);
 					}
 				});
 	}
@@ -129,8 +117,12 @@
 
 						<div id="chat" class="panel-cpllapse collapse in">
 
+
 							<div id="chatList" class="portlet-body chat-widget"
-								style="overflow-y: auto; width: auto; height: 300px;"></div>
+								style="overflow-y: auto; width: auto; height: 300px;">
+							</div>
+
+
 
 							<div class="portlet-footer">
 								<div class="row">
@@ -162,3 +154,23 @@
 </body>
 
 </html>
+
+
+	<!-- $('#chatList')
+									.append(
+											'<div class="row">'
+													+ '<div class="col-lg-12">'
+													+ '<div class="media">'
+													+ '<a class="pull-left" href="#">'
+													+ '<img class="media-object img-circle" src = "images/icon.jpg" alt="">'
+													+ '</a>'
+													+ '<div class="media-body">'
+													+ '<h4 class="media-heading">'
+													+ data[i].chat_name
+													+ '<span class="small pull-right">'
+													+ data[i].chat_contents + '</span>'
+													+ '</h4>' + '<p>'
+													+ data[i].chat_date + '</p>'
+													+ '</div>' + '</div>'
+													+ '</div>' + '</div>'
+													+ '<br>'); -->

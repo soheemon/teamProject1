@@ -42,7 +42,6 @@ public class chatController extends HttpServlet {
 					e.printStackTrace();
 				}
 			}else if(command.equals("chatInsert.post")) {
-				System.out.println(command);
 				action = new ChatInsertAction();
 				try {
 					forward = action.excute(request, response);

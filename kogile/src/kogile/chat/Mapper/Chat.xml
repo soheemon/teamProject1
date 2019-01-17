@@ -10,7 +10,7 @@
 	</insert>
 	
 	<select id="listChat" resultType="ChatDTO">
-		select * from PROJECT
+		select * from CHAT
 	</select>
 	
 	<!-- <select id="mainDetail" resultType="ProjectBoard" parameterType="int">

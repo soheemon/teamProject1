@@ -1,6 +1,8 @@
 package kogile.chat.DTO;
 
-public class ChatDTO {
+import java.io.Serializable;
+
+public class ChatDTO implements Serializable {
 	
 	private int chat_no;
 	private String chat_name;

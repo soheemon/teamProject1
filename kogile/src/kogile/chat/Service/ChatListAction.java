@@ -17,11 +17,7 @@ public class ChatListAction implements Action {
 		ChatService cs = ChatService.getInstance();
 		cs.listChatService(response);
 		
-		ActionForward forward = new ActionForward();
-		forward.setPath("chat.jsp");
-		forward.setRedirect(false);
-		
-		return forward;
+		return null;
 	}
 
 }
