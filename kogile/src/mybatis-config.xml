@@ -5,7 +5,8 @@
 
 <configuration>
 	<typeAliases>
-		<!-- <typeAlias type="*" alias="*"/> -->
+		<typeAlias type="kogile.post.Model.LabelDTO" alias="Label"/>
+		<typeAlias type="kogile.post.Model.LabelInfoDTO" alias="LabelInfo"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -24,6 +25,7 @@
 
 	<mappers>
 		<mapper resource="kogile/example/Mapper/Example.xml" />
+		<mapper resource="kogile/post/Mapper/PostLabel.xml" />
 	</mappers>
 
 </configuration>
