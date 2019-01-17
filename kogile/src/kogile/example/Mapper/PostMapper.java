@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 import kogile.Module.Description;
 import kogile.Module.Reply;
+import kogile.Module.ReplyMember;
 import kogile.Module.ReplyUpdateSearch;
 
 public interface PostMapper {
@@ -22,4 +23,7 @@ public interface PostMapper {
 	Reply replyUpdateForm(Reply reply);
 	Reply replyUpdateSearch(ReplyUpdateSearch search);
 	int updateReply(Reply reply);
+	
+	List<ReplyMember> replyMemberList(int seq);
+	List<ReplyMember> replyMemberList2(int seq);
 }

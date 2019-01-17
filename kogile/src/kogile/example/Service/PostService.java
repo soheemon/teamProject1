@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import kogile.Module.Description;
 import kogile.Module.Reply;
+import kogile.Module.ReplyMember;
 import kogile.Module.ReplyUpdateSearch;
 import kogile.example.DAO.PostDao;
 
@@ -52,7 +53,7 @@ public class PostService {
 		return dao.updateDescription(description);
 	}
 	
-	public int insertReplyService(HttpServletRequest request) {
+	public int insertReplyService(HttpServletRequest request)throws Exception {
 		Reply reply = new Reply();
 		reply.setR_contents(request.getParameter("r_contents"));
 		//훗날 수정필요
@@ -61,13 +62,20 @@ public class PostService {
 		return dao.insertReply(reply);
 	}
 	
-	public List<Reply> replyListService(HttpServletRequest request){
+	public List<Reply> replyListService(HttpServletRequest request)throws Exception{
 		//훗날 수정필요
 		int p_no =1;
 		List<Reply> list = dao.replyList(p_no);
 		request.setAttribute("list", list);
 		
 		return dao.replyList(p_no);
+	}
+	public List<ReplyMember> replyMemberListService(HttpServletRequest request)throws Exception{
+		int p_no =1;
+		List<ReplyMember> list = dao.replyMemberList(p_no);
+		request.setAttribute("memberList", list);
+		
+		return list;
 	}
 	
 	public int deleteReplyService(HttpServletRequest request) {

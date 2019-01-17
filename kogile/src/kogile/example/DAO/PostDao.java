@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kogile.Module.Description;
 import kogile.Module.Reply;
+import kogile.Module.ReplyMember;
 import kogile.Module.ReplyUpdateSearch;
 import kogile.example.Mapper.PostMapper;
 
@@ -122,6 +123,21 @@ public class PostDao {
 		SqlSession session = getSql().openSession();
 		try {
 			list=session.getMapper(PostMapper.class).replyList(p_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return list;
+	}
+	public List<ReplyMember> replyMemberList(int p_no){
+		List<ReplyMember> list = null;
+		List<ReplyMember> list2 = null;
+		SqlSession session = getSql().openSession();
+		try {
+			list=session.getMapper(PostMapper.class).replyMemberList(p_no);
+			list2=session.getMapper(PostMapper.class).replyMemberList2(p_no);
+			list.addAll(list2);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

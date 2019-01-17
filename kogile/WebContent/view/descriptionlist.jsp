@@ -34,11 +34,11 @@
 			<td>작성자</td>
 			<td>수정/삭제</td>
 		</tr>
-		<c:forEach var="reply" items="${list }">
+		<c:forEach var="reply" items="${memberList }">
 			<tr>
 				<td>${reply.r_contents }</td>
 				<td>${reply.r_date }</td>
-				<td>${reply.info_no }</td>
+				<td>${reply.name }</td>
 				<td>
 					<a href="replyDelete.do?r_no=${reply.r_no }&info_no=${reply.info_no}">삭제하기</a>
 					<a href="replyUpdate.do?r_no=${reply.r_no }&info_no=${reply.info_no}">수정하기</a>

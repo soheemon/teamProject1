@@ -15,6 +15,7 @@ public class DescriptionListAction implements Action {
 		PostService service = PostService.getInstance();
 		service.descriptionDetailService(request);
 		service.replyListService(request);	
+		service.replyMemberListService(request);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
