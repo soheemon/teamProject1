@@ -5,24 +5,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import kogile.post.Model.PostService;
 
-public class DetailPostAction implements Action {
+public class DeletePostAction implements Action {
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+		request.setCharacterEncoding("UTF-8");
 		
 		PostService service = PostService.getInstance();
 		
-		// 가져온 PostDTO를 담는다.
-		request.setAttribute("PostDTO", service.detailPostActionService(request));
-		
-		request.setAttribute("PostMemberList", service.PostMemberListService(request, response));
-		
-		
+		service.deletePostActionService(request);		
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("detailPostForm.jsp");
+		forward.setPath("listPostAction.do");
 		forward.setRedirect(false);
+		
 		
 		return forward;
 	}

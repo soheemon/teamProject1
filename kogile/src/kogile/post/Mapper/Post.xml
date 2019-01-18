@@ -9,11 +9,13 @@
 	<!-- DML은 DML 태그를 꼭 사용해서 resultType을 생략해야한다. -->
 	<!-- #{컬럼명}은 해당 컬럼의 정보를 참고하여 반응한다. -->
 
+
 	<!-- insert -->
 	<insert id="insertPost" parameterType="PostDTO">
 		insert into post
 		values(post_seq.nextval, #{p_title}, 1, #{c_no})
 	</insert>
+
 
 	<!-- 회원 정보를 Post까지 가져가기 -->
 	<!-- 가져가기 위해서 charge_info에 post, 회원 정보를 담는다. -->
@@ -21,6 +23,22 @@
 		insert into charge_info
 		values(charge_info_no_seq.nextval, #{info_no}, #{p_no})
 	</insert>
+
+
+	<!-- insert시 마감일 입력하기 -->
+	<insert id="ddateInsertPost" parameterType="DdateDTO">
+		insert into d_day
+		VALUES(d_day_no_seq.nextval, #{d_date}, #{p_no})
+	</insert>
+
+
+	<!-- 마감일 출력하기 -->
+	<select id="ddateInfo" resultType="DdateDTO">
+		select d_date
+		from d_day
+		where p_no = #{p_no}
+	</select>
+
 
 	<!-- 가장 최근에 생긴 Post의 no를 구하기 -->
 	<select id="selectPost" resultType="int">
@@ -31,25 +49,28 @@
 	</select>
 
 	<!-- list -->
-	<select id="listPost" resultType="PostDTO">
-		select * From post order by
-		p_no
+	<select id="listPost" parameterType="int" resultType="PostDTO">
+		select
+		p.p_no, p.p_title From post p
+		join card c
+		on p.c_no = c.c_no
+		where c.pjt_no = #{pjt_no}
+		order by p_no
 	</select>
 
-	<!-- detail 제목 read -->
+
+	<!-- detail 제목 가져오기 -->
 	<select id="detailPost" resultType="PostDTO">
 		SELECT p_no, p_title
-		FROM post
+		FROM post 
 		WHERE p_no = #{p_no}
-		<!-- SELECT p.p_title, d.d_contents, c.check_title, r.r_contents FROM post 
-			p JOIN description d ON p.p_no = d.p_no JOIN checklist c ON d.p_no = c.p_no 
-			JOIN list l ON c.checklist_no = l.checklist_no JOIN label b ON p.p_no = b.p_no 
-			JOIN reply r ON d.d_no = r.d_no WHERE p_no = #{p_no} -->
 	</select>
 	
-	<select id="detailSupervisor" resultType="MemberDTO">
-		
-	
+	<!-- detail Ddate 가져오기 -->
+	<select id="detailDdate" resultType="DdateDTO">
+		select p_no, d_date
+		from d_day
+		where p_no = #{p_no}
 	</select>
 
 	<!-- update -->
@@ -61,10 +82,21 @@
 	</update>
 
 
+	<update id="updateDdate" parameterType="DdateDTO">
+		update d_day set d_date = #{d_date}
+		where p_no = #{p_no}
+	</update>
+
+
 	<!-- delete -->
 	<delete id="deletePost" parameterType="PostDTO">
-		delete from post where
-		p_no = #{p_no}
+		delete from post
+		where p_no = #{p_no}
+	</delete>
+
+	<delete id="deleteDdate" parameterType="DdateDTO">
+		delete from d_day
+		where p_no = #{p_no}
 	</delete>
 
 	<!-- 내부회원 checkbox -->
@@ -74,24 +106,29 @@
 		t.total_m_no as total_no
 		from inter_m_info i
 		join total_member t
-		on t.member_no = i.member_no
+		on
+		t.member_no = i.member_no
 		join invite v
 		on t.total_m_no = v.total_m_no
 		where v.pjt_no = #{pjt_no}
 	</select>
+
 
 	<!-- 외부회원 chechbox -->
 	<select id="exter_member" parameterType="int"
 		resultType="MemberDTO">
 		select e.exter_mem_name as name, e.exter_m_email as email,
 		t.total_m_no as total_no
-		from external_m_info e 
+		from external_m_info e
 		join total_member t
-		on t.exter_m_no = e.exter_m_no
+		on
+		t.exter_m_no = e.exter_m_no
 		join invite v
-		on t.total_m_no = v.total_m_no
+		on
+		t.total_m_no = v.total_m_no
 		where v.pjt_no = #{pjt_no}
 	</select>
+
 
 	<!-- 프로젝트 번호에 따른 Card정보 가져오기 -->
 	<select id="card_info" resultType="CardDTO">
@@ -100,4 +137,57 @@
 		order by c_no
 	</select>
 
+
+	<!-- post 외부에 포함된 내부 회원 찾기 -->
+	<select id="post_exter_member" resultType="PostMemberDTO">
+		SELECT DISTINCT
+		t.total_m_no ,c.info_no, m.exter_mem_name as name
+		FROM charge_info c
+
+		JOIN prj_info p
+		ON p.info_no = c.info_no
+
+		JOIN invite i
+		ON p.invite_no =
+		i.invite_no
+
+		JOIN
+		total_member t
+		ON t.total_m_no = i.total_m_no
+
+		JOIN
+		external_m_info m
+		ON t.exter_m_no = m.exter_m_no
+
+		WHERE c.p_no = #{p.no}
+
+		order by t.total_m_no
+	</select>
+
+
+	<!-- post 내부에 포함된 외부 회원 찾기 -->
+	<select id="post_inter_member" resultType="PostMemberDTO">
+		SELECT DISTINCT
+		t.total_m_no, c.info_no, n.member_name as name
+		FROM charge_info c
+
+		JOIN
+		prj_info p
+		ON p.info_no = c.info_no
+
+		JOIN invite i
+		ON p.invite_no =
+		i.invite_no
+
+		JOIN total_member t
+		ON t.total_m_no = i.total_m_no
+
+		JOIN
+		inter_m_info n
+		ON t.member_no = n.member_no
+
+		WHERE c.p_no = #{p.no}
+
+		order by t.total_m_no
+	</select>
 </mapper>

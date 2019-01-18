@@ -5,23 +5,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import kogile.post.Model.PostService;
 
-public class DetailPostAction implements Action {
+public class UpdateDdateFormAction implements Action {
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+		request.setCharacterEncoding("UTF-8");
 		
 		PostService service = PostService.getInstance();
 		
-		// 가져온 PostDTO를 담는다.
-		request.setAttribute("PostDTO", service.detailPostActionService(request));
-		
-		request.setAttribute("PostMemberList", service.PostMemberListService(request, response));
-		
-		
+		request.setAttribute("DdateDTO", service.updateDdateFormActionService(request));
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("detailPostForm.jsp");
+		forward.setPath("updateDdateForm.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

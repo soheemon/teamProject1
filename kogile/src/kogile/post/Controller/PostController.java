@@ -8,18 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.io.Resources;
 
 import kogile.post.Action.Action;
 import kogile.post.Action.ActionForward;
+import kogile.post.Action.DeleteDdateAction;
+import kogile.post.Action.DeletePostAction;
 import kogile.post.Action.DetailPostAction;
 import kogile.post.Action.InsertPostAction;
 import kogile.post.Action.InsertPostFormAction;
 import kogile.post.Action.ListPostAction;
-import kogile.post.Action.deletePostAction;
-import kogile.post.Action.updatePostAction;
-import kogile.post.Action.updatePostFormAction;
+import kogile.post.Action.UpdateDdateAction;
+import kogile.post.Action.UpdateDdateFormAction;
+import kogile.post.Action.UpdatePostAction;
+import kogile.post.Action.UpdatePostFormAction;
 
 
 @WebServlet("*.do")
@@ -37,6 +41,21 @@ public class PostController extends HttpServlet {
 		
 		Action action = null;
 		ActionForward forward = null;
+		
+		
+		
+		HttpSession session = request.getSession();
+		
+		if(request.getParameter("pjt_no") != null) {
+			session.removeAttribute("pjt_no");
+			session.setAttribute("pjt_no", Integer.parseInt(request.getParameter("pjt_no")));
+		}
+		
+		if(request.getParameter("p_no") != null) {
+			session.removeAttribute("p_no");
+			session.setAttribute("p_no", Integer.parseInt(request.getParameter("p_no")));
+		}
+		
 		
 		
 		// insertPostFormActon (Post를 생성하는 Form으로 이동)
@@ -85,7 +104,7 @@ public class PostController extends HttpServlet {
 		
 		// updatePostFormAction (Post 수정 Form으로 이동)
 		} else if (command.equals("updatePostFormAction.do")) {
-			action = new updatePostFormAction();
+			action = new UpdatePostFormAction();
 			
 			try {
 				forward = action.excute(request, response);
@@ -96,10 +115,8 @@ public class PostController extends HttpServlet {
 			
 		// updatePostAction (Post 수정)
 		} else if (command.equals("updatePostAction.do")) {
-			action = new updatePostAction();
-			System.out.println("1");
+			action = new UpdatePostAction();
 			try {
-				System.out.println("2");
 				forward = action.excute(request, response);
 
 			} catch (Exception e) {
@@ -109,7 +126,7 @@ public class PostController extends HttpServlet {
 			
 		// deletePostAction (Post 삭제)
 		} else if (command.equals("deletePostAction.do")) {
-			action = new deletePostAction();
+			action = new DeletePostAction();
 
 			
 			try {
@@ -117,15 +134,41 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
 			
+			
+		// updateDdateAction (디데이 수정)
+		} else if (command.equals("updateDdateAction.do")) {
+			action = new UpdateDdateAction();
+			
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		// updatePostFormAction (Post 수정 Form으로 이동)
+		} else if (command.equals("updateDdateFormAction.do")) {
+			action = new UpdateDdateFormAction();
+		
+		try {
+			forward = action.excute(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// deleteDdateAction (마감일 삭제)
+		} else if (command.equals("deleteDdateAction.do")) {
+			action = new DeleteDdateAction();
+			
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
-		
-		
-		
-		
-		
+			
 		
 		if(forward != null) {
 			if(forward.isRedirect()) {

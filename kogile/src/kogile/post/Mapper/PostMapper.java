@@ -4,8 +4,10 @@ import java.util.List;
 
 import kogile.post.Model.CardDTO;
 import kogile.post.Model.ChargeDTO;
+import kogile.post.Model.DdateDTO;
 import kogile.post.Model.MemberDTO;
 import kogile.post.Model.PostDTO;
+import kogile.post.Model.PostMemberDTO;
 
 public interface PostMapper {
 	// post 삽입
@@ -18,7 +20,7 @@ public interface PostMapper {
 	int chargeInfo(ChargeDTO chargeDTO);
 	
 	// list 보기
-	List<PostDTO> listPost(PostDTO postDTO);
+	List<PostDTO> listPost(int pjt_no);
 	
 	// post 상세보기
 	PostDTO detailPost(int p_no); 
@@ -35,4 +37,24 @@ public interface PostMapper {
 	
 	// card 정보 가져오기
 	List<CardDTO> card_info();
+	
+	// Post에 회원 정보 호출하기
+	List<PostMemberDTO> post_inter_member(int p_no);
+	List<PostMemberDTO> post_exter_member(int p_no);
+	
+	// insertForm 이동시 현재시간 구하기
+	DdateDTO ddateInfo(int p_no);
+	
+	// Post에 Ddate insert하기
+	int ddateInsertPost(DdateDTO ddateDTO);
+	
+	// 마감일 수정하기
+	int updateDdate(DdateDTO ddateDTO);
+	
+	// 마감일 상세보기
+	DdateDTO detailDdate(int p_no);
+	
+	// 마감일 삭제하기
+	int deleteDdate(int p_no);
+	
 }

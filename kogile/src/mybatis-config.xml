@@ -9,6 +9,8 @@
 		<typeAlias type="kogile.post.Model.CardDTO" alias="CardDTO"/>
 		<typeAlias type="kogile.post.Model.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="kogile.post.Model.ChargeDTO" alias="ChargeDTO"/>
+		<typeAlias type="kogile.post.Model.PostMemberDTO" alias="PostMemberDTO"/>
+		<typeAlias type="kogile.post.Model.DdateDTO" alias="DdateDTO"/>
 	</typeAliases>
 
 	<environments default="development">

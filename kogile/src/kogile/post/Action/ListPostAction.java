@@ -14,9 +14,11 @@ public class ListPostAction implements Action {
 		PostService service = PostService.getInstance();
 		
 		// service에서 생성한 메소드를 list에 담는다.
-		request.setAttribute("list", service.listPostActionService(request));
+		request.setAttribute("list", service.listPostActionService(request, response));
+			
 		
 		ActionForward forward = new ActionForward();
+		
 		forward.setPath("listPostForm.jsp");
 		forward.setRedirect(false);
 		

@@ -9,7 +9,6 @@
 </head>
 <body>
 	<h3>포스트 목록</h3>
-	
 	<table width="200" border="1" cellpadding="0" cellspacing="0">
 	<tr>
 		<td>제목</td>
@@ -27,5 +26,5 @@
 	</c:forEach>
 	</table>
 	<a href="insertPostFormAction.do"> Post 생성 </a>
-</body>
+ </body>
 </html>

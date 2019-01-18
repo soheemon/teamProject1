@@ -1,6 +1,12 @@
+<%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
+<jsp:useBean id="toDay" class="java.util.Date" />
+<fmt:formatDate value='${toDay}' pattern='yyyy-MM-dd' var="nowDate"/>
 
 <!DOCTYPE html>
 <html>
@@ -10,7 +16,6 @@
 </head>
 <body>
 
-	<!-- insertForm으로 가는 jsp -->
 	<!-- 제목 입력 -->
 	<form action="insertPostAction.do" method="post">
 		업무 제목 : <input type="text" name="p_title"><br>
@@ -38,7 +43,13 @@
 			<c:forEach items="${MemberList}" var="member">
 				<input type="checkbox" name="pjt_member" value="${member.total_no}">${member.name}
 		</c:forEach>
-		</c:if>
+		</c:if><br>
+		
+		
+		<!-- 마감일 입력 -->
+		마감일 : <input type="text" name="DateInfo" value="${nowDate}">
+		
+		
 		<input type="submit" value="생성">
 	</form>
 </body>
