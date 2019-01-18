@@ -8,4 +8,5 @@ public interface InviteListMapper {
 	List<InviteList> inviteList(int pjt_no);
 	List<InviteList> inviteList2(int pjt_no);
 	
+	int deleteInviteList(InviteList list);
 }

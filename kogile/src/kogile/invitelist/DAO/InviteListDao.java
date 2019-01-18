@@ -48,4 +48,23 @@ public class InviteListDao {
 		
 		return list3;
 	}
+	
+	public int deleteInviteList(InviteList list){
+		int re = -1;
+		SqlSession sqlSession = getsql().openSession();
+		try{
+			re = sqlSession.getMapper(InviteListMapper.class).deleteInviteList(list);
+			if(re>0){
+				sqlSession.commit();
+			}else{
+				sqlSession.rollback();
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+		return re;
+	}
 }

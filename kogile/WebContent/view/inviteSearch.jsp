@@ -15,9 +15,10 @@
 				alert("초대됐습니다.");
 				}
 			else{
-				alert("초대가 취소됐습니다.");
+				alert("초대가 취소됐습니다.");	
 				return false;
 			}
+			
 	}
 </script>
 </head>
@@ -32,6 +33,7 @@
 	<c:forEach var="memberBoard" items="${list}">
 	<form action="insertMemberBoardAction.me" method="post">
 			<input type="hidden" name="pjt_no" value=2>
+			<!-- 임의의값 -->
 			<input type="hidden" name="no" value=${memberBoard.no }>
 			<input type="hidden" name="name" value=${memberBoard.name }>
 			${memberBoard.name } ||

@@ -8,9 +8,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
+<script type= "text/javascript">
+	function exit(){
+		var e = confirm("프로젝트에서 나가시겠습니까?");
+			if(e==true){
+				alert("프로젝트에서 나왔습니다.");
+				}
+			else{
+				alert("나가기를 취소하셨습니다.");
+				return false;
+			}
+	}
+	
+	function winOpen(){
+		window.open('inviteSearch.jsp', '이메일 검색', 'width=550, height=300');
+	}
+</script>
 </head>
 <body>
-	<a href="InviteListAction.in?pjt_no=2">리스트 확인</a>
+
+<form action="deleteInviteListAction.in" method="post">
+<input type="hidden" name="pjt_no" value=2>
+<!-- 임의의값 -->
+<input type="hidden" name="no" value=30>
+<!-- 임의의값 -->
+<input type="submit" value="프로젝트 나가기" onclick="return exit()">
+</form>
+
+<br></br>
+<input type="button" value="초대" onclick="winOpen()">
+<br></br>
+
+	<a href="inviteListAction.in?pjt_no=2">리스트 확인</a>
 	<h3>초대리스트</h3>
 	<table width="500" border="1" cellpadding="0" cellspacing="0">
 	<tr>

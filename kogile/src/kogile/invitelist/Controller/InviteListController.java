@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import kogile.invitelist.Service.InviteListAction;
 import kogile.invitelist.Service.Action;
 import kogile.invitelist.Service.ActionForward;
+import kogile.invitelist.Service.DeleteInviteListAction;
 
 @WebServlet("*.in")
 public class InviteListController extends HttpServlet {
@@ -30,8 +31,15 @@ public class InviteListController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		
-		if(command.equals("InviteListAction.in")){
+		if(command.equals("inviteListAction.in")){
 			action = new InviteListAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("deleteInviteListAction.in")){
+			action = new DeleteInviteListAction();
 			try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {

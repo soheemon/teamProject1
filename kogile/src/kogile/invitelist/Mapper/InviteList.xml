@@ -27,7 +27,11 @@
 	</where>
 	</select>
 	
-		
-
+	<delete id="deleteInviteList" parameterType="InviteList">
+		delete from invite
+		<where>
+			pjt_no=#{pjt_no} AND total_m_no=#{no}
+		</where>
+	</delete>
 
 </mapper>
