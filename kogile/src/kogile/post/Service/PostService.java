@@ -42,7 +42,7 @@ public class PostService {
 		
 		label.setColor_no(Integer.parseInt(request.getParameter("label_color")));
 		label.setLabel_text(request.getParameter("label_text"));
-		label.setPjt_no(dao.searchpjt(p_no));
+		label.setPjt_no(dao.searchpjt(p_no));	
 		dao.insertlabel(label);
 	}
 	
