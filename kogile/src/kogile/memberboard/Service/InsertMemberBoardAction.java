@@ -21,8 +21,8 @@ public class InsertMemberBoardAction implements Action {
 		dao.insertMemberBoard(board);
 		
 		ActionForward forward = new ActionForward();
-		forward.setRedirect(true);
-		forward.setPath("InviteListAction.in");
+		forward.setRedirect(false);
+		forward.setPath("inviteSearch.jsp");
 		
 		return forward;
 	}

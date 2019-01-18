@@ -23,6 +23,10 @@
 	function winOpen(){
 		window.open('inviteSearch.jsp', '이메일 검색', 'width=550, height=300');
 	}
+	function winOpen2(){
+		window.open('noticeAction.no', '알람 리스트', 'width=600, height=300');
+	}
+	
 </script>
 </head>
 <body>
@@ -30,16 +34,16 @@
 <form action="deleteInviteListAction.in" method="post">
 <input type="hidden" name="pjt_no" value=2>
 <!-- 임의의값 -->
-<input type="hidden" name="no" value=30>
+<input type="hidden" name="no" value=6>
 <!-- 임의의값 -->
 <input type="submit" value="프로젝트 나가기" onclick="return exit()">
 </form>
-
 <br></br>
 <input type="button" value="초대" onclick="winOpen()">
 <br></br>
-
-	<a href="inviteListAction.in?pjt_no=2">리스트 확인</a>
+<input type="button" value="알림 확인" onclick="winOpen2()">
+<br></br>
+	<a href="inviteListAction.in?pjt_no=2">프로젝트 참여자</a>
 	<h3>초대리스트</h3>
 	<table width="500" border="1" cellpadding="0" cellspacing="0">
 	<tr>

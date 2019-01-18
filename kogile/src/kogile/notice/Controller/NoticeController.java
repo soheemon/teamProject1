@@ -1,4 +1,4 @@
-package kogile.invitelist.Controller;
+package kogile.notice.Controller;
 
 import java.io.IOException;
 
@@ -9,16 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kogile.invitelist.Service.InviteListAction;
-import kogile.invitelist.Service.Action;
-import kogile.invitelist.Service.ActionForward;
-import kogile.invitelist.Service.DeleteInviteListAction;
+import kogile.notice.Service.Action;
+import kogile.notice.Service.ActionForward;
+import kogile.notice.Service.NoticeAction;
 
-@WebServlet("*.in")
-public class InviteListController extends HttpServlet {
+@WebServlet("*.no")
+public class NoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public InviteListController() {
+    public NoticeController() {
         super();
     }
 
@@ -26,21 +25,15 @@ public class InviteListController extends HttpServlet {
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length()+6);
+		System.out.println(command);
 		
 		Action action = null;
-		ActionForward forward = null;
+		ActionForward forward= null;
 		
-		if(command.equals("inviteListAction.in")){
-			action = new InviteListAction();
+		if(command.equals("noticeAction.no")){
+			action = new NoticeAction();
 			try {
-				forward = action.excute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(command.equals("deleteInviteListAction.in")){
-			action = new DeleteInviteListAction();
-			try {
-				forward = action.excute(request, response);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -49,7 +42,7 @@ public class InviteListController extends HttpServlet {
 		if(forward != null){
 			if(forward.isRedirect()){
 				response.sendRedirect(forward.getPath());
-			} else {
+			}else{
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(request, response);
 			}
@@ -58,6 +51,7 @@ public class InviteListController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		doGet(request, response);
 	}
 

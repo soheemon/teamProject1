@@ -23,7 +23,6 @@ public class InviteListAction implements Action {
 		}
 		
 		List<InviteList> list3 = dao.inviteLists(pjt_no);
-		System.out.println("action list3 : "+ list3);
 		
 		request.setAttribute("list3", list3);
 		

@@ -29,7 +29,6 @@ public class MemberBoardController extends HttpServlet {
 		String requestURI = request.getRequestURI(); // URI를 요청한 값
     	String contextPath = request.getContextPath();
     	String command = requestURI.substring(contextPath.length()+6);
-		System.out.println(command);
 		
 		Action action = null;
 		ActionForward forward = null;
