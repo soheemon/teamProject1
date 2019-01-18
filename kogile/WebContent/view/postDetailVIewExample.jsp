@@ -15,7 +15,7 @@
 <body>
 	<div class="container">
 	<form action="labellist.post" method="get">
-		post 번호 : <input type="text" name="p_no" value="${p_no }">
+		post 번호 : <input type="text" name="p_no" value="${p_no}">
 		<input type="submit" class="btn btn-primary" value="label">
 	</form>
 	

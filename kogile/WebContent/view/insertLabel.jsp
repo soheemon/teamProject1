@@ -17,7 +17,6 @@
 		<h1>LABEL</h1>
 		<table class="table table-striped">
 			<form action="insertlabel.post" method="post">
-				<input type="hidden" value="${p_no}" name="p_no">
 				<tr>
 					<td>이름</td>
 					<td><input type="text" class="form-control" name="label_text" value=""></td>

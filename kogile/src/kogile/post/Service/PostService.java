@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import kogile.post.Dao.PostDao;
 import kogile.post.Model.LabelDTO;
@@ -18,22 +18,27 @@ public class PostService {
 	
 	public static PostService getInstance() {
 		dao = PostDao.getInstance();
+		
 		return service;
 	}
 	
 	public List<LabelDTO> listlabel(HttpServletRequest request, HttpServletResponse response)throws Exception{
-		int p_no = Integer.parseInt(request.getParameter("p_no"));
-		request.setAttribute("p_no", p_no);
+		HttpSession session = request.getSession();
+//		int pjt_no = (Integer)session.getAttribute("pjt_no");
+		int p_no = (Integer)session.getAttribute("p_no");
 		int pjt_no = dao.searchpjt(p_no);
+		
 		List<LabelDTO> list = dao.listlabel(pjt_no);
 		
 		return list;
 	}
 	
 	public void insertLabelService(HttpServletRequest request, HttpServletResponse response)throws Exception{
+		HttpSession session = request.getSession();
+		
 		LabelDTO label = new LabelDTO();
-		int p_no = Integer.parseInt(request.getParameter("p_no"));
-		request.setAttribute("p_no", p_no);
+		
+		int p_no = (Integer)session.getAttribute("p_no");
 		
 		label.setColor_no(Integer.parseInt(request.getParameter("label_color")));
 		label.setLabel_text(request.getParameter("label_text"));
@@ -75,9 +80,9 @@ public class PostService {
 	
 	public List<LabelDTO> postDetailViewService(HttpServletRequest request, HttpServletResponse response)throws Exception{
 		
+		HttpSession session = request.getSession();
 		
-		int p_no = Integer.parseInt(request.getParameter("p_no"));
-		request.setAttribute("p_no", p_no);
+		int p_no = (Integer)session.getAttribute("p_no");
 		
 		if(request.getParameter("label_no") != null) {
 			int label_no = Integer.parseInt(request.getParameter("label_no"));
@@ -95,10 +100,11 @@ public class PostService {
 	}
 	
 	public void deleteLabelInfoService(HttpServletRequest request, HttpServletResponse response)throws Exception{
+		HttpSession session = request.getSession();
+		
 		LabelInfoDTO label_info = new LabelInfoDTO();
 		int label_no = Integer.parseInt(request.getParameter("label_no"));
-		int p_no = Integer.parseInt(request.getParameter("p_no"));
-		
+		int p_no = (Integer)session.getAttribute("p_no");
 		
 		
 		label_info.setLabel_no(label_no);

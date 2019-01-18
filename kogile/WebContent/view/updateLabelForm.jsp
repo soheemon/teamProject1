@@ -18,7 +18,6 @@
 		<h1>LABEL</h1>
 		<table class="table table-striped">
 			<form action="updateLabel.post" method="post">
-				<input type="hidden" value="${p_no }" name="p_no">
 				<input type="hidden" value="${before.label_no }" name="label_no">
 			
 				<tr>

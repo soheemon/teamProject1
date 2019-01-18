@@ -10,6 +10,9 @@ location.href = "postDetailView.post?p_no=1";
 </script>
 </head>
 <body>
+<%
+	session.invalidate();
+%>
 
 </body>
 </html>
