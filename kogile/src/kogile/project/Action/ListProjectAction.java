@@ -1,4 +1,4 @@
-package kogile.startPage.Service;
+package kogile.project.Action;
 
 import java.io.IOException;
 import java.util.List;
@@ -6,20 +6,21 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kogile.startPage.DTO.ProjectBoard;
+import kogile.project.DAO.ProjectService;
+import kogile.project.DTO.ProjectDTO;
 
-public class StartPage implements Action {
+public class ListProjectAction implements Action {
 
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ProjectService service = ProjectService.getInstance();
-		List<ProjectBoard> list=service.listProjectService(request);
+		List<ProjectDTO> list=service.listProjectService(request);
 
 		request.setAttribute("List", list);
-		
+
 		ActionForward forward =new ActionForward();
-		forward.setPath("startPage.jsp");
+		forward.setPath("listProject.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

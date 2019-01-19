@@ -1,4 +1,4 @@
-package kogile.startPage.Service;
+package kogile.project.Action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

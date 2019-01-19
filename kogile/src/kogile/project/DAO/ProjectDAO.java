@@ -1,4 +1,4 @@
-package kogile.startPage.DAO;
+package kogile.project.DAO;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,15 +10,15 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import kogile.startPage.DTO.InviteDTO;
-import kogile.startPage.DTO.ProjectBoard;
-import kogile.startPage.Mapper.PbMapper;
+import kogile.project.DTO.InviteDTO;
+import kogile.project.DTO.ProjectDTO;
+import kogile.project.Mapper.ProjectMapper;
 
 
-public class ProjectBoardDao {
-	public static ProjectBoardDao dao=new ProjectBoardDao();
+public class ProjectDAO {
+	public static ProjectDAO dao=new ProjectDAO();
 	
-	public static ProjectBoardDao getInstance() {
+	public static ProjectDAO getInstance() {
 		return dao;
 	}
 	
@@ -34,19 +34,18 @@ public class ProjectBoardDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 	
-	public void insertBoard(ProjectBoard pb){
-		System.out.println(pb);
+	public void insertBoard(ProjectDTO pb){
 		int re1 = 0;
 		int re2= 0;
 		int re3= 0;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		
 		try {
-			re1 = sqlSession.getMapper(PbMapper.class).insertBoard(pb);
-			InviteDTO invite = sqlSession.getMapper(PbMapper.class).selectPjt();
-			re2 = sqlSession.getMapper(PbMapper.class).insertInvite(invite);
-			int invite_no = sqlSession.getMapper(PbMapper.class).selectInvite();
-			re3 = sqlSession.getMapper(PbMapper.class).insertPjt_Info(invite_no);
+			re1 = sqlSession.getMapper(ProjectMapper.class).insertBoard(pb);
+			InviteDTO invite = sqlSession.getMapper(ProjectMapper.class).selectPjt();
+			re2 = sqlSession.getMapper(ProjectMapper.class).insertInvite(invite);
+			int invite_no = sqlSession.getMapper(ProjectMapper.class).selectInvite();
+			re3 = sqlSession.getMapper(ProjectMapper.class).insertPjt_Info(invite_no);
 			
 			int re = re1 * re2 * re3;
 			
@@ -63,12 +62,12 @@ public class ProjectBoardDao {
 		
 	} 
 
-	public List<ProjectBoard> listBoard() {
+	public List<ProjectDTO> listBoard() {
 		
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		List<ProjectBoard> list = null;
+		List<ProjectDTO> list = null;
 		try {
-			list = sqlSession.getMapper(PbMapper.class).projectList();
+			list = sqlSession.getMapper(ProjectMapper.class).projectList();
 			//list = sqlSession.selectList("kosta.mapper.BoardMapper.listBoard");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -79,11 +78,11 @@ public class ProjectBoardDao {
 		return list;
 	}
 
-	public ProjectBoard mainDetail(int seq) {
+	public ProjectDTO mainDetail(int seq) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		ProjectBoard pb = new ProjectBoard();
+		ProjectDTO pb = new ProjectDTO();
 		try {
-			pb = sqlSession.getMapper(PbMapper.class).mainDetail(seq);
+			pb = sqlSession.getMapper(ProjectMapper.class).mainDetail(seq);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

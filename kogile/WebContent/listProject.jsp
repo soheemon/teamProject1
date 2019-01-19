@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script src="js/jquery-1.12.4.min.js"></script>
 <script src="js/startPage.js"></script>
-<title>StartPage</title>
+<title>listProject</title>
 </head>
 <body>
 	<header></header>
@@ -27,12 +27,12 @@
 			<div class="contents">
 				<h2>Project Boards</h2>
 				<ul class="create">
-					<c:forEach var="ProjectBoard" items="${List}">
+					<c:forEach var="Project" items="${List}">
 					<li>
-						<a href="main.do?seq=${ProjectBoard.pjt_no}">${ProjectBoard.pjt_title}</a>
+						<a href="detailProject.do?pjt_no=${Project.pjt_no}">${Project.pjt_title}</a>
 					</li>
 					</c:forEach>
-					<li class="add_create"><a href="proForm.do">Create new board…</a></li>
+					<li class="add_create"><a href="insertProject.do">Create new board…</a></li>
 				</ul>
 			</div>
 		</div>

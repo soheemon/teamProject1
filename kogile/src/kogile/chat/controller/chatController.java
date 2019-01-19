@@ -17,7 +17,7 @@ import kogile.chat.Service.ChatInsertAction;
 import kogile.chat.Service.ChatListAction;
 
 
-@WebServlet("*.post")
+@WebServlet("*.chat")
 public class chatController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,21 +34,21 @@ public class chatController extends HttpServlet {
 		ActionForward forward = null;
 		
 		if(command != null) {
-			if(command.equals("*.post")) {
+			if(command.equals("*.chat")) {
 //				Action action = *Action();
 				try {
 					forward = action.excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("chatInsert.post")) {
+			}else if(command.equals("chatInsert.chat")) {
 				action = new ChatInsertAction();
 				try {
 					forward = action.excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("chatList.post")) {
+			}else if(command.equals("chatList.chat")) {
 				action = new ChatListAction();
 				try {
 					forward = action.excute(request, response);

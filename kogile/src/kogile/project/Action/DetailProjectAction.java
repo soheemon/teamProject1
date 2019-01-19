@@ -1,26 +1,28 @@
-package kogile.startPage.Service;
+package kogile.project.Action;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kogile.startPage.DTO.ProjectBoard;
-import kogile.startPage.Service.Action;
-import kogile.startPage.Service.ActionForward;
+import kogile.project.Action.Action;
+import kogile.project.Action.ActionForward;
+import kogile.project.DAO.ProjectService;
+import kogile.project.DTO.ProjectDTO;
 
-public class Main implements Action {
+public class DetailProjectAction implements Action {
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ProjectService ps= ProjectService.getInstance();
-		ProjectBoard pb =ps.mainDetailService(request);
-		
-		request.setAttribute("pb", pb);
-		
+		ProjectDTO pb =ps.detailProjectService(request);
+	
+		request.setAttribute("project", pb);
+
 		ActionForward forward = new ActionForward();
-		forward.setPath("main.jsp");
+		forward.setPath("detailProject.jsp");
 		forward.setRedirect(false);
+		
 		return forward;
 	}
 

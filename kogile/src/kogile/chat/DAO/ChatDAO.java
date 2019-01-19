@@ -11,9 +11,9 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kogile.chat.DTO.ChatDTO;
 import kogile.chat.Mapper.ChatMapper;
-import kogile.startPage.DAO.ProjectBoardDao;
-import kogile.startPage.DTO.ProjectBoard;
-import kogile.startPage.Mapper.PbMapper;
+import kogile.project.DAO.ProjectDAO;
+import kogile.project.DTO.ProjectDTO;
+import kogile.project.Mapper.ProjectMapper;
 
 public class ChatDAO {
 	public static ChatDAO dao = new ChatDAO();

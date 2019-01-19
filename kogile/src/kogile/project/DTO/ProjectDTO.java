@@ -1,19 +1,19 @@
-package kogile.startPage.DTO;
+package kogile.project.DTO;
 
 import java.io.Serializable;
 
-public class ProjectBoard implements Serializable{
+public class ProjectDTO implements Serializable{
 	int pjt_no;
 	String pjt_date;
 	String pjt_title;
 	int total_m_no;
 	String pjt_contents;
 	
-	public ProjectBoard() {}
+	public ProjectDTO() {}
 	
 	
 
-	public ProjectBoard(int pjt_no, String pjt_date, String pjt_title, int total_m_no, String pjt_contents) {
+	public ProjectDTO(int pjt_no, String pjt_date, String pjt_title, int total_m_no, String pjt_contents) {
 		super();
 		this.pjt_no = pjt_no;
 		this.pjt_date = pjt_date;

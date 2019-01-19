@@ -1,11 +1,13 @@
-package kogile.startPage.Service;
+package kogile.project.Action;
 
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ProFormAction implements Action {
+import kogile.project.DAO.ProjectService;
+
+public class InsertProjectFormAction implements Action {
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -13,7 +15,7 @@ public class ProFormAction implements Action {
 		service.insertProjectService(request);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("startPage.do");
+		forward.setPath("listProject.do");
 		forward.setRedirect(true);
 		return forward;
 	}

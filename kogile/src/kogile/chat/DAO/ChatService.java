@@ -28,8 +28,6 @@ public class ChatService {
 	}
 
 	public void listChatService(HttpServletResponse response) throws IOException{
-		
-		System.out.println("Ȯ��");
 
 		JSONArray jsonArr = new JSONArray();
 		List<ChatDTO> list =dao.listChat();

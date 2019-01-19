@@ -27,11 +27,11 @@
 		getInfiniteChat();
 	});
 
-	 function getInfiniteChat() {
+	function getInfiniteChat() {
 		setInterval(function() {
 			chatListFunction();
 		}, 1000);
-	} 
+	}
 
 	/*입력값을컨트롤로 보냅니다.*/
 	function submitFunction() {
@@ -39,7 +39,7 @@
 		var chatContent = $('#chatContent').val();
 		$.ajax({
 			type : "POST",
-			url : "chatInsert.post",
+			url : "chatInsert.chat",
 			data : {//데이터가공 에러방지위해서  하나의 객체로 묶어서보냄 데이터라는걸로
 				/* 	chatName : encodeURIComponent(chatName),
 					chatContent : encodeURIComponent(chatContent) */
@@ -53,54 +53,25 @@
 	function chatListFunction() {
 		var chatName = $('#info_no').val();
 		var chatContent = $('#chatContent').val();
-				$
-				.ajax({
-					type : "POST",
-					url : "chatList.post",
-					dataType : "JSON",
+		$.ajax({
+			type : "POST",
+			url : "chatList.chat",
+			dataType : "JSON",
 
-					success : function(data) {
-						var txt="";
-						for (var i = 0; i < data.length; i++) {
-						txt +="<p>"+data[i].info_no
-									+data[i].chat_contents
-									+data[i].chat_date +"</p>";
-						}
-						$("#chatList").html(txt);
-					}
-				});
-	}
-
-	function closePage() {
-		if (confirm("do you want to erase all the messages?")) {
-			var listType = "close";
-			$.ajax({
-				type : "POST",
-				url : "./ChatListServlet",
-				data : {
-					listType : listType
-				},
-				success : function(result) {
-					if (result == 1) {
-					} else {
-					}
+			success : function(data) {
+				var txt = "";
+				for (var i = 0; i < data.length; i++) {
+					txt += "<p>" + data[i].info_no + data[i].chat_contents
+							+ data[i].chat_date + "</p>";
 				}
-			});
-		}
-	}
-
-	function autoClosingAlert(selecter, delay) {
-		var alert = $(selecter).alert();
-		alert.show();
-
-		window.setTimeout(function() {
-			alert.hide()
-		}, delay);
+				$("#chatList").html(txt);
+			}
+		});
 	}
 </script>
 </head>
 
-<body onUnload="closePage();">
+<body>
 	<div class="container">
 		<div class="container bootstrap snippet">
 			<div class="row">
@@ -119,8 +90,7 @@
 
 
 							<div id="chatList" class="portlet-body chat-widget"
-								style="overflow-y: auto; width: auto; height: 300px;">
-							</div>
+								style="overflow-y: auto; width: auto; height: 300px;"></div>
 
 
 
@@ -152,25 +122,4 @@
 		</div>
 	</div>
 </body>
-
 </html>
-
-
-	<!-- $('#chatList')
-									.append(
-											'<div class="row">'
-													+ '<div class="col-lg-12">'
-													+ '<div class="media">'
-													+ '<a class="pull-left" href="#">'
-													+ '<img class="media-object img-circle" src = "images/icon.jpg" alt="">'
-													+ '</a>'
-													+ '<div class="media-body">'
-													+ '<h4 class="media-heading">'
-													+ data[i].chat_name
-													+ '<span class="small pull-right">'
-													+ data[i].chat_contents + '</span>'
-													+ '</h4>' + '<p>'
-													+ data[i].chat_date + '</p>'
-													+ '</div>' + '</div>'
-													+ '</div>' + '</div>'
-													+ '<br>'); -->

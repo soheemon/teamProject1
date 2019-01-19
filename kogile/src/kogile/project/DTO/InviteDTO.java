@@ -1,4 +1,4 @@
-package kogile.startPage.DTO;
+package kogile.project.DTO;
 
 import java.io.Serializable;
 

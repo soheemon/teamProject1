@@ -1,4 +1,4 @@
-package kogile.startPage.controller;
+package kogile.project.controller;
 
 import java.io.IOException;
 
@@ -8,36 +8,46 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.smartcardio.CommandAPDU;
 
 import org.apache.ibatis.io.Resources;
 
-import kogile.startPage.Service.Action;
-import kogile.startPage.Service.ActionForward;
-import kogile.startPage.Service.Main;
-import kogile.startPage.Service.ProAction;
-import kogile.startPage.Service.ProFormAction;
-import kogile.startPage.Service.StartPage;
+import kogile.project.Action.Action;
+import kogile.project.Action.ActionForward;
+import kogile.project.Action.DetailProjectAction;
+import kogile.project.Action.InsertProjectAction;
+import kogile.project.Action.InsertProjectFormAction;
+import kogile.project.Action.ListProjectAction;
 
 
 
 @WebServlet("*.do")
-public class startPageController extends HttpServlet {
+public class ProjectController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public startPageController() {
+    public ProjectController() {
         super();
     }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		
+		if(request.getParameter("pjt_no") != null) {
+			int pjt_no = Integer.parseInt(request.getParameter("pjt_no"));
+			session.removeAttribute("pjt_no");
+			session.setAttribute("pjt_no", pjt_no);
+		}
+		
 		
 		String command = request.getRequestURI().substring(request.getContextPath().length()+1);
-		System.out.println(command);
 		
 		Action action = null;
 		ActionForward forward = null;
+		System.out.println(command);
 		
 		if(command != null) {
 			if(command.equals("*.do")) {
@@ -47,30 +57,30 @@ public class startPageController extends HttpServlet {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("proForm.do")) {
-				action = new ProAction();
+			}else if(command.equals("insertProject.do")) {
+				action = new InsertProjectAction();
 				try {
 					forward = action.excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 
-			}else if(command.equals("proFormAction.do")) {
-				action = new ProFormAction(); 
+			}else if(command.equals("insertProjectFormAction.do")) {
+				action = new InsertProjectFormAction(); 
 				try {
 					forward = action.excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("startPage.do")) {
-				action = new StartPage();
+			}else if(command.equals("listProject.do")) {
+				action = new ListProjectAction();
 				try {
 					forward = action.excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("main.do")) {
-				action = new Main();
+			}else if(command.equals("detailProject.do")) {
+				action = new DetailProjectAction();
 				try {
 					forward = action.excute(request, response);
 				} catch (Exception e) {
@@ -93,5 +103,4 @@ public class startPageController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }
