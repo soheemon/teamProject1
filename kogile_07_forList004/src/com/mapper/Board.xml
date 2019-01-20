@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mapper.BoardMapper">
+	<cache />
+
+	<insert id="insertchecklist" parameterType="Board">
+		insert into checklist
+		values(checklist_seq.nextval, #{check_title}, 1)
+	</insert>
+
+
+	<select id="listBoard" resultType="Board" parameterType="Search">
+		select * from checklist
+		<if test="area">
+			<where>
+				<foreach collection="area" item="item" separator="OR" open="("
+					close=")">
+					${item} LIKE #{searchKey}
+				</foreach>
+			</where>
+		</if>
+		order by checklist_no desc
+	</select>
+
+
+	<select id="detailBoard" resultType="Board" parameterType="int">
+		select * from checklist where checklist_no = #{checklist_no}
+	</select>
+
+
+	<update id="updateBoard" parameterType="Board">
+		update checklist set
+		check_title = #{check_title}
+		where checklist_no = #{checklist_no}
+	</update>
+
+
+
+	<delete id="deleteBoard" parameterType="Board">
+		delete from checklist
+		where checklist_no=#{checklist_no}
+	</delete>
+
+	<select id="countBoard" resultType="int" parameterType="Search">
+		select count(*) from checklist
+		<if test="area">
+			<where>
+				<foreach collection="area" item="item" separator="OR" open="("
+					close=")">
+					${item} LIKE #{searchKey}
+				</foreach>
+			</where>
+		</if>
+	</select>
+
+
+
+	<insert id="insertlist" parameterType="Board">
+		insert into list
+		values(list_seq.nextval, #{list_info} ,null, 1)
+	</insert>
+
+
+	<select id="listBoard20" resultType="Board" parameterType="Search">
+		select * from list
+		<if test="area">
+			<where>
+				<foreach collection="area" item="item" separator="OR" open="("
+					close=")">
+					${item} LIKE #{searchKey}
+				</foreach>
+			</where>
+		</if>
+		order by list_no desc
+	</select>
+
+	<select id="detailBoard20" resultType="Board" parameterType="int">
+		select * from list where list_no = #{list_no}
+	</select>
+
+
+	<update id="updateBoard20" parameterType="Board">
+		update list set
+		list_info = #{list_info}
+		where list_no = #{list_no}
+	</update>
+
+
+	<delete id="deleteBoard20" parameterType="Board">
+		delete from list where
+		list_no=#{list_no}
+	</delete>
+
+	<select id="countBoard20" resultType="int" parameterType="Search">
+		select count(*) from list
+		<if test="area">
+			<where>
+				<foreach collection="area" item="item" separator="OR" open="("
+					close=")">
+					${item} LIKE #{searchKey}
+				</foreach>
+			</where>
+		</if>
+	</select>
+
+</mapper>
