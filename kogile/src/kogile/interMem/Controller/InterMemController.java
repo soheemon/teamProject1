@@ -1,6 +1,7 @@
-package kogile.kakaoOauth.Controller;
+package kogile.interMem.Controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,27 +12,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kogile.kakaoOauth.Service.Action;
-import kogile.kakaoOauth.Service.ActionForward;
+import kogile.interMem.Service.InterMemberInsertAction;
+import kogile.interMem.DAO.InterMemDao;
+import kogile.module.TotalMemInfo;
+import kogile.interMem.Service.Action;
+import kogile.interMem.Service.ActionForward;
+import kogile.interMem.Service.InterMemLoginAction;
 import kogile.kakaoOauth.Service.KakaoChKogileMemAction;
 import kogile.kakaoOauth.Service.KakaoOauthLogoutAction;
 import kogile.kakaoOauth.Service.KakaoOauthRedirectAction;
+import kogile.kakaoOauth.Service.TotalMemInfoSelectAction;
 import kogile.kakaoOauth.Service.kakaoInsertMemberAction;
 import kogile.kakaoOauth.Service.kakaoOauthLoginAction;
 
-
-@WebServlet("*.kakaoOauth")
-public class kakaoOauthController extends HttpServlet {
+@WebServlet("*.interMem")
+public class InterMemController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public kakaoOauthController() {
+	private static final String WEB_SERVLET = "interMem";
+    public InterMemController() {
         super();
         // TODO Auto-generated constructor stub
     }
-    protected void doProcess(HttpServletRequest request, HttpServletResponse response) {
+    protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    	
+		request.setCharacterEncoding("utf-8");
     	String fullUri = request.getRequestURI();
     	
-    	Pattern regex = Pattern.compile("(([a-z A-Z]+).kakaoOauth)");
+    	Pattern regex = Pattern.compile("(([a-z A-Z]+)." + WEB_SERVLET +")");
     	Matcher regexMatcher = regex.matcher(fullUri);
     	
     	String command = "";
@@ -45,39 +52,39 @@ public class kakaoOauthController extends HttpServlet {
 		ActionForward forward = null;
 		
 		if(command != null) {
-			if(command.equals("redirect.kakaoOauth")) { //카카오톡 로그인폼 띄우기
-				 action = (Action) new KakaoOauthRedirectAction();
+			if(command.equals("ddd." + WEB_SERVLET)) { //일반회원이 정보를 입력하고, submit을 누른 상태.
+				 //action = (Action) new KakaoOauthRedirectAction();
 				 try {
-					forward = ((KakaoOauthRedirectAction) action).excute(request, response);
+					//forward = ((KakaoOauthRedirectAction) action).excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("login.kakaoOauth")) { //로그인처리
-				action = (Action) new kakaoOauthLoginAction();
+			}else if(command.equals("login." + WEB_SERVLET)) { //로그인처리
+				//id랑 pw받기.
+				action = (Action) new InterMemLoginAction();
 				try {
-					forward = ((kakaoOauthLoginAction) action).excute(request, response);
+					forward = ((InterMemLoginAction) action).excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("logout.kakaoOauth")) { //로그아웃
+			}else if(command.equals("redirect." + WEB_SERVLET)) { //로그아웃
 				action = (Action) new KakaoOauthLogoutAction();
 				try {
-					forward = ((KakaoOauthLogoutAction) action).excute(request, response);
+					//forward = ((KakaoOauthLogoutAction) action).excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("register.kakaoOauth")) { //회원가입
-				System.out.println("register");
-				action = (Action) new kakaoInsertMemberAction();
+			}else if(command.equals("register." + WEB_SERVLET)) { //회원가입
+				action = (Action) new InterMemberInsertAction();
 				try {
-					forward = ((kakaoInsertMemberAction) action).excute(request, response);
+					forward = ((InterMemberInsertAction) action).excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("ckKogileMem.kakaoOauth")) { //우리 회원인지 확인하기
+			}else if(command.equals("redirect." + WEB_SERVLET)) { //우리 회원인지 확인하기
 				action = (Action) new KakaoChKogileMemAction();
 				try {
-					forward = ((KakaoChKogileMemAction) action).excute(request, response);
+					//forward = ((KakaoChKogileMemAction) action).excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -103,17 +110,28 @@ public class kakaoOauthController extends HttpServlet {
 				}
 			}
 		}else {
-			System.out.println("forward가 null이네? 일단 참아줄게.");
+			System.out.println("forward Path가 null입니다. 수정해 주세요.");
 		}
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
+		try {
+			doProcess(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
+		try {
+			doProcess(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//doGet(request, response);
 	}
 
 }

@@ -1,4 +1,4 @@
-package kogile.kakaoOauth.Service;
+package kogile.interMem.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +11,7 @@ public class KakaoOauthLogoutAction implements Action {
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		KakaoApi kakaoApi = new KakaoApi();
+		InterMemApi kakaoApi = new InterMemApi();
 		kakaoApi.setRequest(request);
 		
 		kakaoApi.logOut();
