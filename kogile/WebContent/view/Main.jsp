@@ -23,8 +23,9 @@
 <h3>이것은 테스트 페이지입니다!</h3><br><br>
 <%=message %><br><br>
 "테스트를 위해 jsp로 바로 이동합니다."<br><br>
-<a href="loginForm.jsp">로그인하자</a><br><br>
-<a href="signupMain.jsp">회원가입하자</a>
+<a href="loginForm.jsp">로그인 하자</a><br><br>
+<a href="signupMain.jsp">회원가입 하자</a><br><br>
+<a href="../logout">로그아웃 하자</a>
 </div>
 
 </body>

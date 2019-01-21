@@ -18,6 +18,7 @@ import kogile.module.TotalMemInfo;
 import kogile.interMem.Service.Action;
 import kogile.interMem.Service.ActionForward;
 import kogile.interMem.Service.InterMemLoginAction;
+import kogile.interMem.Service.InterMemLogoutAction;
 import kogile.kakaoOauth.Service.KakaoChKogileMemAction;
 import kogile.kakaoOauth.Service.KakaoOauthLogoutAction;
 import kogile.kakaoOauth.Service.KakaoOauthRedirectAction;
@@ -28,7 +29,7 @@ import kogile.kakaoOauth.Service.kakaoOauthLoginAction;
 @WebServlet("*.interMem")
 public class InterMemController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String WEB_SERVLET = "interMem";
+	public static final String WEB_SERVLET = "interMem";
     public InterMemController() {
         super();
         // TODO Auto-generated constructor stub
@@ -52,14 +53,7 @@ public class InterMemController extends HttpServlet {
 		ActionForward forward = null;
 		
 		if(command != null) {
-			if(command.equals("ddd." + WEB_SERVLET)) { //일반회원이 정보를 입력하고, submit을 누른 상태.
-				 //action = (Action) new KakaoOauthRedirectAction();
-				 try {
-					//forward = ((KakaoOauthRedirectAction) action).excute(request, response);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}else if(command.equals("login." + WEB_SERVLET)) { //로그인처리
+			if(command.equals("login." + WEB_SERVLET)) { //로그인처리
 				//id랑 pw받기.
 				action = (Action) new InterMemLoginAction();
 				try {
@@ -67,10 +61,10 @@ public class InterMemController extends HttpServlet {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("redirect." + WEB_SERVLET)) { //로그아웃
-				action = (Action) new KakaoOauthLogoutAction();
+			}else if(command.equals("logout." + WEB_SERVLET)) { //로그아웃
+				action = (Action) new InterMemLogoutAction();
 				try {
-					//forward = ((KakaoOauthLogoutAction) action).excute(request, response);
+					forward = ((InterMemLogoutAction) action).excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -78,13 +72,6 @@ public class InterMemController extends HttpServlet {
 				action = (Action) new InterMemberInsertAction();
 				try {
 					forward = ((InterMemberInsertAction) action).excute(request, response);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}else if(command.equals("redirect." + WEB_SERVLET)) { //우리 회원인지 확인하기
-				action = (Action) new KakaoChKogileMemAction();
-				try {
-					//forward = ((KakaoChKogileMemAction) action).excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

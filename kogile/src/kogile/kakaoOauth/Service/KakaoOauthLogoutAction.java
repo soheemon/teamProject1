@@ -18,11 +18,15 @@ public class KakaoOauthLogoutAction implements Action {
 		
 		HttpSession session = request.getSession();
 		if(session.getAttribute("access_token") == null) {
-			System.out.println("로그아웃 성공");
+			System.out.println("카카오톡 로그아웃 성공");
 			redirectPath = KakaoChKogileMemAction.MAIN_PAGE;
 		}else {
-			System.out.println("로그아웃 실패!");
+			System.out.println("카카오톡 로그아웃 실패!");
 		}
+		
+		//kogile logout!
+		session.invalidate();
+		
 		ActionForward forward = new ActionForward();
 		forward.setPath(redirectPath);
 		forward.setRedirect(true);

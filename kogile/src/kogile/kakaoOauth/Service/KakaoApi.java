@@ -130,7 +130,7 @@ public class KakaoApi {
 		HashMap<String, String> header = new HashMap<String, String>();
 		header.put("Authorization", "Bearer " + getAsTkenFromSession());
 		doRequest(HttpMethodType.POST, API_SERVER_HOST + LOGOUT_URL, header, false);
-		String res = (String) getResponse();
+		//String res = (String) getResponse();
 	}
 	
 	public void register() {

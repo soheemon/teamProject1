@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div>
 		<form action="login.interMem" accept-charset="utf-8" method="POST" >
 	        <fieldset style = "width:150px">
                 <legend>login to kogile</legend>
@@ -18,6 +19,7 @@
                <input type = "submit" value="제출"/>
                <input type ="button" onclick="location.href='redirect.kakaoOauth'" value="Log in with Kakao"/>
             </fieldset>
-	</form>
+		</form>
+	</div>
 </body>
 </html>

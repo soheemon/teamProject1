@@ -27,6 +27,7 @@
 
 	<mappers>
 		<mapper resource="kogile/interMem/Mapper/InterMem.xml" />
+		<mapper resource="kogile/kakaoOauth/Mapper/kakaoOauth.xml"/>
 	</mappers>
 
 </configuration>
