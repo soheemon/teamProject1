@@ -60,8 +60,6 @@
 		
 		
 
-
-
 		<tr>
 			<td></td>
 			<td><a href="deletePostAction.do"> 삭제 </a></td>

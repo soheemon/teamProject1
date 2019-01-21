@@ -270,7 +270,7 @@ public class PostDao {
 
 	}
 
-	// detailPost (Post 상세보기)
+	// detailDdate (Ddate 상세보기)
 	public DdateDTO detailDdate(int p_no) {
 		SqlSession sql = getSql().openSession();
 		DdateDTO ddateDTO = new DdateDTO();

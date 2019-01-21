@@ -11,6 +11,7 @@
 
 
 	<!-- insert -->
+	<!-- Post를 삽입하기 -->
 	<insert id="insertPost" parameterType="PostDTO">
 		insert into post
 		values(post_seq.nextval, #{p_title}, 1, #{c_no})
@@ -49,6 +50,7 @@
 	</select>
 
 	<!-- list -->
+	<!-- 리스트 보기 -->
 	<select id="listPost" parameterType="int" resultType="PostDTO">
 		select
 		p.p_no, p.p_title From post p
@@ -66,12 +68,14 @@
 		WHERE p_no = #{p_no}
 	</select>
 	
+	
 	<!-- detail Ddate 가져오기 -->
 	<select id="detailDdate" resultType="DdateDTO">
 		select p_no, d_date
 		from d_day
 		where p_no = #{p_no}
 	</select>
+
 
 	<!-- update -->
 	<!-- p_no의 p_title을 가져와 p_title을 입력받아서 수정한다. -->
@@ -82,6 +86,7 @@
 	</update>
 
 
+	<!-- 마감일 수정하기 -->
 	<update id="updateDdate" parameterType="DdateDTO">
 		update d_day set d_date = #{d_date}
 		where p_no = #{p_no}
@@ -94,12 +99,15 @@
 		where p_no = #{p_no}
 	</delete>
 
+
+	<!-- 마감일 삭제하기 -->
 	<delete id="deleteDdate" parameterType="DdateDTO">
 		delete from d_day
 		where p_no = #{p_no}
 	</delete>
 
-	<!-- 내부회원 checkbox -->
+
+	<!-- 프로젝트 번호로 내부 회원 가져오기 -->
 	<select id="inter_member" parameterType="int"
 		resultType="MemberDTO">
 		select i.member_name as name, i.email as email,
@@ -114,7 +122,7 @@
 	</select>
 
 
-	<!-- 외부회원 chechbox -->
+	<!-- 프로젝트 번호로 외부 회원 가져오기 -->
 	<select id="exter_member" parameterType="int"
 		resultType="MemberDTO">
 		select e.exter_mem_name as name, e.exter_m_email as email,

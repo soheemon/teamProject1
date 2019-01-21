@@ -28,9 +28,13 @@ public class PostService {
 	public void insertPostActionService(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PostDTO postDTO = new PostDTO();
 
-		// insertForm에서 입력한 값을 PostDTO에 담는다.
+		// insertForm에서 입력한 제목을 PostDTO에 담는다.
 		postDTO.setP_title(request.getParameter("p_title"));
+		
+		// Card의 선택한 위치를 가져와서 set 한다.
 		postDTO.setC_no(Integer.parseInt(request.getParameter("pjt_card")));
+		
+		// Mapping한다.
 		dao.insertPost(postDTO);
 
 		// 최근에 생성된 Post의 p_no를 가져오는 작업
@@ -65,9 +69,10 @@ public class PostService {
 		// 마감일 구하는 객체
 		DdateDTO ddateDTO = new DdateDTO();
 
+		// p_no를 객체에 담는다.
 		ddateDTO.setP_no(p_no);
 
-		// 입력한 Form name을 입력한다.
+		// Form에 입력한 name을 입력한다.
 		ddateDTO.setD_date(request.getParameter("DateInfo"));
 
 		// 해당 Post에 Mapping한다.
@@ -77,9 +82,15 @@ public class PostService {
 	// listPostAction (Post 리스트 보기)
 	public List<PostDTO> listPostActionService(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
+		
 		HttpSession session = request.getSession();
+		
+		// session에 담긴 프로젝트를 가져온다.
 		int pjt_no = (Integer)session.getAttribute("pjt_no");
+		
+		// 프로젝트를 set한다.
 		request.setAttribute("pjt_no", pjt_no);
+		
 		// list에 Mapping할 메소드를 담는다.
 		List<PostDTO> list = dao.listPost(pjt_no);
 
@@ -100,7 +111,7 @@ public class PostService {
 		// DdateDTO에 Mapping할 메소드를 넣는다.
 		DdateDTO ddateDTO = dao.DdateInfo(p_no);
 
-		// d_day에 set한다.
+		// 마감일 객체에 set한다.
 		request.setAttribute("DdateDTO", ddateDTO);
 
 		// postDTO를 return하여 Action에서 Forward한다.
@@ -109,7 +120,9 @@ public class PostService {
 
 	// updatePostFormAction (Post 내용 수정 Form 이동)
 	public PostDTO updatePostFormActionService(HttpServletRequest request) {
+		
 		HttpSession session = request.getSession();
+		
 		// p_no를 가져온다.
 		int p_no = (Integer)session.getAttribute("p_no");
 
@@ -124,6 +137,7 @@ public class PostService {
 	public void updatePostActionService(HttpServletRequest request) {
 
 		PostDTO postDTO = new PostDTO();
+		
 		HttpSession session = request.getSession();
 		// 수정된 내용의 번호를 set한다.
 		postDTO.setP_no((Integer)session.getAttribute("p_no"));
@@ -143,22 +157,28 @@ public class PostService {
 
 		HttpSession session = request.getSession();
 		
+		// p_no 세션에서 p_no를 불러온다.
 		int p_no = (Integer)session.getAttribute("p_no");
 		
+		// 불러온 p_no를 객체에 set한다.
 		ddateDTO.setP_no(p_no);
 		
+		// 수정 날짜를 가져와서 객체에 set한다.
 		ddateDTO.setD_date(request.getParameter("update_Ddate"));
 		
-		
+		// 만약 마감일에 상세보기 내용이 null이 아니라면(내용이 있다면) 
 		if (dao.detailDdate(p_no) != null) {
 			
+			// 동일하게 수정 값을 객체에 넣는다.
 			ddateDTO.setD_date(request.getParameter("update_Ddate"));
 
+			// Mapping 한다.
 			dao.updateDdate(ddateDTO);
 			
+		// 만약 Ddate에 내용이 없다면
 		} else {
 
-			// 해당 Post에 Mapping한다.
+			// 해당 Post에 insert Mapping한다.
 			dao.DdateInsertPost(ddateDTO);
 		}
 		
@@ -188,7 +208,7 @@ public class PostService {
 		// Mapping한다.
 		dao.deletePost(p_no);
 	}
-	
+
 	// deleteDdateAction (마감일 삭제)
 	public void deleteDdateActionService(HttpServletRequest request) {
 		
@@ -200,7 +220,6 @@ public class PostService {
 		// 삭제할 메소드 Mapping
 		dao.deleteDdate(p_no);
 	}
-	
 
 	// list에 회원 이름, 이메일 담기
 	public List<MemberDTO> listMemberService(HttpServletRequest request, HttpServletResponse response)
@@ -216,7 +235,7 @@ public class PostService {
 		// list를 return하여 Action에서 Set 후 Forward 한다.
 		return list;
 	}
-
+	
 	// list에 card 이름, 위치 담기
 	public List<CardDTO> cardInfoService(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -231,6 +250,7 @@ public class PostService {
 	// Post 내부에 담당자를 출력하기
 	public List<PostMemberDTO> PostMemberListService(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
+		
 		HttpSession session = request.getSession();
 		// p_no에 포함된 담당자를 가져와야 한다.
 		int p_no = (Integer)session.getAttribute("p_no");
@@ -244,12 +264,16 @@ public class PostService {
 
 	// 현재날짜를 insertForm에 가져가기
 	public DdateDTO DateInfoService(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		HttpSession session = request.getSession();
 		
+		// session에 p_no를 가져온다.
 		int p_no = (Integer)session.getAttribute("p_no");
 
+		// 객체에 Mapping한다.
 		DdateDTO ddateDTO = dao.DdateInfo(p_no);
 
+		// 객체를 return한다.
 		return ddateDTO;
 	}
 }

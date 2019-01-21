@@ -42,8 +42,6 @@ public class PostController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		
-		
-		
 		HttpSession session = request.getSession();
 		
 		if(request.getParameter("pjt_no") != null) {
@@ -55,7 +53,6 @@ public class PostController extends HttpServlet {
 			session.removeAttribute("p_no");
 			session.setAttribute("p_no", Integer.parseInt(request.getParameter("p_no")));
 		}
-		
 		
 		
 		// insertPostFormActon (Post를 생성하는 Form으로 이동)
@@ -146,7 +143,7 @@ public class PostController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		// updatePostFormAction (Post 수정 Form으로 이동)
+		// updateDdateFormAction (Post 수정 Form으로 이동)
 		} else if (command.equals("updateDdateFormAction.do")) {
 			action = new UpdateDdateFormAction();
 		

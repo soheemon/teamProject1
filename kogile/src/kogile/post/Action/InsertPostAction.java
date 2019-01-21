@@ -13,16 +13,16 @@ public class InsertPostAction implements Action {
 		// 한글처리
 		request.setCharacterEncoding("UTF-8");
 		
-		// 서비스 객체 호출
+		// 서비스 객체 생성
 		PostService service = PostService.getInstance();
 		
-		// 서비스가 선언한 Action 메소드 호출
+		// Post를 삽입하는 메소드
 		service.insertPostActionService(request, response);
 		
-		// insert후 담당자들 넣기
+		// Redirect
 		ActionForward forward = new ActionForward();
 		forward.setPath("listPostAction.do");
-		forward.setRedirect(false);
+		forward.setRedirect(true);
 		
 		return forward;
 	}

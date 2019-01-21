@@ -9,16 +9,18 @@ public class ListPostAction implements Action {
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
 		
+		// 한글 처리
+		request.setCharacterEncoding("UTF-8");
+		
+		// 서비스 객체 생성
 		PostService service = PostService.getInstance();
 		
-		// service에서 생성한 메소드를 list에 담는다.
+		// list 출력하는 메소드를 list에 담는다.
 		request.setAttribute("list", service.listPostActionService(request, response));
 			
-		
+		// Dispatcher
 		ActionForward forward = new ActionForward();
-		
 		forward.setPath("listPostForm.jsp");
 		forward.setRedirect(false);
 		

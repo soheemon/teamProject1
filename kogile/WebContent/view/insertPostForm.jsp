@@ -22,7 +22,6 @@
 
 
 		<!-- Card 위치 선택 -->
-
 		업무 위치 :
 		<c:if test="${CardInfo != null}">
 			<table>

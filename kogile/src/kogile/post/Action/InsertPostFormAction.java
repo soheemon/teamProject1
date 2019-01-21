@@ -14,6 +14,7 @@ public class InsertPostFormAction implements Action {
 		// 한글처리
 		request.setCharacterEncoding("UTF-8");
 		
+		// 서비스 객체 생성
 		PostService service = PostService.getInstance();
 		
 		// MemberList에 프로젝트에 포함된 인원 담기
@@ -25,13 +26,9 @@ public class InsertPostFormAction implements Action {
 		// 경로 및 다이렉트 방식 선언
 		ActionForward forward = new ActionForward();
 		
-		// insertPostForm(Post를 입력하는 jsp)으로 이동
+		// Dispatcher
 		forward.setPath("insertPostForm.jsp");
-		
-		// 데이터 없이 이동한다 -> sendRedirect
 		forward.setRedirect(false);
-		
-		// 해당 forward 리턴하여 이동
 		return forward;
 	}
 

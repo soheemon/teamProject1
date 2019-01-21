@@ -13,19 +13,16 @@ public class UpdatePostFormAction implements Action {
 		// 한글처리
 		request.setCharacterEncoding("UTF-8");
 		
+		// 서비스 객체 생성
 		PostService service = PostService.getInstance();
 		
-		// PostDTO에 detail을 담은 것을 저장한다.
+		// PostDTO에 수정된 Post 메소드를 set
 		request.setAttribute("PostDTO", service.updatePostFormActionService(request));
 		
-		request.setAttribute("pjt_no", request.getParameter("pjt_no"));
-		
-		// updateForm으로 수정할 값을 가지고 이동
+		// Dispatcher
 		ActionForward forward = new ActionForward();
 		forward.setPath("updatePostForm.jsp");
-		
 		forward.setRedirect(false);
-		
 		return forward;
 	}
 
