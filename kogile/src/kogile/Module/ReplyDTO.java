@@ -2,16 +2,16 @@ package kogile.Module;
 
 import java.io.Serializable;
 
-public class Reply implements Serializable {
+public class ReplyDTO implements Serializable {
 	private int r_no;
 	private String r_contents;
 	private String r_date;
 	private int p_no;
 	private int info_no;
 	
-	public Reply() {}
+	public ReplyDTO() {}
 
-	public Reply(int r_no, String r_contents, String r_date, int p_no, int info_no) {
+	public ReplyDTO(int r_no, String r_contents, String r_date, int p_no, int info_no) {
 		super();
 		this.r_no = r_no;
 		this.r_contents = r_contents;

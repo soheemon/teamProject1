@@ -38,7 +38,8 @@ public class PostController extends HttpServlet {
 		String command=requestUri.substring(contextPath.length()+6);
 		Action action=null;
 		ActionForward forward = null;
-
+		
+		//설명 글쓰는 폼으로 보내기
 		if(command.equals("insertDescriptionForm.do")) {
 			action = new DescriptionInsertActionForm();
 			try {
@@ -46,6 +47,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			//설명 글쓰기
 		}else if(command.equals("insertDescription.do")) {
 			action = new DescriptionInsertAction();
 			try {
@@ -53,6 +55,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			//내부페이지 설명,댓글,태그창 보여주기
 		}else if(command.equals("descriptionlist.do")) {
 			action = new DescriptionListAction();
 			try {
@@ -60,6 +63,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			//설명 삭제
 		}else if(command.equals("descriptionDelete.do")) {
 			action = new DescriptionDeleteAction();
 			try {
@@ -67,6 +71,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			//설명 수정 작성 폼으로 가기
 		}else if(command.equals("descriptionUpdate.do")) {
 			action = new DescriptionUpdateActionForm();
 			try {
@@ -74,6 +79,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			//설명 수정
 		}else if(command.equals("descriptionUpdateForm.do")) {
 			action = new DescriptionUpdateAction();
 			try {
@@ -81,6 +87,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			//댓글 작성
 		}else if(command.equals("insertReply.do")) {
 			action = new ReplyInsertAction();
 			try {
@@ -88,6 +95,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			//댓글 삭제
 		}else if(command.equals("replyDelete.do")) {
 			action = new ReplyDeleteAction();
 			try {
@@ -95,6 +103,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			//댓글 수정 폼으로 보내기
 		}else if(command.equals("replyUpdate.do")) {
 			action = new ReplyUpdateActionForm();
 			try {
@@ -102,6 +111,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			//댓글 수정
 		}else if(command.equals("replyUpdateForm.do")) {
 			action= new ReplyUpdateAction();
 			try {

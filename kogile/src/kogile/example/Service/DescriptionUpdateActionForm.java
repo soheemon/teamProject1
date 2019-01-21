@@ -7,7 +7,9 @@ public class DescriptionUpdateActionForm implements Action {
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		//서비스 객체생성
 		PostService service = PostService.getInstance();
+		//설명 수정해주는 폼으로 이동하는 서비스
 		service.descriptionDetailService(request);
 		
 		ActionForward forward = new ActionForward();

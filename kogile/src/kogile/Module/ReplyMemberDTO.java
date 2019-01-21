@@ -2,7 +2,7 @@ package kogile.Module;
 
 import java.io.Serializable;
 
-public class ReplyMember implements Serializable {
+public class ReplyMemberDTO implements Serializable {
 	private int r_no;
 	private String r_contents;
 	private String r_date;
@@ -10,9 +10,9 @@ public class ReplyMember implements Serializable {
 	private int info_no;
 	private String name;
 	
-	public ReplyMember() {}
+	public ReplyMemberDTO() {}
 
-	public ReplyMember(int r_no, String r_contents, String r_date, int p_no, int info_no, String name) {
+	public ReplyMemberDTO(int r_no, String r_contents, String r_date, int p_no, int info_no, String name) {
 		super();
 		this.r_no = r_no;
 		this.r_contents = r_contents;

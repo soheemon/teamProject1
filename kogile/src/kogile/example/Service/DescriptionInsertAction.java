@@ -7,7 +7,9 @@ public class DescriptionInsertAction implements Action {
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		//서비스 객체생성
 		PostService service = PostService.getInstance();
+		//설명 작성서비스 호출
 		service.insertDescriptionService(request);
 		
 		ActionForward forward = new ActionForward();

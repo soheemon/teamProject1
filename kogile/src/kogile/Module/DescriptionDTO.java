@@ -2,14 +2,14 @@ package kogile.Module;
 
 import java.io.Serializable;
 
-public class Description implements Serializable {
+public class DescriptionDTO implements Serializable {
 	private int d_no;
 	private String d_contents;
 	private int p_no;
 	
-	public Description () {}
+	public DescriptionDTO () {}
 
-	public Description(int d_no, String d_contents, int p_no) {
+	public DescriptionDTO(int d_no, String d_contents, int p_no) {
 		super();
 		this.d_no = d_no;
 		this.d_contents = d_contents;

@@ -5,10 +5,11 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias type="kogile.Module.Description" alias="Description"/>
-		<typeAlias type="kogile.Module.Reply" alias="Reply"/>
-		<typeAlias type="kogile.Module.ReplyUpdateSearch" alias="ReplyUpdateSearch"/>
-		<typeAlias type="kogile.Module.ReplyMember" alias="ReplyMember"/>
+		<typeAlias type="kogile.Module.DescriptionDTO" alias="DescriptionDTO"/>
+		<typeAlias type="kogile.Module.ReplyDTO" alias="ReplyDTO"/>
+		<typeAlias type="kogile.Module.ReplyUpdateSearchDTO" alias="ReplyUpdateSearchDTO"/>
+		<typeAlias type="kogile.Module.ReplyMemberDTO" alias="ReplyMemberDTO"/>
+		<typeAlias type="kogile.Module.TagDTO" alias="TagDTO"/>
 	</typeAliases>
 
 	<environments default="development">
