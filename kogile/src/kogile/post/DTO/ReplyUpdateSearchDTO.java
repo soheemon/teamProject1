@@ -1,4 +1,4 @@
-package kogile.Module;
+package kogile.post.DTO;
 
 import java.io.Serializable;
 

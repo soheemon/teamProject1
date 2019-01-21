@@ -1,4 +1,4 @@
-package kogile.example.DAO;
+package kogile.post.DAO;
 
 import java.io.InputStream;
 import java.util.List;
@@ -8,12 +8,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import kogile.Module.DescriptionDTO;
-import kogile.Module.ReplyDTO;
-import kogile.Module.ReplyMemberDTO;
-import kogile.Module.ReplyUpdateSearchDTO;
-import kogile.Module.TagDTO;
-import kogile.example.Mapper.PostMapper;
+import kogile.post.DTO.DescriptionDTO;
+import kogile.post.DTO.ReplyDTO;
+import kogile.post.DTO.ReplyMemberDTO;
+import kogile.post.DTO.ReplyUpdateSearchDTO;
+import kogile.post.DTO.TagDTO;
+import kogile.post.Mapper.PostMapper;
 
 public class PostDao {
 	private static PostDao dao = new PostDao();

@@ -1,12 +1,12 @@
-package kogile.example.Service;
+package kogile.post.Service;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kogile.Module.DescriptionDTO;
-import kogile.Module.ReplyDTO;
+import kogile.post.DTO.DescriptionDTO;
+import kogile.post.DTO.ReplyDTO;
 
 public class DescriptionListAction implements Action {
 

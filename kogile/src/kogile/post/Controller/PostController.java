@@ -1,4 +1,4 @@
-package kogile.example.Controller;
+package kogile.post.Controller;
 
 import java.io.IOException;
 
@@ -9,18 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kogile.example.Service.Action;
-import kogile.example.Service.ActionForward;
-import kogile.example.Service.DescriptionDeleteAction;
-import kogile.example.Service.DescriptionInsertAction;
-import kogile.example.Service.DescriptionInsertActionForm;
-import kogile.example.Service.DescriptionListAction;
-import kogile.example.Service.DescriptionUpdateAction;
-import kogile.example.Service.DescriptionUpdateActionForm;
-import kogile.example.Service.ReplyDeleteAction;
-import kogile.example.Service.ReplyInsertAction;
-import kogile.example.Service.ReplyUpdateAction;
-import kogile.example.Service.ReplyUpdateActionForm;
+import kogile.post.Service.Action;
+import kogile.post.Service.ActionForward;
+import kogile.post.Service.DescriptionDeleteAction;
+import kogile.post.Service.DescriptionInsertAction;
+import kogile.post.Service.DescriptionInsertActionForm;
+import kogile.post.Service.DescriptionListAction;
+import kogile.post.Service.DescriptionUpdateAction;
+import kogile.post.Service.DescriptionUpdateActionForm;
+import kogile.post.Service.ReplyDeleteAction;
+import kogile.post.Service.ReplyInsertAction;
+import kogile.post.Service.ReplyUpdateAction;
+import kogile.post.Service.ReplyUpdateActionForm;
 
 
 

@@ -5,11 +5,11 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias type="kogile.Module.DescriptionDTO" alias="DescriptionDTO"/>
-		<typeAlias type="kogile.Module.ReplyDTO" alias="ReplyDTO"/>
-		<typeAlias type="kogile.Module.ReplyUpdateSearchDTO" alias="ReplyUpdateSearchDTO"/>
-		<typeAlias type="kogile.Module.ReplyMemberDTO" alias="ReplyMemberDTO"/>
-		<typeAlias type="kogile.Module.TagDTO" alias="TagDTO"/>
+		<typeAlias type="kogile.post.DTO.DescriptionDTO" alias="DescriptionDTO"/>
+		<typeAlias type="kogile.post.DTO.ReplyDTO" alias="ReplyDTO"/>
+		<typeAlias type="kogile.post.DTO.ReplyUpdateSearchDTO" alias="ReplyUpdateSearchDTO"/>
+		<typeAlias type="kogile.post.DTO.ReplyMemberDTO" alias="ReplyMemberDTO"/>
+		<typeAlias type="kogile.post.DTO.TagDTO" alias="TagDTO"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -27,7 +27,7 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="kogile/example/Mapper/post.xml" />
+		<mapper resource="kogile/post/Mapper/post.xml" />
 	</mappers>
 
 </configuration>

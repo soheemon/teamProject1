@@ -1,15 +1,15 @@
-package kogile.example.Mapper;
+package kogile.post.Mapper;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
-import kogile.Module.DescriptionDTO;
-import kogile.Module.ReplyDTO;
-import kogile.Module.ReplyMemberDTO;
-import kogile.Module.ReplyUpdateSearchDTO;
-import kogile.Module.TagDTO;
+import kogile.post.DTO.DescriptionDTO;
+import kogile.post.DTO.ReplyDTO;
+import kogile.post.DTO.ReplyMemberDTO;
+import kogile.post.DTO.ReplyUpdateSearchDTO;
+import kogile.post.DTO.TagDTO;
 
 public interface PostMapper {
 	//Description

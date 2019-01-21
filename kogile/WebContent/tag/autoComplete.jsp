@@ -1,7 +1,7 @@
-<%@page import="kogile.Module.TagDTO"%>
+<%@page import="kogile.post.DTO.TagDTO"%>
 <%@page import="java.util.List"%>
-<%@page import="kogile.example.DAO.PostDao"%>
-<%@page import="kogile.example.Service.PostService"%>
+<%@page import="kogile.post.DAO.PostDao"%>
+<%@page import="kogile.post.Service.PostService"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.io.PrintWriter"%>

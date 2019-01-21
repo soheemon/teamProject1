@@ -1,16 +1,16 @@
-package kogile.example.Service;
+package kogile.post.Service;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import kogile.Module.DescriptionDTO;
-import kogile.Module.ReplyDTO;
-import kogile.Module.ReplyMemberDTO;
-import kogile.Module.ReplyUpdateSearchDTO;
-import kogile.Module.TagDTO;
-import kogile.example.DAO.PostDao;
+import kogile.post.DAO.PostDao;
+import kogile.post.DTO.DescriptionDTO;
+import kogile.post.DTO.ReplyDTO;
+import kogile.post.DTO.ReplyMemberDTO;
+import kogile.post.DTO.ReplyUpdateSearchDTO;
+import kogile.post.DTO.TagDTO;
 
 public class PostService {
 	private static PostService service = new PostService();

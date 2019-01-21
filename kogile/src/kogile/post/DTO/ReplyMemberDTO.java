@@ -1,23 +1,25 @@
-package kogile.Module;
+package kogile.post.DTO;
 
 import java.io.Serializable;
 
-public class ReplyDTO implements Serializable {
+public class ReplyMemberDTO implements Serializable {
 	private int r_no;
 	private String r_contents;
 	private String r_date;
 	private int p_no;
 	private int info_no;
+	private String name;
 	
-	public ReplyDTO() {}
+	public ReplyMemberDTO() {}
 
-	public ReplyDTO(int r_no, String r_contents, String r_date, int p_no, int info_no) {
+	public ReplyMemberDTO(int r_no, String r_contents, String r_date, int p_no, int info_no, String name) {
 		super();
 		this.r_no = r_no;
 		this.r_contents = r_contents;
 		this.r_date = r_date;
 		this.p_no = p_no;
 		this.info_no = info_no;
+		this.name = name;
 	}
 
 	public int getR_no() {
@@ -60,4 +62,14 @@ public class ReplyDTO implements Serializable {
 		this.info_no = info_no;
 	}
 
+	public String getName() {
+		return name;
 	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
+	
+}
