@@ -28,10 +28,10 @@ header{height:40px;background:#026aa7;width:100%;}
 .nav ul li.on{background:#e4f0f6;}
 .nav ul li.on a{color:#026aa7;font-weight:600;}
 
-.contents{float:left;margin-left:100px;}
+.contents{float:right;width:900px;}
 .contents h2{font-size:19px;background:url(../images/people.png)left center no-repeat;padding-left:30px;}
 .create{overflow:hidden;margin-top:20px;}
-.create li{float:left;width:186px;height:96px;background-color: rgba(9,45,66,.08);margin-right:10px;}
+.create li{float:left;width:186px;height:96px;background-color: rgba(9,45,66,.08);margin:0 10px 10px 0;}
 .create li:last-child{margin-right:0;}
 .create li a{display:block;line-height:96px;font-size:15px;text-align:center;}
 .create li.add_create{display:block;}

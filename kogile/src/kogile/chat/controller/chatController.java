@@ -27,21 +27,14 @@ public class chatController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String command = request.getRequestURI().substring(request.getContextPath().length()+1);
+		String command = request.getRequestURI().substring(request.getContextPath().length()+6);
 		
 		
 		Action action = null;
 		ActionForward forward = null;
 		
 		if(command != null) {
-			if(command.equals("*.chat")) {
-//				Action action = *Action();
-				try {
-					forward = action.excute(request, response);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}else if(command.equals("chatInsert.chat")) {
+			if(command.equals("chatInsert.chat")) {
 				action = new ChatInsertAction();
 				try {
 					forward = action.excute(request, response);

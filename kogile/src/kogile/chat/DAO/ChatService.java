@@ -5,9 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.Response;
 
-import kogile.chat.DTO.ChatDTO;
+import kogile.chat.Model.ChatDTO;
 import net.sf.json.JSONArray;
 
 public class ChatService {

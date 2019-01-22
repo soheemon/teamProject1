@@ -2,8 +2,8 @@
 body, h1, h2, h3, h4, h5, h6, p, ul, li,button,dl,dt,dd,form,fieldset,legend,table,thead,tbody,tfoot,tr,td,th{margin:0; padding:0; word-break:keep-all;} 
 em,address{font-style:normal;}
 ul, li{list-style:none;}
-button{border:0;background:none;cursor:pointer;}/*버튼의 default값 수정*/
-a img{border:0;}/*a태그 안에 img태그가 존재하면 파란 border를 제거해줘야함*/
+button{border:0;background:none;cursor:pointer;}/*踰꾪듉�쓽 default媛� �닔�젙*/
+a img{border:0;}/*a�깭洹� �븞�뿉 img�깭洹멸� 議댁옱�븯硫� �뙆�� border瑜� �젣嫄고빐以섏빞�븿*/
 fieldset{border:0;}
 legend{display:none;}
 table{border-collapse: collapse;width:100%;}
@@ -13,10 +13,10 @@ body{overflow-x:hidden;}
 a{text-decoration:none;color:#555;}
 
 .wrap{margin:0 auto;width: 1280px;}
-.wrap2{padding:20px;width: 100%;box-sizing: border-box;height: 98vh;}
+.wrap2{padding:20px;padding-bottom:50px;width: 100%;box-sizing: border-box;height: 100%;}
 
 header{height: 40px;background: #026aa7;width: 100%;}
-.main{background: #0079bf;}
+.main{background: #0079bf;min-height: 100vh;}
 .top_menu{overflow: hidden;color: #fff;}
 .top_menu a{color: #fff;display: block;height: 100%;}
 .top_menu a:hover{text-decoration: underline;}

@@ -14,10 +14,8 @@ public class ChatInsertAction implements Action {
 		ChatService cs =ChatService.getInstance();
 		cs.insertChatService(request);
 
-		ActionForward forward = new ActionForward();
-		forward.setPath("chat.jsp");
-		forward.setRedirect(false);
-		return forward;
+		
+		return null;
 	}
 
 }

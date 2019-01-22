@@ -1,0 +1,103 @@
+﻿@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body, h1, h2, h3, h4, h5, h6, p, ul, li,button,dl,dt,dd,form,fieldset,legend,table,thead,tbody,tfoot,tr,td,th{margin:0; padding:0; word-break:keep-all;} 
+em,address{font-style:normal;}
+ul, li{list-style:none;}
+button{border:0;background:none;cursor:pointer;}/*버튼의 default값 수정*/
+a img{border:0;}/*a태그 안에 img태그가 존재하면 파란 border를 제거해줘야함*/
+fieldset{border:0;}
+legend{display:none;}
+table{border-collapse: collapse;width:100%;}
+table caption{display:none;}
+body,button,select,input, textarea{font-family: 'Noto Sans KR', sans-serif; font-size:16px; color:#555; font-weight:400; line-height:1.3; letter-spacing:-0.5px;}
+body{overflow-x:hidden;}
+a{text-decoration:none;color:#555;}
+
+.wrap{margin:0 auto;width: 1280px;}
+.wrap2{padding:20px;width: 100%;box-sizing: border-box;height: 100%;min-height: 100vh;}
+
+header{height: 40px;background: #026aa7;width: 100%;}
+.main{background: #0079bf;}
+.top_menu{overflow: hidden;color: #fff;}
+.top_menu a{color: #fff;display: block;height: 100%;}
+.top_menu a:hover{text-decoration: underline;}
+.top_menu .menu_left{float: left;}
+.top_menu .menu_left h2{display: inline-block;font-size: 18px;background: url(../images/board_w.png)left center no-repeat;padding-left: 30px;background-size: 20px;}
+.top_menu .menu_left span{display: inline-block;margin-left: 20px;}
+.top_menu .menu_left span.a_1{background: url(../images/traval_w.png)left center no-repeat;padding-left: 25px;}
+.top_menu .menu_left span.a_2{background: url(../images/star_w.png)left center no-repeat;height: 18px;width:18px;}
+.top_menu .menu_left span.a_3{background: url(../images/team_w.png)left center no-repeat;padding-left: 25px;}
+.top_menu .menu_right{float: right;}
+
+.cts_board{margin-top: 20px;/*overflow: hidden;*/}
+.grid{position: relative;}
+.grid::after {content: '';  display: table;  clear: both}
+.item{background: #dfe3e6;border-radius: 5px;width: 280px;margin: 0 2.5px;float:left;display: block;z-index: 1;}
+.heading{position:relative;padding: 10px;box-sizing: border-box;overflow: hidden;}
+.board_title{color: #17394d;font-size: 14px;font-weight: 700;display: inline-block;}
+.more{float: right;font-size: 11px;line-height: 20px;}
+.item_content{position: relative;width: 92%;height: 100%;margin: 10px;box-sizing:border-box; min-height:30px;}
+.post{background: #fff;border-radius: 5px;margin-bottom: 10px;padding: 6px 8px 2px;position: relative;width:100%;box-sizing:border-box;display: block;z-index: 10;}
+.post_item{position:relative;background:#fff;display:block;z-index: 10000;}
+.post_item h4{font-size: 14px;color: #17394d;}
+.post_item .btn_box{margin: 5px 0 20px 0;}
+.post_item .btn_box span{font-size: 12px;display: inline-block;opacity: 0.5;height: 18px;padding-top: 2px;vertical-align: middle;margin-right: 15px;}
+.post_item .btn_box span:last-child{margin-right:0;}
+.post_item .btn_box .list{background: url(../images/note.png)left top no-repeat;width:18px;}
+.post_item .btn_box .check{background: url(../images/check.png)left top no-repeat;padding-left: 20px;}
+.post_item .btn_box .date{background: url(../images/time.png)left top no-repeat;padding-left: 20px;}
+.post_item .btn_box .clip{background: url(../images/clip.png)left top no-repeat;padding-left: 25px;}
+.peo_box{position: absolute;right:8px;bottom: 2px;}
+.peo_box img{width: 30px;}
+.add_txt{color: #6b808c;font-size: 13px;background: url(../images/add.png)left center no-repeat;padding-left: 20px;margin:0 0 20px 10px;}
+.ul-sortable-placeholder{position: relative;z-index: 15;}
+
+/*팝업창*/
+.popup{overflow-y: auto; overflow-x: hidden; background: rgba(0,0,0,0.8); position: absolute; left: 0; top: 0; width: 100%;  height: 100%; z-index: 99998;display: none;}
+.InsertPopUp{overflow-y: auto; overflow-x: hidden; background: rgba(0,0,0,0.8); position: absolute; left: 0; top: 0; width: 100%;  height: 100%; z-index: 99998;display: none;}
+.popup_bg{position: absolute;left:50%;top:0;background: #e2e2e2;z-index: 99999;margin: 5% 0;margin-left:-370px;display: block;}
+.popup_bg .inner{padding:30px;overflow: hidden;width: 740px;}
+.left_list{float: left;}
+.popup_bg .title_p{font-size: 20px;color: #666;font-weight: 600;margin-bottom: 15px;padding-left: 25px;}
+.popup_bg .sub_title{font-size: 15px;color: #888;}
+.holder{margin-bottom: 10px;overflow: hidden;}
+.holder_inner{padding-left: 25px;}
+.holder .edit{display: inline-block;margin-left: 15px;text-decoration: underline;}
+.holder .edit:hover{color: #6b808c;}
+.title_holder .title_p{background: url(../images/web.png)left center no-repeat;margin-bottom: 5px;}
+.des_holder .title_p{background: url(../images/desc.png)left center no-repeat;display: inline-block;}
+.comment_holder .title_p{background: url(../images/buble.png)left center no-repeat;}
+.active_holder .title_p{background: url(../images/list.png)left center no-repeat;}
+.des_holder .list_title{margin-bottom: 10px;display: inline-block;}
+.holder .name{float: left;background: #d4d4d4;width:40px;height:40px;border-radius: 50%;line-height: 40px;padding-left: 5px;box-sizing: border-box;font-weight: 600;}
+.holder .input_box{float: left;margin-left: 20px;}
+.comment_holder .add_input{border:1px solid #dbdbdb;width: 350px;height: 100px;border-radius: 5px;display: block;box-shadow: 2px 2px 5px rgba(0,0,0,0.1);padding: 5px;box-sizing: border-box;}
+.active_holder ul li{height: auto;min-height:100px;margin-bottom: 15px;border-bottom: 1px solid #bbbaba;padding: 10px 0;}
+.active_holder ul li .input_box .fullname{display: inline-block;color: #333;font-weight: 600;}
+.active_holder ul li .input_box .date{color: #888;font-size: 12px;vertical-align: bottom;display: inline-block;padding-left: 5px;}
+.active_holder ul li .input_box .cts{display: block;background: #fff;box-shadow: 2px 2px 5px rgba(0,0,0,0.1);padding:10px;border-radius: 5px;margin: 5px 0 10px 0;}
+.active_holder ul li .input_box .cts .id{font-weight: 600;color: #333;}
+
+.right_list{float: right;margin-left: 100px;}
+.right_list .holder{margin-bottom: 10px;}
+.title_c{color: #999;font-size: 15px;}
+.btn_list{margin-top: 10px;}
+.btn_list a{display: block;font-weight: 600;font-size:14px;color: #666;border-radius: 5px;display: block;box-shadow: 2px 2px 5px rgba(0,0,0,0.1);padding: 10px 5px 10px 30px;box-sizing: border-box;margin-bottom: 10px;width: 170px;}
+.addcard_holder .btn_list a:nth-child(1){background:#f1f1f1 url(../images/members.png)left 10px center no-repeat;background-size:12px;}
+.addcard_holder .btn_list a:nth-child(2){background:#f1f1f1 url(../images/label.png)left 10px center no-repeat;background-size:12px;}
+.addcard_holder .btn_list a:nth-child(3){background:#f1f1f1 url(../images/check_list.png)left 10px center no-repeat;background-size:12px;}
+.addcard_holder .btn_list a:nth-child(4){background:#f1f1f1 url(../images/time.png)left 10px center no-repeat;background-size:12px;}
+.addcard_holder .btn_list a:nth-child(5){background:#f1f1f1 url(../images/attach.png)left 10px center no-repeat;background-size:12px;}
+.ups_holder .holder_inner{margin: 10px 0 20px 10px;padding-left: 0;}
+.ups_holder .holder_inner a{text-decoration: underline;}
+.ups_holder .holder_inner a:hover{color: #6b808c;}
+.action_holder .btn_list a:nth-child(1){background:#f1f1f1 url(../images/move.png)left 10px center no-repeat;background-size:12px;}
+.action_holder .btn_list a:nth-child(2){background:#f1f1f1 url(../images/copy.png)left 10px center no-repeat;background-size:12px;}
+.action_holder .btn_list a:nth-child(3){background:#f1f1f1 url(../images/watch.png)left 10px center no-repeat;background-size:12px;}
+.action_holder .btn_list a:nth-child(4){background:#f1f1f1 url(../images/arcive.png)left 10px center no-repeat;background-size:12px;}
+.action_holder .btn_list a:nth-child(5){background:#f1f1f1 url(../images/share.png)left 10px center no-repeat;background-size:12px;}
+
+.save_btn{color: #6b808c;background: #d2d8dc;padding: 5px 10px;margin-top: 10px;font-weight: 600;border-radius: 5px;display: inline-block;}
+.rep_btn{text-decoration: underline;}
+.rep_btn:hover{color: #6b808c;}
+.close_btn{font-size: 0;line-break: 0;background: url(../images/close.png)left top no-repeat;width: 36px;height: 36px;position: absolute;right:15px;top:20px;}
+.shadow{position: fixed;left:0;top:0;width: 100%;height: 100%;background: rgba(0,0,0,0.8);z-index: 99998;display: none;}

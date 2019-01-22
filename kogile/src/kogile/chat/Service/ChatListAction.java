@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kogile.chat.DAO.ChatService;
-import kogile.chat.DTO.ChatDTO;
+import kogile.chat.Model.ChatDTO;
 import kogile.chat.Service.Action;
 import kogile.chat.Service.ActionForward;
 

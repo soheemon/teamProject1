@@ -178,12 +178,12 @@ public class PostDao {
 	}
 
 	// insertPostForm에 Project에 있는 card 정보 담기
-	public List<CardDTO> card_info() {
+	public List<CardDTO> card_info(int pjt_no) {
 		SqlSession sql = getSql().openSession();
 		List<CardDTO> list = null;
 
 		try {
-			list = sql.getMapper(PostMapper.class).card_info();
+			list = sql.getMapper(PostMapper.class).card_info(pjt_no);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

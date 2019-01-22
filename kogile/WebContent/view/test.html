@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      h1,
+      h4 {
+        font-family: "Arimo", sans-serif;
+      }
+
+      header h1 {
+        font-size: 3rem;
+        margin: 4rem auto;
+      }
+
+      p {
+        font-family: "Roboto Slab", serif;
+      }
+
+      a,
+      a:link,
+      a:active,
+      a:visited {
+        color: #0066aa;
+        text-decoration: none;
+        border-bottom: #000013 0.16rem solid;
+      }
+
+      a:hover {
+        color: #000013;
+        border-bottom: #0066aa 0.16rem solid;
+      }
+
+      header,
+      footer {
+        width: 31rem;
+        margin: 2rem auto;
+        text-align: center;
+      }
+
+      .add-task-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 20rem;
+        height: 5.3rem;
+        margin: auto;
+        background: #a8a8a8;
+        border: #000013 0.2rem solid;
+        border-radius: 0.2rem;
+        padding: 0.4rem;
+      }
+
+      .container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+      }
+
+      .wrap-card {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        width: 1200px;
+        box-sizing: border-box;
+      }
+
+      .card {
+        width: 300px;
+        margin: 0 10px;
+        border: #000013 2px solid;
+        border-radius: 5px;
+      }
+
+      .card-header {
+        padding: 10px;
+        text-align: center;
+        background-color: #fff;
+      }
+
+      .task-list {
+        min-height: 50px;
+      }
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        list-style-type: none;
+      }
+
+      .task {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        vertical-align: middle;
+        list-style-type: none;
+        background: #fff;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        margin: 0.4rem;
+        height: 4rem;
+        border: #000013 0.15rem solid;
+        border-radius: 0.2rem;
+        cursor: move;
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .task:hover {
+        background: #ebebeb;
+      }
+
+      .task p {
+        margin: auto;
+      }
+
+      /* Dragula CSS Release 3.2.0 from: https://github.com/bevacqua/dragula */
+
+      .gu-mirror {
+        position: fixed !important;
+        margin: 0 !important;
+        z-index: 9999 !important;
+        opacity: 0.8;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+        filter: alpha(opacity=80);
+      }
+
+      .gu-hide {
+        display: none !important;
+      }
+
+      .gu-unselectable {
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+      }
+
+      .gu-transit {
+        opacity: 0.2;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+        filter: alpha(opacity=20);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <ul class="wrap-card">
+        <li class="card">
+          <div class="card-header"><h4>To Do</h4></div>
+          <ul class="task-list" id="to-do" data-status="0">
+            <li class="task" data-status="0"><p>이벤트</p></li>
+            <li class="task" data-status="0"><p>Coding</p></li>
+            <li class="task" data-status="0"><p>Card Sorting</p></li>
+            <li class="task" data-status="0"><p>Measure</p></li>
+          </ul>
+        </li>
+
+        <li class="card">
+          <div class="card-header"><h4>Doing</h4></div>
+          <ul class="task-list" id="doing" data-status="1">
+            <li class="task" data-status="1"><p>Hypothesis</p></li>
+            <li class="task" data-status="1"><p>User Testing</p></li>
+            <li class="task" data-status="1"><p>Prototype</p></li>
+          </ul>
+        </li>
+
+        <li class="card">
+          <div class="card-header"><h4>Done</h4></div>
+          <ul class="task-list" id="done" data-status="2">
+            <li class="task" data-status="2"><p>Ideation</p></li>
+            <li class="task" data-status="2"><p>Sketches</p></li>
+          </ul>
+        </li>
+
+        <li class="card">
+          <div class="card-header"><h4>Close</h4></div>
+          <ul class="task-list" id="close" data-status="3"></ul>
+        </li>
+      </ul>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js"></script>
+    <script src="../js/god.js"></script>
+  </body>
+</html>

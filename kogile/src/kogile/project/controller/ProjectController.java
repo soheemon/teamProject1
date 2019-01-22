@@ -13,16 +13,16 @@ import javax.smartcardio.CommandAPDU;
 
 import org.apache.ibatis.io.Resources;
 
-import kogile.project.Action.Action;
-import kogile.project.Action.ActionForward;
-import kogile.project.Action.DetailProjectAction;
-import kogile.project.Action.InsertProjectAction;
-import kogile.project.Action.InsertProjectFormAction;
-import kogile.project.Action.ListProjectAction;
+import kogile.project.Service.Action;
+import kogile.project.Service.ActionForward;
+import kogile.project.Service.DetailProjectAction;
+import kogile.project.Service.InsertProjectAction;
+import kogile.project.Service.InsertProjectFormAction;
+import kogile.project.Service.ListProjectAction;
 
 
 
-@WebServlet("*.do")
+@WebServlet("*.pjt")
 public class ProjectController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -43,21 +43,14 @@ public class ProjectController extends HttpServlet {
 		}
 		
 		
-		String command = request.getRequestURI().substring(request.getContextPath().length()+1);
+		String command = request.getRequestURI().substring(request.getContextPath().length()+6);
 		
 		Action action = null;
 		ActionForward forward = null;
 		System.out.println(command);
 		
 		if(command != null) {
-			if(command.equals("*.do")) {
-//				Action action = *Action();
-				try {
-					forward = action.excute(request, response);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}else if(command.equals("insertProject.do")) {
+			if(command.equals("insertProject.pjt")) {
 				action = new InsertProjectAction();
 				try {
 					forward = action.excute(request, response);
@@ -65,21 +58,21 @@ public class ProjectController extends HttpServlet {
 					e.printStackTrace();
 				}
 
-			}else if(command.equals("insertProjectFormAction.do")) {
+			}else if(command.equals("insertProjectFormAction.pjt")) {
 				action = new InsertProjectFormAction(); 
 				try {
 					forward = action.excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("listProject.do")) {
+			}else if(command.equals("listProject.pjt")) {
 				action = new ListProjectAction();
 				try {
 					forward = action.excute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("detailProject.do")) {
+			}else if(command.equals("detailProject.pjt")) {
 				action = new DetailProjectAction();
 				try {
 					forward = action.excute(request, response);

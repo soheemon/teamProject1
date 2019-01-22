@@ -1,13 +1,14 @@
 package kogile.post.Model;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
+import javax.swing.JSpinner.DateEditor;
 
-import org.apache.ibatis.type.IntegerTypeHandler;
+import net.sf.json.JSONArray;
 
 public class PostService {
 
@@ -35,6 +36,10 @@ public class PostService {
 
 		// 최근에 생성된 Post의 p_no를 가져오는 작업
 		int p_no = dao.selectPost();
+		
+		//생성한 post 정보를 json 객체로 처리
+		JSONArray jsonarr = new JSONArray();
+		jsonarr.add(dao.detailPost(p_no));
 
 		// insertForm에서 체크한 담당자들을 chargeDTO를 통해 담는 과정
 		ChargeDTO chargeDTO = new ChargeDTO();
@@ -48,6 +53,7 @@ public class PostService {
 
 		// 받은 담당자들을 int로 형변환 시킨다.
 		for (int i = 0; i < supervisorStr.length; i++) {
+			System.out.println(supervisorStr[i]);
 			supervisors[i] = Integer.parseInt(supervisorStr[i]);
 		}
 
@@ -74,21 +80,40 @@ public class PostService {
 		dao.DdateInsertPost(ddateDTO);
 	}
 
-	// listPostAction (Post 리스트 보기)
-	public List<PostDTO> listPostActionService(HttpServletRequest request, HttpServletResponse response)
+	// listPostAction (Post 리스트 보기)(card_no로불러오기)
+	public void listPostActionService(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		HttpSession session = request.getSession();
 		int pjt_no = (Integer)session.getAttribute("pjt_no");
-		request.setAttribute("pjt_no", pjt_no);
 		// list에 Mapping할 메소드를 담는다.
-		List<PostDTO> list = dao.listPost(pjt_no);
+		List<CardDTO> cards = dao.card_info(pjt_no);
+		request.setAttribute("card", cards);
+//		System.out.println(cards.toString());
+		
+		List<PostDTO> post = dao.listPost(pjt_no);
+		request.setAttribute("post", post);
+//		System.out.println(post.toString());
+		
+		
+//		List<PostDTO> todo = dao.listPost(cards.get(0).getC_no());
+//		request.setAttribute("todo", todo);
+//		
+//		List<PostDTO> doing = dao.listPost(cards.get(1).getC_no());
+//		request.setAttribute("doing", doing);
+//		
+//		List<PostDTO> done = dao.listPost(cards.get(2).getC_no());
+//		request.setAttribute("done", done);
+//		
+//		List<PostDTO> close = dao.listPost(cards.get(3).getC_no());
+//		request.setAttribute("close", close);
+		
 
 		// list를 return하여 Action에서 Forward한다.
-		return list;
+//		return list;
 	}
 
 	// detailPostAction (Post 내용 보기)
-	public PostDTO detailPostActionService(HttpServletRequest request) {
+	public void detailPostActionService(HttpServletRequest request, HttpServletResponse response)throws IOException {
 		HttpSession session = request.getSession();
 
 		// PostDTO에 있는 p_no를 가지고 온다.
@@ -101,10 +126,21 @@ public class PostService {
 		DdateDTO ddateDTO = dao.DdateInfo(p_no);
 
 		// d_day에 set한다.
-		request.setAttribute("DdateDTO", ddateDTO);
+//		request.setAttribute("DdateDTO", ddateDTO);
 
 		// postDTO를 return하여 Action에서 Forward한다.
-		return postDTO;
+//		return postDTO;
+		
+		JSONArray jsonarr = new JSONArray();
+		jsonarr.add(postDTO);
+//		jsonarr.add(JSONArray.fromObject(postDTO));
+//		jsonarr.add(JSONArray.fromObject(ddateDTO)); 
+		jsonarr.add(ddateDTO);
+		
+		response.setCharacterEncoding("utf-8");
+//		System.out.println(jsonarr.toString());
+		response.getWriter().print(jsonarr.toString());
+		
 	}
 
 	// updatePostFormAction (Post 내용 수정 Form 이동)
@@ -202,31 +238,47 @@ public class PostService {
 	}
 	
 
-	// list에 회원 이름, 이메일 담기
-	public List<MemberDTO> listMemberService(HttpServletRequest request, HttpServletResponse response)
+	// list에 회원 이름, 이메일 담기 //card 정보 추가 json처
+	public void listMemberService(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		HttpSession session = request.getSession();
 
 		// Project에 포함될 인원을 담아야 하기 때문에 프로젝트 번호를 가져온다.
 		int pjt_no = (Integer)session.getAttribute("pjt_no"); 
+		System.out.println(pjt_no);
 
 		// list에 Mapping할 메소드를 담는다.
 		List<MemberDTO> list = dao.listMember(pjt_no);
-
+		
+		JSONArray jsonarr = new JSONArray();
+		jsonarr.add(JSONArray.fromObject(list));
+//		response.getWriter().print(jsonarr.toString());
+		
+		List<CardDTO> list2 = dao.card_info(pjt_no);
+//
+		jsonarr.add(JSONArray.fromObject(list2));
+//		System.out.println(jsonarr.toString());
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().print(jsonarr.toString());
 		// list를 return하여 Action에서 Set 후 Forward 한다.
-		return list;
+//		return list;
 	}
 
-	// list에 card 이름, 위치 담기
-	public List<CardDTO> cardInfoService(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		// 프로젝트에 포함된 card 목록을 가져오기 위해 list에 담는다.
-		List<CardDTO> list = dao.card_info();
-
-		// list를 return하여 Action에서 set 후 Forward 한다.
-		return list;
-
-	}
+//	// list에 card 이름, 위치 담기 
+//	public void cardInfoService(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		HttpSession session = request.getSession();
+//		int pjt_no = (Integer)session.getAttribute("pjt_no");
+//		// 프로젝트에 포함된 card 목록을 가져오기 위해 list에 담는다.
+//		List<CardDTO> list = dao.card_info(pjt_no);
+//		
+//		JSONArray jsonarr = new JSONArray();
+//		jsonarr.add(JSONArray.fromObject(list));
+//		System.out.println(jsonarr.toString());
+//		response.getWriter().print(jsonarr.toString());
+//		// list를 return하여 Action에서 set 후 Forward 한다.
+////		return list;
+//
+//	}
 
 	// Post 내부에 담당자를 출력하기
 	public List<PostMemberDTO> PostMemberListService(HttpServletRequest request, HttpServletResponse response)

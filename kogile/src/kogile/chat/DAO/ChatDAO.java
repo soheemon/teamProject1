@@ -9,11 +9,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import kogile.chat.DTO.ChatDTO;
 import kogile.chat.Mapper.ChatMapper;
+import kogile.chat.Model.ChatDTO;
 import kogile.project.DAO.ProjectDAO;
-import kogile.project.DTO.ProjectDTO;
 import kogile.project.Mapper.ProjectMapper;
+import kogile.project.Model.ProjectDTO;
 
 public class ChatDAO {
 	public static ChatDAO dao = new ChatDAO();

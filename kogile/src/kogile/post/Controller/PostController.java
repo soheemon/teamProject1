@@ -12,18 +12,18 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.io.Resources;
 
-import kogile.post.Action.Action;
-import kogile.post.Action.ActionForward;
-import kogile.post.Action.DeleteDdateAction;
-import kogile.post.Action.DeletePostAction;
-import kogile.post.Action.DetailPostAction;
-import kogile.post.Action.InsertPostAction;
-import kogile.post.Action.InsertPostFormAction;
-import kogile.post.Action.ListPostAction;
-import kogile.post.Action.UpdateDdateAction;
-import kogile.post.Action.UpdateDdateFormAction;
-import kogile.post.Action.UpdatePostAction;
-import kogile.post.Action.UpdatePostFormAction;
+import kogile.post.Service.Action;
+import kogile.post.Service.ActionForward;
+import kogile.post.Service.DeleteDdateAction;
+import kogile.post.Service.DeletePostAction;
+import kogile.post.Service.DetailPostAction;
+import kogile.post.Service.InsertPostAction;
+import kogile.post.Service.InsertPostFormAction;
+import kogile.post.Service.ListPostAction;
+import kogile.post.Service.UpdateDdateAction;
+import kogile.post.Service.UpdateDdateFormAction;
+import kogile.post.Service.UpdatePostAction;
+import kogile.post.Service.UpdatePostFormAction;
 
 
 @WebServlet("*.do")
@@ -55,7 +55,8 @@ public class PostController extends HttpServlet {
 			session.removeAttribute("p_no");
 			session.setAttribute("p_no", Integer.parseInt(request.getParameter("p_no")));
 		}
-		
+//		System.out.println(session.getAttribute("p_no"));
+		System.out.println(session.getAttribute("pjt_no"));
 		
 		
 		// insertPostFormActon (Post를 생성하는 Form으로 이동)

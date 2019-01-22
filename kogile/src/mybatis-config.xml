@@ -5,23 +5,26 @@
 
 <configuration>
 	<typeAliases>
-		<!--chat, startPage card-->
-		<typeAlias type="kogile.chat.DTO.ChatDTO" alias="ChatDTO" />
-		<typeAlias type="kogile.project.DTO.ProjectDTO" alias="ProjectDTO" />
-		<typeAlias type="kogile.project.DTO.InviteDTO" alias="InviteDTO" />
-	
+		<!--chat, startPage card -->
+		<typeAlias type="kogile.chat.Model.ChatDTO" alias="ChatDTO" />
+		<typeAlias type="kogile.project.Model.ProjectDTO"
+			alias="ProjectDTO" />
+		<typeAlias type="kogile.project.Model.InviteDTO"
+			alias="InviteDTO" />
+
 
 		<!--post -->
-		<typeAlias alias="PostDTO" type="kogile.post.Model.PostDTO" />
-		<typeAlias alias="MemberDTO"
-			type="kogile.post.Model.MemberDTO" />
-		<typeAlias alias="ChargeDTO"
-			type="kogile.post.Model.ChargeDTO" />
-		<typeAlias alias="PostMemberDTO"
-			type="kogile.post.Model.PostMemberDTO" />
-		<typeAlias alias="DdateDTO"
-			type="kogile.post.Model.DdateDTO" />
-			
+		<typeAlias type="kogile.post.Model.PostDTO" alias="PostDTO" />
+		<typeAlias type="kogile.post.Model.CardDTO" alias="CardDTO" />
+		<typeAlias type="kogile.post.Model.MemberDTO"
+			alias="MemberDTO" />
+		<typeAlias type="kogile.post.Model.ChargeDTO"
+			alias="ChargeDTO" />
+		<typeAlias type="kogile.post.Model.PostMemberDTO"
+			alias="PostMemberDTO" />
+		<typeAlias type="kogile.post.Model.DdateDTO"
+			alias="DdateDTO" />
+
 	</typeAliases>
 
 

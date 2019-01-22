@@ -36,7 +36,7 @@ public interface PostMapper {
 	List<MemberDTO> exter_member(int pjt_no);
 	
 	// card 정보 가져오기
-	List<CardDTO> card_info();
+	List<CardDTO> card_info(int pjt_no);
 	
 	// Post에 회원 정보 호출하기
 	List<PostMemberDTO> post_inter_member(int p_no);
