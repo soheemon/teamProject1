@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+.labelcolor_red{
+	background: red;
+	border: 1px solid;
+}
+
+.labelcolor_green{
+	background: green;
+	border: 1px solid;
+}
+
+.labelcolor_orange{
+	background: orange;
+	border: 1px solid;
+}
+
+.labelcolor_yellow{
+	
+	background: yellow;
+	border: 1px solid;
+}
+.label_radio{
+	width: 100px;
+	height: 30px;
+}
+
+.label_select{
+	width: 400px;
+	height: 40px;
+}

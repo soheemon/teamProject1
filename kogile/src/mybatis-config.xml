@@ -24,6 +24,10 @@
 			alias="PostMemberDTO" />
 		<typeAlias type="kogile.post.Model.DdateDTO"
 			alias="DdateDTO" />
+		
+		<!-- label -->	
+		<typeAlias type="kogile.post.Model.LabelDTO" alias="Label"/>
+		<typeAlias type="kogile.post.Model.LabelInfoDTO" alias="LabelInfo"/>
 
 	</typeAliases>
 
@@ -47,6 +51,7 @@
 		<mapper resource="kogile/chat/Mapper/Chat.xml" />
 		<mapper resource="kogile/project/Mapper/Project.xml" />
 		<mapper resource="kogile/post/Mapper/Post.xml" />
+		<mapper resource="kogile/example/Mapper/Example.xml" />
+		<mapper resource="kogile/post/Mapper/PostLabel.xml" />
 	</mappers>
 </configuration>
-

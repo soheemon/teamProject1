@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kogile.example.Mapper.ExampleMapper">
+	<cache />
+	<insert id="test">
+		insert into inter_m_info values(4, 'a', 'a', 'a') 
+	</insert>
+</mapper>

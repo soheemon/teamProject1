@@ -24,6 +24,14 @@ import kogile.post.Service.UpdateDdateAction;
 import kogile.post.Service.UpdateDdateFormAction;
 import kogile.post.Service.UpdatePostAction;
 import kogile.post.Service.UpdatePostFormAction;
+import kogile.post.Service.DeleteLabelAction;
+import kogile.post.Service.DeleteLabelInfoAction;
+import kogile.post.Service.InsertLabelAction;
+import kogile.post.Service.InsertLabelFormAction;
+import kogile.post.Service.ListLabelAction;
+import kogile.post.Service.PostDetailViewAction;
+import kogile.post.Service.UpdateLabelAction;
+import kogile.post.Service.updateLabelFormAction;
 
 
 @WebServlet("*.do")
@@ -34,6 +42,7 @@ public class PostController extends HttpServlet {
     public PostController() {
         super();
     }
+
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -166,10 +175,66 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("insertlabel.do")) {
+			action = new InsertLabelAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("deleteLabel.do")) {
+			action = new DeleteLabelAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("insertLabelForm.do")) {
+			action = new InsertLabelFormAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("updateLabelForm.do")) {
+			action = new updateLabelFormAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("updateLabel.do")) {
+			action = new UpdateLabelAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("doDetailView.do")) {
+			action = new PostDetailViewAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("deleteLabelInfo.do")) {
+			action = new DeleteLabelInfoAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("labellist.do")) {
+			action = new ListLabelAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
-		
-			
+
 		
 		if(forward != null) {
 			if(forward.isRedirect()) {
