@@ -1,46 +1,32 @@
 package kogile.notice.Service;
 
 public class Notice {
-	private String giveMan;
-	private String takeMan;
+	private int no;
 	private String contents;
 	private String day;
+	private int inv_no;
 	
 	public Notice(){}
 
-	
-	
-	@Override
-	public String toString() {
-		return "Notice [giveMan=" + giveMan + ", takeMan=" + takeMan + ", contents=" + contents + ", day=" + day + "]";
-	}
-
-
-
-	public Notice(String giveMan, String takeMan, String contents, String day) {
+	public Notice(int no, String contents, String day, int inv_no) {
 		super();
-		this.giveMan = giveMan;
-		this.takeMan = takeMan;
+		this.no = no;
 		this.contents = contents;
 		this.day = day;
+		this.inv_no = inv_no;
 	}
 
-
-
-	public String getGiveMan() {
-		return giveMan;
+	@Override
+	public String toString() {
+		return "Notice [no=" + no + ", contents=" + contents + ", day=" + day + ", inv_no=" + inv_no + "]";
 	}
 
-	public void setGiveMan(String giveMan) {
-		this.giveMan = giveMan;
+	public int getNo() {
+		return no;
 	}
 
-	public String getTakeMan() {
-		return takeMan;
-	}
-
-	public void setTakeMan(String takeMan) {
-		this.takeMan = takeMan;
+	public void setNo(int no) {
+		this.no = no;
 	}
 
 	public String getContents() {
@@ -58,7 +44,14 @@ public class Notice {
 	public void setDay(String day) {
 		this.day = day;
 	}
-	
-	
+
+	public int getInv_no() {
+		return inv_no;
+	}
+
+	public void setInv_no(int inv_no) {
+		this.inv_no = inv_no;
+	}
+
 	
 }

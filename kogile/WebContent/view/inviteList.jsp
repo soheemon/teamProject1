@@ -41,10 +41,13 @@
 <br></br>
 <input type="button" value="초대" onclick="winOpen()">
 <br></br>
-<input type="button" value="알림 확인" onclick="winOpen2()">
+<form action="noticeAction.no" method="post">
+<input type="hidden" name="no" value=5></input>
+<input type="submit" value="알림 확인" >
+</form>
 <br></br>
 	<a href="inviteListAction.in?pjt_no=2">프로젝트 참여자</a>
-	<h3>초대리스트</h3>
+		<h3>초대리스트</h3>
 	<table width="500" border="1" cellpadding="0" cellspacing="0">
 	<tr>
 		<td>회원번호</td>
@@ -61,5 +64,7 @@
 		</tr>
 	</c:forEach>
 	</table>
+	
+
 </body>
 </html>

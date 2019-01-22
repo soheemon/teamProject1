@@ -38,7 +38,7 @@ public class InviteListDao {
 		try {
 			list3 = sqlSession.getMapper(InviteListMapper.class).inviteList(pjt_no);
 			list4 = sqlSession.getMapper(InviteListMapper.class).inviteList2(pjt_no);
-		
+			
 			list3.addAll(list4);
 			
 			System.out.println("dao list" + list3);

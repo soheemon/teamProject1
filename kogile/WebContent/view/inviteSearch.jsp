@@ -36,15 +36,16 @@
 			<!-- 임의의값 -->
 			<input type="hidden" name="no" value=${memberBoard.no }>
 			<input type="hidden" name="name" value=${memberBoard.name }>
-			${memberBoard.name } ||
 			<input type="hidden" name="mail" value=${memberBoard.mail }>
-			${memberBoard.mail }		
-		<input type="submit" value="초대" onclick="return yesNo()">
+
+				${memberBoard.name } ||
+				${memberBoard.mail }
+		<input type="submit" value="초대" onclick="return yesNo()">		
 		</form>
 	</c:forEach>
+		
+
 		<br>
-	
-	
 	
 </body>
 </html>

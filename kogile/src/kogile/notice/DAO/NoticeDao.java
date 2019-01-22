@@ -30,15 +30,17 @@ public class NoticeDao {
 		return new SqlSessionFactoryBuilder().build(in);
 	}
 	
-	public List<Notice> notice(){
+	public List<Notice> notice(int no){
 		List<Notice> list5 = null;
 		
 		SqlSession sqlSession = getSql().openSession();
 		try{
-			list5 = sqlSession.getMapper(NoticeMapper.class).notice();
+			list5 = sqlSession.getMapper(NoticeMapper.class).notice(no);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list5;
 	}
+	
+	
 }

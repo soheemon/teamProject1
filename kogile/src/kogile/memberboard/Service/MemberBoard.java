@@ -6,23 +6,9 @@ public class MemberBoard {
 	private String mail;
 	private String interNum;
 	private int pjt_no;
+	private int inv_no;
 	
 	public MemberBoard(){}
-
-	public MemberBoard(int no, String name, String mail, String interNum, int pjt_no) {
-		super();
-		this.no = no;
-		this.name = name;
-		this.mail = mail;
-		this.interNum = interNum;
-		this.pjt_no = pjt_no;
-	}
-
-	@Override
-	public String toString() {
-		return "MemberBoard [no=" + no + ", name=" + name + ", mail=" + mail + ", interNum=" + interNum + ", pjt_no="
-				+ pjt_no + "]";
-	}
 
 	public int getNo() {
 		return no;
@@ -64,6 +50,29 @@ public class MemberBoard {
 		this.pjt_no = pjt_no;
 	}
 
-	
+	public int getInv_no() {
+		return inv_no;
+	}
 
+	public void setInv_no(int inv_no) {
+		this.inv_no = inv_no;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberBoard [no=" + no + ", name=" + name + ", mail=" + mail + ", interNum=" + interNum + ", pjt_no="
+				+ pjt_no + ", inv_no=" + inv_no + "]";
+	}
+
+	public MemberBoard(int no, String name, String mail, String interNum, int pjt_no, int inv_no) {
+		super();
+		this.no = no;
+		this.name = name;
+		this.mail = mail;
+		this.interNum = interNum;
+		this.pjt_no = pjt_no;
+		this.inv_no = inv_no;
+	}
+
+	
 }

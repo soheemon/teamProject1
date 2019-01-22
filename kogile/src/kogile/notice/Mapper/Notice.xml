@@ -7,5 +7,9 @@
 	<select id="notice"   resultType="Notice">
 	 	select ntc_cont as contents, to_char(ntc_date, 'YYYY-MM-DD HH:MI:SS') as day 
 	 	from notice
+	 	<where>
+	 		total_m_no = #{no}
+	 	</where>
 	</select>
+
 </mapper>

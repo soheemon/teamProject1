@@ -5,5 +5,6 @@ import java.util.List;
 import kogile.notice.Service.Notice;
 
 public interface NoticeMapper {
-		List<Notice> notice();
+		List<Notice> notice(int no);
+	
 }

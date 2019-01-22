@@ -5,7 +5,7 @@
 <mapper namespace="kogile.invitelist.Mapper.InviteListMapper">
 	<cache />
 	<select id="inviteList" parameterType="int" resultType="InviteList">
-	select distinct t.total_m_no as no, n.MEMBER_NAME as name, n.EMAIL as mail, i.grade as grade
+	select distinct t.total_m_no as no, n.MEMBER_NAME as name, n.EMAIL as mail, i.grade as grade, i.INVITE_NO as inv_no
 	from invite i join total_member t
 	on i.total_m_no = t.total_m_no
 	join inter_m_info n
@@ -16,7 +16,7 @@
 	</select>
 
 	<select id="inviteList2" parameterType="int" resultType="InviteList">
-	select distinct t.total_m_no as no, e.EXTER_MEM_NAME as name, e.EXTER_M_EMAIL as mail, i.grade as grade
+	select distinct t.total_m_no as no, e.EXTER_MEM_NAME as name, e.EXTER_M_EMAIL as mail, i.grade as grade, i.INVITE_NO as inv_no
 	from invite i
 	join total_member t
 	on i.total_m_no = t.total_m_no
