@@ -69,6 +69,29 @@
 			return false;
 		});
 		
+		//label(0122)
+		var click_check = $('.label_btn').hasClass('on');
+
+		$('.label_btn').on('click', function(){
+			click_check = $('.label_btn').hasClass('on');
+			if(click_check == false){
+	          $(this).addClass('on');
+	          $('.label_box').show();
+	        }else{
+	          $(this).removeClass('on');
+	          $('.label_box').hide();
+	        }
+	        return false;
+	      });
+		$('.label_btn').on('click', function(){
+			listLabel();
+	        return false;
+		})
+
+		$('.label_close').on('click', function(){
+			$('.label_btn').removeClass('on');
+			$('.label_box').hide();
+		});
 
 	})
 
@@ -195,6 +218,52 @@
 			
 		}).catch(function(e){
 			console.error(e);
+		})
+	}
+	
+	function listLabel(){
+		const data = {};
+		
+		$.ajax({
+			type : 'GET',
+			url : 'labellist.do',
+			dataType : 'JSON',
+			data : data
+		}).then(function(res){
+			console.log(res);
+			var txt = '';
+			for(var i = 0; i < res.length; i++){
+				if(res[i].color_no == 1){
+					txt += '<li>';
+					txt += '<input type="hidden" value="'+ res[i].label_no + '" class="select_l_no">';
+					txt += '<a href="#n" class="card_edit"></a>';
+					txt += '<span class="card_label red">'+ res[i].label_text + '</span>';
+					txt += '</li>';
+				}else if(res[i].color_no == 2){
+					txt += '<li>';
+					txt += '<input type="hidden" value="'+ res[i].label_no + '" class="select_l_no">';
+					txt += '<a href="#n" class="card_edit"></a>';
+					txt += '<span class="card_label orange">'+ res[i].label_text + '</span>';
+					txt += '</li>';
+				}else if(res[i].color_no == 3){
+					txt += '<li>';
+					txt += '<input type="hidden" value="'+ res[i].label_no + '" class="select_l_no">';
+					txt += '<a href="#n" class="card_edit"></a>';
+					txt += '<span class="card_label yellow">'+ res[i].label_text + '</span>';
+					txt += '</li>';
+				}else if(res[i].color_no == 4){
+					txt += '<li>';
+					txt += '<input type="hidden" value="'+ res[i].label_no + '" class="select_l_no">';
+					txt += '<a href="#n" class="card_edit"></a>';
+					txt += '<span class="card_label green">'+ res[i].label_text + '</span>';
+					txt += '</li>';
+				}
+				console.log(txt);
+				$('#mylabel_list').html(txt);
+			}
+			
+		}).catch(function(err){
+			console.log('fail');
 		})
 	}
 

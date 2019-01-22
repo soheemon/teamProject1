@@ -9,13 +9,12 @@ public class ListLabelAction implements Action {
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		PostService service = PostService.getInstance();
-		request.setAttribute("label", service.listlabel(request, response));
-		request.setAttribute("p_no", request.getParameter("p_no"));
+		service.listlabel(request, response);
 		
-		ActionForward forward = new ActionForward();
-		forward.setPath("listLabel.jsp");
-		forward.setRedirect(false);
-		return forward;
+//		ActionForward forward = new ActionForward();
+//		forward.setPath("listLabel.jsp");
+//		forward.setRedirect(false);
+		return null;
 	}
 
 }

@@ -28,13 +28,18 @@ public class PostService {
 		return service;
 	}
 	
-	public List<LabelDTO> listlabel(HttpServletRequest request, HttpServletResponse response)throws Exception{
+	public void listlabel(HttpServletRequest request, HttpServletResponse response)throws Exception{
 		HttpSession session = request.getSession();
 //		int pjt_no = (Integer)session.getAttribute("pjt_no");
 		int pjt_no = (Integer)session.getAttribute("pjt_no");		
 		List<LabelDTO> list = dao.listlabel(pjt_no);
 		
-		return list;
+		JSONArray jsonarr = new JSONArray();
+		jsonarr = JSONArray.fromObject(list);
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().print(jsonarr.toString());
+		
+//		return list;
 	}
 	
 	public void insertLabelService(HttpServletRequest request, HttpServletResponse response)throws Exception{

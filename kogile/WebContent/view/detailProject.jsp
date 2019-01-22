@@ -437,16 +437,16 @@
 						<div class="label_list">
 							<div>
 								<!-- <input class="search_label" type="text" placeholder="Search labels..."> -->
-								<ul>
-									<c:forEach items="${label }" var="label">
+								<ul id="mylabel_list">
+									<%-- <c:forEach items="" var="label">
 										<c:if test="${label.color_no = 1 }">
 											<li>
 												<input type="hidden" value="${label.label_no }" class="select_l_no">
 												<a href="#n" class="card_edit"></a>
 												<span class="card_label red">${label.label_text }</span>
 											</li>
-										</c:if>
-										<c:if test="${label.color_no = 2 }">
+										</c:if> --%>
+									<%-- 	<c:if test="${label.color_no = 2 }">
 											<li>
 												<input type="hidden" value="${label.label_no }" class="select_l_no">
 												<a href="#n" class="card_edit"></a>
@@ -466,8 +466,8 @@
 												<a href="#n" class="card_edit"></a>
 												<span class="card_label green">${label.label_text }</span>
 											</li>
-										</c:if>
-									</c:forEach>
+										</c:if> --%>
+									<%-- </c:forEach>  --%>
 									<!-- <li>
 										<a href="#n" class="card_edit"></a>
 										<span class="card_label red"></span>
@@ -495,7 +495,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+				
 	</section>
 
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>

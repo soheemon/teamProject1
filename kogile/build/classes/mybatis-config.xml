@@ -5,13 +5,33 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias type="kogile.post.Model.PostDTO" alias="PostDTO"/>
-		<typeAlias type="kogile.post.Model.CardDTO" alias="CardDTO"/>
-		<typeAlias type="kogile.post.Model.MemberDTO" alias="MemberDTO"/>
-		<typeAlias type="kogile.post.Model.ChargeDTO" alias="ChargeDTO"/>
-		<typeAlias type="kogile.post.Model.PostMemberDTO" alias="PostMemberDTO"/>
-		<typeAlias type="kogile.post.Model.DdateDTO" alias="DdateDTO"/>
+		<!--chat, startPage card -->
+		<typeAlias type="kogile.chat.Model.ChatDTO" alias="ChatDTO" />
+		<typeAlias type="kogile.project.Model.ProjectDTO"
+			alias="ProjectDTO" />
+		<typeAlias type="kogile.project.Model.InviteDTO"
+			alias="InviteDTO" />
+
+
+		<!--post -->
+		<typeAlias type="kogile.post.Model.PostDTO" alias="PostDTO" />
+		<typeAlias type="kogile.post.Model.CardDTO" alias="CardDTO" />
+		<typeAlias type="kogile.post.Model.MemberDTO"
+			alias="MemberDTO" />
+		<typeAlias type="kogile.post.Model.ChargeDTO"
+			alias="ChargeDTO" />
+		<typeAlias type="kogile.post.Model.PostMemberDTO"
+			alias="PostMemberDTO" />
+		<typeAlias type="kogile.post.Model.DdateDTO"
+			alias="DdateDTO" />
+		
+		<!-- label -->	
+		<typeAlias type="kogile.post.Model.LabelDTO" alias="Label"/>
+		<typeAlias type="kogile.post.Model.LabelInfoDTO" alias="LabelInfo"/>
+
 	</typeAliases>
+
+
 
 	<environments default="development">
 		<environment id="development">
@@ -28,7 +48,10 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="kogile/post/Mapper/Post.xml"/>
+		<mapper resource="kogile/chat/Mapper/Chat.xml" />
+		<mapper resource="kogile/project/Mapper/Project.xml" />
+		<mapper resource="kogile/post/Mapper/Post.xml" />
+		<mapper resource="kogile/example/Mapper/Example.xml" />
+		<mapper resource="kogile/post/Mapper/PostLabel.xml" />
 	</mappers>
-
 </configuration>

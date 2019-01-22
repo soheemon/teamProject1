@@ -3,7 +3,7 @@ package kogile.post.Service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kogile.post.Model.PostService;
+import kogile.post.Service.PostService;
 
 public class DeleteDdateAction implements Action {
 

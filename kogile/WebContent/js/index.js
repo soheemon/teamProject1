@@ -21,23 +21,5 @@ $(document).ready(function(){
         },300);
       });
       
-      //label(0122)
-      var click_check = $('.label_btn').hasClass('on');
-
-      $('.label_btn').on('click', function(){
-        click_check = $('.label_btn').hasClass('on');
-        if(click_check == false){
-          $(this).addClass('on');
-          $('.label_box').show();
-        }else{
-          $(this).removeClass('on');
-          $('.label_box').hide();
-        }
-        return false;
-      });
-
-      $('.label_close').on('click', function(){
-        $('.label_btn').removeClass('on');
-        $('.label_box').hide();
-      });
+      
 });
