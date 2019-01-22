@@ -17,6 +17,9 @@ public class DeleteInviteListAction implements Action {
 		list.setNo(Integer.parseInt(request.getParameter("no")));
 		list.setPjt_no(Integer.parseInt(request.getParameter("pjt_no")));
 		
+		System.out.println("delete getno°ª : " + list.getNo() +"\t" + "delete getpjt_no°ª : "+ list.getPjt_no());
+		System.out.println("list°ª : " + list);
+
 		dao.deleteInviteList(list);
 		
 		ActionForward forward = new ActionForward();

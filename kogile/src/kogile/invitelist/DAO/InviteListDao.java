@@ -54,6 +54,7 @@ public class InviteListDao {
 		SqlSession sqlSession = getsql().openSession();
 		try{
 			re = sqlSession.getMapper(InviteListMapper.class).deleteInviteList(list);
+			System.out.println("delete re°ª : " + re);
 			if(re>0){
 				sqlSession.commit();
 			}else{

@@ -10,19 +10,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<h3>알람리스트</h3>
-	<table width="500" border="1" cellpadding="0" cellspacing="0">
-		<tr>
-			<td>내용</td>
-			<td>시간</td>
-		</tr>
+	알림메시지
+	<p>
 		<c:forEach var="notice" items="${list5}">
-			<tr>
-				<td>${notice.contents}</td>
-				<td>${notice.day}</td>
-			</tr>
+		
+			${notice.contents}
+			
+			${notice.day}
+			<br>
 		</c:forEach>
-	</table>
+	
 </body>
 </html>

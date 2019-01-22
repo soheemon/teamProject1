@@ -8,6 +8,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
+ <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="../bootstrap/js/glyphicons-halflings-regular.eot">
+<link rel="stylesheet" href="../bootstrap/css/font-awesome.min.css">
+
+		
 <script type= "text/javascript">
 	function exit(){
 		var e = confirm("프로젝트에서 나가시겠습니까?");
@@ -21,11 +26,9 @@
 	}
 	
 	function winOpen(){
-		window.open('inviteSearch.jsp', '이메일 검색', 'width=550, height=300');
+		window.open('inviteSearch.jsp', '이메일 검색', 'width=550, height=150');
 	}
-	function winOpen2(){
-		window.open('noticeAction.no', '알람 리스트', 'width=600, height=300');
-	}
+	
 	
 </script>
 </head>
@@ -34,39 +37,24 @@
 <form action="deleteInviteListAction.in" method="post">
 <input type="hidden" name="pjt_no" value=2>
 <!-- 임의의값 -->
-<input type="hidden" name="no" value=6>
+<input type="hidden" name="no" value=2>
 <!-- 임의의값 -->
 <input type="submit" value="프로젝트 나가기" onclick="return exit()">
 </form>
 <br></br>
-<input type="button" value="초대" onclick="winOpen()">
+<button class="btn btn-mini btn-primary" type="button"onclick="winOpen()">+</button>
+
 <br></br>
 <form action="noticeAction.no" method="post">
 <input type="hidden" name="no" value=5></input>
 <input type="submit" value="알림 확인" >
 </form>
 <br></br>
-	<a href="inviteListAction.in?pjt_no=2">프로젝트 참여자</a>
-		<h3>초대리스트</h3>
-	<table width="500" border="1" cellpadding="0" cellspacing="0">
-	<tr>
-		<td>회원번호</td>
-		<td>이름</td>
-		<td>이메일</td>
-		<td>Grade</td>
-		<td>초대번호</td>
-	</tr>
-	<c:forEach var="inviteList" items="${list3}">
-		<tr>
-			<td>${inviteList.no }</td>
-			<td>${inviteList.name }</td>
-			<td>${inviteList.mail }</td>
-			<td>${inviteList.grade}</td>
-			<td>${inviteList.inv_no }</td>
-		</tr>
-	</c:forEach>
-	</table>
-	
 
+ <button class="btn btn-mini btn-primary" type="button" onclick="location.href='inviteListAction.in?pjt_no=2'">참가자</button>
+	<c:forEach var="inviteList" items="${list3}">
+		${inviteList.name }
+	</c:forEach>
+	
 </body>
 </html>
