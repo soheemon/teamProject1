@@ -12,7 +12,6 @@
 		<typeAlias type="kogile.project.Model.InviteDTO"
 			alias="InviteDTO" />
 
-
 		<!--post -->
 		<typeAlias type="kogile.post.Model.PostDTO" alias="PostDTO" />
 		<typeAlias type="kogile.post.Model.CardDTO" alias="CardDTO" />
@@ -28,6 +27,12 @@
 		<!-- label -->	
 		<typeAlias type="kogile.post.Model.LabelDTO" alias="Label"/>
 		<typeAlias type="kogile.post.Model.LabelInfoDTO" alias="LabelInfo"/>
+		
+		<!-- invite notice -->
+		<typeAlias type="kogile.memberboard.Service.MemberBoard" alias="MemberBoard"/>
+		<typeAlias type="kogile.memberboard.Service.MemberSearch" alias="MemberSearch"/>
+		<typeAlias type="kogile.invitelist.Service.InviteList" alias="InviteList"/>
+		<typeAlias type="kogile.notice.Service.Notice" alias="Notice"/>
 
 	</typeAliases>
 
@@ -47,11 +52,16 @@
 		</environment>
 	</environments>
 
+
 	<mappers>
 		<mapper resource="kogile/chat/Mapper/Chat.xml" />
 		<mapper resource="kogile/project/Mapper/Project.xml" />
 		<mapper resource="kogile/post/Mapper/Post.xml" />
 		<mapper resource="kogile/example/Mapper/Example.xml" />
 		<mapper resource="kogile/post/Mapper/PostLabel.xml" />
+		<mapper resource="kogile/memberboard/Mapper/MemberBoard.xml" />
+		<mapper resource="kogile/invitelist/Mapper/InviteList.xml" />
+		<mapper resource="kogile/notice/Mapper/Notice.xml" />
 	</mappers>
+
 </configuration>
