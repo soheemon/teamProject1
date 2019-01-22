@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+
 import kogile.post.DAO.PostDao;
 import kogile.post.DTO.DescriptionDTO;
 import kogile.post.DTO.ReplyDTO;

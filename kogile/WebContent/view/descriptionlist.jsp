@@ -32,6 +32,7 @@
 	
 	
 	<br>
+	
 	<table width="500" border="1" cellpadding="0" cellspacing=0;>
 		<tr>
 			<td>댓글내용</td>
@@ -57,6 +58,7 @@
 		
 	</table>
 	<br><br>
+	
 	<form action="insertReply.do" method="post" >
 		<br> 댓글 <br>
 		<textarea type="text" rows="1.5" cols="70" name="r_contents"></textarea>
