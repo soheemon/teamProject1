@@ -10,13 +10,34 @@ $(document).ready(function(){
       $("html, body").css({overflow : "visible", height : "auto"}).unbind('scroll touchmove mousewheel');
     });
 
-    //draggable
-    $( ".item_content" ).sortable({
-			revert: true
-		});
-		$( ".post" ).draggable({
-			connectToSortable: ".item_content",
-			revert: "invalid"
-		});
-		$( ".item_content, .post" ).disableSelection();
+    $('.menu_open').on('click', function(){
+        $('.menu').animate({
+          right:0
+        },300);
+      });
+      $('.close_btn2').on('click', function(){
+        $('.menu').animate({
+          right:'-350px'
+        },300);
+      });
+      
+      //label(0122)
+      var click_check = $('.label_btn').hasClass('on');
+
+      $('.label_btn').on('click', function(){
+        click_check = $('.label_btn').hasClass('on');
+        if(click_check == false){
+          $(this).addClass('on');
+          $('.label_box').show();
+        }else{
+          $(this).removeClass('on');
+          $('.label_box').hide();
+        }
+        return false;
+      });
+
+      $('.label_close').on('click', function(){
+        $('.label_btn').removeClass('on');
+        $('.label_box').hide();
+      });
 });

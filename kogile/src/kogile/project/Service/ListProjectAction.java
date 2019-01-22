@@ -1,6 +1,5 @@
 package kogile.project.Service;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +15,9 @@ public class ListProjectAction implements Action {
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ProjectService service = ProjectService.getInstance();
 		List<ProjectDTO> list=service.listProjectService(request, response);
-
 		request.setAttribute("List", list);
-
+		
+		
 		ActionForward forward =new ActionForward();
 		forward.setPath("listProject.jsp");
 		forward.setRedirect(false);

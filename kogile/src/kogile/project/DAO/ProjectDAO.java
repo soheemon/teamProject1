@@ -2,11 +2,9 @@ package kogile.project.DAO;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.CallableStatement;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -46,7 +44,6 @@ public class ProjectDAO {
 			re1 = sqlSession.getMapper(ProjectMapper.class).insertBoard(pb);
 			InviteDTO invite = sqlSession.getMapper(ProjectMapper.class).selectPjt();
 			int pjt_no = invite.getPjt_no();
-			System.out.println(pjt_no);
 			re2 = sqlSession.getMapper(ProjectMapper.class).insertInvite(invite);
 			int invite_no = sqlSession.getMapper(ProjectMapper.class).selectInvite();
 			re3 = sqlSession.getMapper(ProjectMapper.class).insertPjt_Info(invite_no);

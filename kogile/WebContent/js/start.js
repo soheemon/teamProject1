@@ -102,15 +102,13 @@
 	
 	
 	function detailPostView(p_no){
-		
 		$.ajax({
 			type : "POST",
-			url : "detailPostAction.do",
 			dataType : "JSON",
-			cache : false,
 			data : {
 				p_no : p_no
-			}
+			},
+			url : "detailPostAction.do"
 //		,
 //			success : function(res){
 //				var p_title =res[0].p_title;

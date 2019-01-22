@@ -12,7 +12,7 @@ public class DeleteLabelAction implements Action {
 		service.deleteLabelService(request, response);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("labellist.post");
+		forward.setPath("labellist.do");
 		forward.setRedirect(false);
 		return forward;
 	}

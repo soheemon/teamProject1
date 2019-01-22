@@ -10,27 +10,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.io.Resources;
-
 import kogile.post.Service.Action;
 import kogile.post.Service.ActionForward;
 import kogile.post.Service.DeleteDdateAction;
-import kogile.post.Service.DeletePostAction;
-import kogile.post.Service.DetailPostAction;
-import kogile.post.Service.InsertPostAction;
-import kogile.post.Service.InsertPostFormAction;
-import kogile.post.Service.ListPostAction;
-import kogile.post.Service.UpdateDdateAction;
-import kogile.post.Service.UpdateDdateFormAction;
-import kogile.post.Service.UpdatePostAction;
-import kogile.post.Service.UpdatePostFormAction;
 import kogile.post.Service.DeleteLabelAction;
 import kogile.post.Service.DeleteLabelInfoAction;
+import kogile.post.Service.DeletePostAction;
+import kogile.post.Service.DetailPostAction;
 import kogile.post.Service.InsertLabelAction;
 import kogile.post.Service.InsertLabelFormAction;
+import kogile.post.Service.InsertPostAction;
+import kogile.post.Service.InsertPostFormAction;
 import kogile.post.Service.ListLabelAction;
+import kogile.post.Service.ListPostAction;
 import kogile.post.Service.PostDetailViewAction;
+import kogile.post.Service.UpdateDdateAction;
+import kogile.post.Service.UpdateDdateFormAction;
 import kogile.post.Service.UpdateLabelAction;
+import kogile.post.Service.UpdatePostAction;
+import kogile.post.Service.UpdatePostFormAction;
 import kogile.post.Service.updateLabelFormAction;
 
 
@@ -175,6 +173,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		// 라벨 생성 (project 단위)
 		}else if(command.equals("insertlabel.do")) {
 			action = new InsertLabelAction();
 			try {
@@ -182,6 +181,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		// 라벨 제거 (project 단위)
 		}else if(command.equals("deleteLabel.do")) {
 			action = new DeleteLabelAction();
 			try {
@@ -189,6 +189,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		}else if(command.equals("insertLabelForm.do")) {
 			action = new InsertLabelFormAction();
 			try {
@@ -196,7 +197,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+			//라벨 수정 (project 단위)
 		}else if(command.equals("updateLabelForm.do")) {
 			action = new updateLabelFormAction();
 			try {
@@ -204,6 +205,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		}else if(command.equals("updateLabel.do")) {
 			action = new UpdateLabelAction();
 			try {
@@ -211,6 +213,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		}else if(command.equals("doDetailView.do")) {
 			action = new PostDetailViewAction();
 			try {
@@ -218,6 +221,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		}else if(command.equals("deleteLabelInfo.do")) {
 			action = new DeleteLabelInfoAction();
 			try {
@@ -225,6 +229,7 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		}else if(command.equals("labellist.do")) {
 			action = new ListLabelAction();
 			try {
@@ -233,8 +238,6 @@ public class PostController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
-
 		
 		if(forward != null) {
 			if(forward.isRedirect()) {
@@ -246,7 +249,6 @@ public class PostController extends HttpServlet {
 		}
 		
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

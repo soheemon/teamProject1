@@ -54,7 +54,45 @@
 						href="#n">Team Visible</a></span>
 				</div>
 				<div class="menu_right">
-					<span><a href="#n">··· Show Menu</a></span>
+					<span><a href="#n" class="menu_open">··· Show Menu</a></span>
+					<div class="menu">
+						<h3 class="title_m">MENU</h3>
+						<ul class="sub_menu">
+							<li><a href="#n">Project Delete</a></li>
+							<li><a href="listChatRoomAction.chat">Chat</a></li>
+							<li><a href="#n">Activity</a>
+								<ul>
+									<li><a href="#n">
+											<div class="act_left">
+												<span class="name">병록</span>
+											</div>
+											<div class="act_right">
+												<span><em>윤병록</em>added ㅇㅇ to this board</span> <span
+													class="time">18 minutes ago</span>
+											</div>
+									</a></li>
+									<li><a href="#n">
+											<div class="act_left">
+												<span class="name">병록</span>
+											</div>
+											<div class="act_right">
+												<span><em>윤병록</em>added ㅇㅇ to this board</span> <span
+													class="time">18 minutes ago</span>
+											</div>
+									</a></li>
+									<li><a href="#n">
+											<div class="act_left">
+												<span class="name">병록</span>
+											</div>
+											<div class="act_right">
+												<span><em>윤병록</em>added ㅇㅇ to this board</span> <span
+													class="time">18 minutes ago</span>
+											</div>
+									</a></li>
+								</ul></li>
+						</ul>
+						<button class="close_btn2">close</button>
+					</div>
 				</div>
 			</div>
 
@@ -318,7 +356,7 @@
 						<div class="addcard_holder holder">
 							<h3 class="title_c">ADD TO CARD</h3>
 							<div class="btn_list">
-								<a href="">Members</a> <a href="">Labels</a> <a href="">Checklist</a>
+								<a href="">Members</a> <a href="" class="label_btn">Labels</a> <a href="">Checklist</a>
 								<a href="">Due Date</a> <a href="">Attachment</a>
 							</div>
 						</div>
@@ -335,6 +373,7 @@
 									href="">Archive</a> <a href="">Share</a>
 							</div>
 						</div>
+						
 					</div>
 				</div>
 				<button class="close_btn">close</button>
@@ -388,6 +427,75 @@
 				<button class="close_btn">close</button>
 			</div>
 		</div>
+		
+		<div class="label_box">
+					<div class="label_header">
+						<h3 class="title_h">Labels</h3>
+						<button class="label_close">close</button>
+					</div>
+					<div>
+						<div class="label_list">
+							<div>
+								<!-- <input class="search_label" type="text" placeholder="Search labels..."> -->
+								<ul>
+									<c:forEach items="${label }" var="label">
+										<c:if test="${label.color_no = 1 }">
+											<li>
+												<input type="hidden" value="${label.label_no }" class="select_l_no">
+												<a href="#n" class="card_edit"></a>
+												<span class="card_label red">${label.label_text }</span>
+											</li>
+										</c:if>
+										<c:if test="${label.color_no = 2 }">
+											<li>
+												<input type="hidden" value="${label.label_no }" class="select_l_no">
+												<a href="#n" class="card_edit"></a>
+												<span class="card_label orange">${label.label_text }</span>
+											</li>
+										</c:if>
+										<c:if test="${label.color_no = 3 }">
+											<li>
+												<input type="hidden" value="${label.label_no }" class="select_l_no">
+												<a href="#n" class="card_edit"></a>
+												<span class="card_label yellow">${label.label_text }</span>
+											</li>
+										</c:if>
+										<c:if test="${label.color_no = 4 }">
+											<li>
+												<input type="hidden" value="${label.label_no }" class="select_l_no">
+												<a href="#n" class="card_edit"></a>
+												<span class="card_label green">${label.label_text }</span>
+											</li>
+										</c:if>
+									</c:forEach>
+									<!-- <li>
+										<a href="#n" class="card_edit"></a>
+										<span class="card_label red"></span>
+									</li>
+									<li>
+										<a href="#n" class="card_edit"></a>
+										<span class="card_label orange"></span>
+									</li>
+									<li>
+										<a href="#n" class="card_edit"></a>
+										<span class="card_label yellow"></span>
+									</li>
+									<li>
+										<a href="#n" class="card_edit"></a>
+										<span class="card_label green"></span>
+									</li> -->
+									
+								</ul>
+							</div>
+							<div class="label_btm">
+								<a href="#n" class="create_label">Create a new label</a>
+								<hr>
+								<a href="#n" class="label_mode">Enable color blind friendly mode.</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 	</section>
 
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>

@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.smartcardio.CommandAPDU;
-
-import org.apache.ibatis.io.Resources;
 
 import kogile.project.Service.Action;
 import kogile.project.Service.ActionForward;
@@ -47,7 +44,6 @@ public class ProjectController extends HttpServlet {
 		
 		Action action = null;
 		ActionForward forward = null;
-		System.out.println(command);
 		
 		if(command != null) {
 			if(command.equals("insertProject.pjt")) {
@@ -74,6 +70,7 @@ public class ProjectController extends HttpServlet {
 				}
 			}else if(command.equals("detailProject.pjt")) {
 				action = new DetailProjectAction();
+				System.out.println(123);
 				try {
 					forward = action.excute(request, response);
 				} catch (Exception e) {

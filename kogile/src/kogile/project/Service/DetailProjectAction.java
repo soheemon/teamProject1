@@ -5,12 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kogile.post.Model.PostDTO;
-import kogile.post.Model.PostService;
+import kogile.post.Model.LabelDTO;
+import kogile.post.Service.PostService;
 import kogile.project.DAO.ProjectService;
 import kogile.project.Model.ProjectDTO;
-import kogile.project.Service.Action;
-import kogile.project.Service.ActionForward;
 
 public class DetailProjectAction implements Action {
 
@@ -21,6 +19,11 @@ public class DetailProjectAction implements Action {
 		
 		PostService postService = PostService.getInstance();
 		postService.listPostActionService(request, response);
+		
+
+		PostService service2 = PostService.getInstance();
+		List<LabelDTO> list2 = service2.listlabel(request, response);
+		request.setAttribute("Label", list2);
 		
 		request.setAttribute("project", pb);
 
