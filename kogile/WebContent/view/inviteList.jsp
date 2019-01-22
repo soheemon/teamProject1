@@ -54,6 +54,7 @@
 		<td>이름</td>
 		<td>이메일</td>
 		<td>Grade</td>
+		<td>초대번호</td>
 	</tr>
 	<c:forEach var="inviteList" items="${list3}">
 		<tr>
@@ -61,6 +62,7 @@
 			<td>${inviteList.name }</td>
 			<td>${inviteList.mail }</td>
 			<td>${inviteList.grade}</td>
+			<td>${inviteList.inv_no }</td>
 		</tr>
 	</c:forEach>
 	</table>

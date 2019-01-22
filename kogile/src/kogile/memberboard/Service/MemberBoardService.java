@@ -20,49 +20,28 @@ public class MemberBoardService {
 		dao = MemberBoardDao.getInstance();
 		return service;
 	}
-	
-	public int insertMemberBoardService(HttpServletRequest request){
+
+	public int insertNoticeService(HttpServletRequest request){
 		MemberBoard board = new MemberBoard();
 		
 		board.setNo(Integer.parseInt(request.getParameter("no")));
 		board.setPjt_no(Integer.parseInt(request.getParameter("pjt_no")));
+		System.out.println("board와 서비스 비교 : " + board);
+		dao.insertMemberBoard(board);
 		
-		return dao.insertMemberBoard(board);
+		board.getNo();
+		System.out.println("board.getNo : " + board.getNo());
 		
-	}
-	/*
-	public InviteList inviteListService(HttpServletRequest request){
-		//int inv_no = Integer.parseInt(request.getParameter("inv_no"));
-
-		int inv_no = 80;
-		
-		InviteList invite = dao.selectInvite(inv_no);
-
+		InviteList invite = dao.selectInvite(board.getNo());
+		invite.setNo(board.getNo());
 		request.setAttribute("invite", invite);
-		invite.getNo();
-		invite.getInv_no();
-		
-		
-		return invite;
-		
-	}*/
-	
-	public int insertNoticeService(HttpServletRequest request){
-		
-		int inv_no = 80;
-		
-		InviteList invite = dao.selectInvite(inv_no);
-
-		request.setAttribute("invite", invite);
+		System.out.println("invite 값 : " + invite);
 		invite.getNo();
 		invite.getInv_no();
 		System.out.println("invite.getNo값 : "  + invite.getNo() +"\t" + "invite.getInv_no값 : "  + invite.getInv_no());
 		
 		Notice notice = new Notice();
-		
-		//request.getAttribute("invite");
-		//System.out.println("getAttribute : " + request.getAttribute("invite"));
-		
+
 		notice.setNo(invite.getNo());
 		notice.setInv_no(invite.getInv_no());
 		System.out.println("서비스 notice" + notice);

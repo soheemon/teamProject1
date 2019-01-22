@@ -37,7 +37,7 @@
 			<input type="hidden" name="no" value=${memberBoard.no }>
 			<input type="hidden" name="name" value=${memberBoard.name }>
 			<input type="hidden" name="mail" value=${memberBoard.mail }>
-
+			
 				${memberBoard.name } ||
 				${memberBoard.mail }
 		<input type="submit" value="초대" onclick="return yesNo()">		

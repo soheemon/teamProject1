@@ -14,7 +14,6 @@ public interface MemberBoardMapper {
 	List<MemberBoard> memberBoard2(MemberSearch search);
 	
 	int insertMemberBoard(MemberBoard board);
-	InviteList selectInvite(int inv_no);
-	//InviteList selectInvite2(int inv_no);
+	InviteList selectInvite(int no);
 	int insertNotice(Notice notice);
 }

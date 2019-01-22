@@ -7,11 +7,8 @@ public class InsertMemberBoardAction implements Action {
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//request.setCharacterEncoding("utf-8");
-		
 		MemberBoardService service = MemberBoardService.getInstance();
-		service.insertMemberBoardService(request);
-		//service.inviteListService(request);
+		
 		service.insertNoticeService(request);
 		
 		ActionForward forward = new ActionForward();

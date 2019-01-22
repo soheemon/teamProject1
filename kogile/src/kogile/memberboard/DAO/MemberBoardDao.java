@@ -40,7 +40,7 @@ public class MemberBoardDao {
 		SqlSession sqlSession = getSql().openSession();
 		try {
 			re1 = sqlSession.getMapper(MemberBoardMapper.class).insertMemberBoard(board);
-
+			System.out.println("insertmemberboard re1 값 : " + re1); // 1이 떠야함.
 			if(re1>0){
 				sqlSession.commit();
 			}else{
@@ -74,22 +74,19 @@ public class MemberBoardDao {
 		return list;
 	}
 	
-	public InviteList selectInvite(int inv_no){
+	public InviteList selectInvite(int no){
 		
 		InviteList invite = null;
-		//InviteList invite2 = null;
 		
 		SqlSession sqlSession = getSql().openSession();
 		try{
-			invite = sqlSession.getMapper(MemberBoardMapper.class).selectInvite(inv_no);
-			//invite2 = sqlSession.getMapper(MemberBoardMapper.class).selectInvite2(inv_no);
-	
-			//invite.addAll(invite2);
+			invite = sqlSession.getMapper(MemberBoardMapper.class).selectInvite(no);			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		return invite;
 	}
+	
 	//insertNotice 김근열
 	public int insertNotice(Notice notice){
 
