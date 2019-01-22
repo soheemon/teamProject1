@@ -8,17 +8,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
+ <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-	알림메시지
-	<p>
-		<c:forEach var="notice" items="${list5}">
-		
-			${notice.contents}
-			
-			${notice.day}
-			<br>
-		</c:forEach>
 	
+	<table class="table-striped"width="500" border="1" cellpadding="0" cellspacing="0">
+
+		<c:forEach var="notice" items="${list5}">
+			<tr>
+				<td>${notice.contents}</td>
+				<td>${notice.day}</td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>

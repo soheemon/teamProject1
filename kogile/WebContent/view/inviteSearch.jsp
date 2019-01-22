@@ -29,7 +29,7 @@
 		<input type="submit"value="검색 " ></input>
 	  </form>
 	<br>
-	
+	<table class="table-striped"width="500" border="0" cellpadding="0" cellspacing="0">
 	<c:forEach var="memberBoard" items="${list}">
 	<form action="insertMemberBoardAction.me" method="post">
 			<input type="hidden" name="pjt_no" value=2>
@@ -37,13 +37,16 @@
 			<input type="hidden" name="no" value=${memberBoard.no }>
 			<input type="hidden" name="name" value=${memberBoard.name }>
 			<input type="hidden" name="mail" value=${memberBoard.mail }>
-		
-				${memberBoard.name } ||
-				${memberBoard.mail }
-		<input type="submit" value="초대 " onclick="return yesNo()">		
+			<tr>
+				<td>${memberBoard.name }</td>
+				<td>${memberBoard.mail }
+				
+			
+		<input type="submit" value="초대 " onclick="return yesNo()">	</td>
+			</tr>		
 		</form>
 	</c:forEach>
-		
+		</table>
 
 		<br>
 	

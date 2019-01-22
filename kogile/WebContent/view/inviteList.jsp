@@ -39,21 +39,21 @@
 <!-- 임의의값 -->
 <input type="hidden" name="no" value=2>
 <!-- 임의의값 -->
-<input type="submit" value="프로젝트 나가기" onclick="return exit()">
+<button type="submit" value="Project Exit" onclick="return exit()"><span class="glyphicon glyphicon-remove"></span></button>
 </form>
 <br></br>
-<button class="btn btn-mini btn-primary" type="button"onclick="winOpen()">+</button>
+<button class="btn btn-mini btn-primary" type="button"onclick="winOpen()"><span class="glyphicon glyphicon-plus"></span></button>
 
 <br></br>
 <form action="noticeAction.no" method="post">
 <input type="hidden" name="no" value=5></input>
-<input type="submit" value="알림 확인" >
+<button type="submit" class="btn btn-mini btn-primary" value="알림 확인" ><span class="glyphicon glyphicon-bell"></span></button>
 </form>
 <br></br>
 
  <button class="btn btn-mini btn-primary" type="button" onclick="location.href='inviteListAction.in?pjt_no=2'">참가자</button>
 	<c:forEach var="inviteList" items="${list3}">
-		${inviteList.name }
+		<span class="glyphicon glyphicon-user">${inviteList.name }</span>
 	</c:forEach>
 	
 </body>
