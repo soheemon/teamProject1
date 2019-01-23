@@ -66,6 +66,6 @@
 		<mapper resource="kogile/memberboard/Mapper/MemberBoard.xml" />
 		<mapper resource="kogile/invitelist/Mapper/InviteList.xml" />
 		<mapper resource="kogile/notice/Mapper/Notice.xml" />
-		<!-- <mapper resource="kogile/post/Mapper/Post.xml" /> -->
+		<mapper resource="kogile/post/Mapper/Post.xml" />
 	</mappers>
 </configuration>
