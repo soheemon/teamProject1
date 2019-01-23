@@ -147,7 +147,7 @@
 						<h3 class="title_m">MENU</h3>
 						<ul class="sub_menu">
 							<li><a href="#n">Project Delete</a></li>
-							<li><a href="listChatRoomAction.chat">Chat</a></li>
+							<li><a href="chat.jsp">Chat</a></li>
 							<li><a href="#n">Activity</a>
 								<ul>
 									<li><a href="#n">
@@ -205,7 +205,7 @@
 									<a href="#n" class="detailPostView post ui-state-default" data-status="${card.c_no }">
 										<div class="post_item">
 											<input type="hidden" class="select_pno" value="${post.p_no}">
-											<!-- <div class="progress"></div> -->
+								
 											<h4>${post.p_title}</h4>
 											<div class="btn_box">
 												<span class="list"></span> <span class="check">0/4</span> <span

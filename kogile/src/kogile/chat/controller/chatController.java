@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.io.Resources;
 
+
 import kogile.chat.Service.Action;
 import kogile.chat.Service.ActionForward;
+import kogile.chat.Service.ChatAction;
 import kogile.chat.Service.ChatInsertAction;
 import kogile.chat.Service.ChatListAction;
 
@@ -43,6 +45,13 @@ public class chatController extends HttpServlet {
 				}
 			}else if(command.equals("chatList.chat")) {
 				action = new ChatListAction();
+				try {
+					forward = action.excute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if (command.equals("chatAction.chat")) {
+				action = new ChatAction();
 				try {
 					forward = action.excute(request, response);
 				} catch (Exception e) {

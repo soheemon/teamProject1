@@ -12,7 +12,7 @@
       			
       		}
       	
-      	}).then(function() {
+      	}).then(function(res) {
       		console.log("성공");
       	}).catch(function(err){
       		console.log("실패");
