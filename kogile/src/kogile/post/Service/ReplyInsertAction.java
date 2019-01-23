@@ -16,10 +16,10 @@ public class ReplyInsertAction implements Action {
 		//알림 보내는 서비스 호출
 		service.insertTagNoticeService(request);
 		
-		ActionForward forward =new ActionForward();
-		forward.setRedirect(true);
-		forward.setPath("descriptionlist.do");
-		return forward;
+//		ActionForward forward =new ActionForward();
+//		forward.setRedirect(true);
+//		forward.setPath("descriptionlist.do");
+		return null;
 	}
 
 }

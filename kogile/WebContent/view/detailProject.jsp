@@ -326,7 +326,7 @@
 							<h3 class="title_p">Description</h3>
 							<a href="#n" class="edit">Edit</a>
 							<div class="holder_inner">
-								<span class="list_title">발표때 이거 포함하기</span>
+								<span id="myDescription" class="list_title"></span>
 								<ul>
 									<li >
 									
@@ -342,9 +342,27 @@
 								<a href="#n" class="save_btn">Save</a>
 							</div>
 						</div>
-						<div class="active_holder holder">
+						<div class="active_holder holder" id="myReply">
 							<h3 class="title_p">Activity</h3>
-							<ul>
+								<table id ="reply" width="500" border="1" cellpadding="0" cellspacing=0;>
+
+								</table>
+								<form action="insertReply.do" method="post" >
+									<br> 댓글 <br>
+									<textarea type="text" rows="1.5" cols="70" name="r_contents" id="r_contents"></textarea>
+									<br>
+									<br>태그할사람
+									<input type="text" id="autocomplete" name="t.info_no">
+									<br><input type="submit" id="Replysubmit" value="등록">
+								</form>
+									<form action="replyUpdateForm.do" method="post" id="replyUpdateForm" style="display:none">
+										<input type="hidden" name="r_no" id="r_no">
+										<input type="hidden" name="info_no" id="info_no">
+										<br> 댓글 <br>
+										<textarea rows="1.5" cols="70" name="r_contents" id="updateFormContents">${replyOrgin.r_contents }</textarea>
+										<br> <input type="submit" id="updateSubmit" value="수정">
+									</form>
+							<!-- <ul>
 								<li><span class="name">철희</span>
 									<div class="input_box">
 										<span class="fullname">정철희</span> <span class="date">Jan
@@ -352,21 +370,7 @@
 											ㅎㅇㅎㅇ
 										</span> <a href="#n" class="rep_btn">Reply</a>
 									</div></li>
-								<li><span class="name">철희</span>
-									<div class="input_box">
-										<span class="fullname">정철희</span> <span class="date">Jan
-											16 at 10:00 AM</span> <span class="cts"> <span class="id">@junjang7</span>
-											ㅎㅇㅎㅇ
-										</span> <a href="#n" class="rep_btn">Reply</a>
-									</div></li>
-								<li><span class="name">철희</span>
-									<div class="input_box">
-										<span class="fullname">정철희</span> <span class="date">Jan
-											16 at 10:00 AM</span> <span class="cts"> <span class="id">@junjang7</span>
-											ㅎㅇㅎㅇ
-										</span> <a href="#n" class="rep_btn">Reply</a>
-									</div></li>
-							</ul>
+							</ul> -->
 						</div>
 					</div>
 					<div class="right_list">
@@ -515,9 +519,10 @@
 				
 	</section>
 
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js"></script>
+	<script src="../js/god.js"></script>
 	<script src="../bootstrap/js/bootstrap.min.js"></script>
-	<script src="../js/jquery-ui.min.js"></script>
 	<script src="../js/index.js"></script>
 	<script src="../js/start.js"></script>
 

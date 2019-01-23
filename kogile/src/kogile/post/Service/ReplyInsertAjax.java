@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -22,10 +23,11 @@ public class ReplyInsertAjax implements Action {
 		String requestBody = getBody(request, response);
 		JSONParser jsonParser = new JSONParser();
 		JSONObject jsonData = (JSONObject) jsonParser.parse(requestBody);
+		HttpSession session = request.getSession();
 		
 		//댓글작성 서비스 호출
 		ReplyDTO reply = new ReplyDTO();
-		int p_no = Integer.parseInt((String)jsonData.get("p_no"));
+		int p_no = (Integer)session.getAttribute("p_no");
 		int info_no = Integer.parseInt((String)jsonData.get("info_no"));
 
 		reply.setP_no(p_no);

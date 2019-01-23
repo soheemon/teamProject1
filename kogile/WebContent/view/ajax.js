@@ -1,7 +1,7 @@
 
 $(function() {
 	replyPrint();
-	$('#submit').click(replyInsert);
+	$('#Replysubmit').click(replyInsert);
 	$('#updateSubmit').click(replyUpdate);
 	$('#desATag').click(desFormShow);
 	//$('replyUpdateForm').click();
@@ -141,7 +141,6 @@ function parse(data) {
 		//console.log(reply);
 		printData(reply);
 	}
-	var descriptionArr=JSON.parse(data);
 }
 function printMenu(table) {
 	

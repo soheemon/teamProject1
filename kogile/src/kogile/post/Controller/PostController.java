@@ -76,8 +76,8 @@ public class PostController extends HttpServlet {
 			session.removeAttribute("p_no");
 			session.setAttribute("p_no", Integer.parseInt(request.getParameter("p_no")));
 		}
-//		System.out.println(session.getAttribute("p_no"));
-		System.out.println(session.getAttribute("pjt_no"));
+		System.out.println("session p_no =" + session.getAttribute("p_no"));
+		System.out.println("session pjt_no=" + session.getAttribute("pjt_no"));
 		
 		
 		// insertPostFormActon (Post를 생성하는 Form으로 이동)

@@ -414,7 +414,7 @@ public class PostService {
 		return dao.insertDescription(description);
 	}
 	//포스트 내부페이지 보이기
-	public DescriptionDTO descriptionDetailService(HttpServletRequest request, HttpServletResponse response)throws Exception{
+	public void descriptionDetailService(HttpServletRequest request, HttpServletResponse response)throws Exception{
 		//session 에서pno 정보 받아서 설명 출력
 		HttpSession session = request.getSession();
 		
@@ -425,11 +425,10 @@ public class PostService {
 		
 		JSONArray jsonarr = new JSONArray();
 		jsonarr.add(detail);
-		
 		response.setCharacterEncoding("utf-8");
 		response.getWriter().print(jsonarr.toString());
 		
-		return detail;
+//		return detail;
 	}
 	//설명 삭제
 	public int deleteDescription(HttpServletRequest request)throws Exception {

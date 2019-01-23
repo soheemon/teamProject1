@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.w3c.dom.Document;
 
@@ -20,15 +21,16 @@ public class DescriptionlistAjax implements Action {
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("ajax action");
+		HttpSession session = request.getSession();
 		
 		PostDao dao = PostDao.getInstance();
-		int p_no=1;
+		int p_no= (Integer)session.getAttribute("p_no");
+		System.out.println(p_no);
 		List<ReplyMemberDTO> replyList = dao.replyMemberList(p_no);
 
 		//멤버를 포함한 리스트를 가져온다.
 		//아까 했던것처럼 똑같이 보내줌 
 		JSONArray jsonarr = new JSONArray();
-		
 		jsonarr = JSONArray.fromObject(replyList);
 		
 		System.out.println(jsonarr.toString());
