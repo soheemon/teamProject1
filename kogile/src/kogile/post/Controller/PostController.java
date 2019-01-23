@@ -17,10 +17,14 @@ import kogile.post.Service.DescriptionInsertActionForm;
 import kogile.post.Service.DescriptionListAction;
 import kogile.post.Service.DescriptionUpdateAction;
 import kogile.post.Service.DescriptionUpdateActionForm;
+import kogile.post.Service.DescriptionlistAjax;
 import kogile.post.Service.ReplyDeleteAction;
 import kogile.post.Service.ReplyInsertAction;
+import kogile.post.Service.ReplyInsertAjax;
 import kogile.post.Service.ReplyUpdateAction;
 import kogile.post.Service.ReplyUpdateActionForm;
+import kogile.post.Service.ReplyUpdateAjax;
+import kogile.post.Service.ReplyUpdateFormAjax;
 
 
 
@@ -36,6 +40,7 @@ public class PostController extends HttpServlet {
 		String contextPath= request.getContextPath();
 		// *.do만 나오게 짤라
 		String command=requestUri.substring(contextPath.length()+6);
+		System.out.println(command);
 		Action action=null;
 		ActionForward forward = null;
 		
@@ -114,6 +119,41 @@ public class PostController extends HttpServlet {
 			//댓글 수정
 		}else if(command.equals("replyUpdateForm.do")) {
 			action= new ReplyUpdateAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("descriptionlistAjax.do")) {
+			action= new DescriptionlistAjax();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("insertReplyAjax.do")) {
+			action= new ReplyInsertAjax();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("UpdateReplyFormAjax.do")) {
+			action= new ReplyUpdateFormAjax();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("UpdateReplyAjax.do")) {
+			action= new ReplyUpdateAjax();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("insertDescriptionAjax.do")) {
+			action= new insertDescriptionAjax();
 			try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {

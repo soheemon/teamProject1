@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>글쓰기</h3>
+	<!-- <h3>글쓰기</h3>
 <hr>
 
 <form action="insertDescription.do" method="post">
@@ -16,7 +16,7 @@
 	<textarea rows="6" cols="70" name="d_contents"></textarea>
 	<br>
 	<input type="submit" value="등록">
-</form>
+</form> -->
 
 </body>
 </html>

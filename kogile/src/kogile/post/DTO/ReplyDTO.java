@@ -60,4 +60,10 @@ public class ReplyDTO implements Serializable {
 		this.info_no = info_no;
 	}
 
+	@Override
+	public String toString() {
+		return "ReplyDTO [r_no=" + r_no + ", r_contents=" + r_contents + ", r_date=" + r_date + ", p_no=" + p_no
+				+ ", info_no=" + info_no + "]";
 	}
+	
+}
