@@ -21,6 +21,7 @@ import kogile.post.Model.LabelInfoDTO;
 import kogile.post.Model.MemberDTO;
 import kogile.post.Model.PostDTO;
 import kogile.post.Model.PostMemberDTO;
+import kogile.project.Model.PostDragDTO;
 import net.sf.json.JSONArray;
 
 public class PostService {
@@ -454,7 +455,7 @@ public class PostService {
 		//댓글내용받아와 셋팅
 		reply.setR_contents(request.getParameter("r_contents"));
 		//훗날 수정필요 >>포스트넘버 셋팅 , 사용자 셋팅
-		reply.setP_no(1);
+		reply.setP_no(2);
 		reply.setInfo_no(1);
 		return dao.insertReply(reply);
 	}
@@ -471,7 +472,7 @@ public class PostService {
 	//댓글 작성자
 	public List<ReplyMemberDTO> replyMemberListService(HttpServletRequest request)throws Exception{
 		//훗날 수정필요 >> 포스트 넘버 셋팅
-		int p_no =1;
+		int p_no =2;
 		//댓글 작성자 셋팅
 		List<ReplyMemberDTO> list = dao.replyMemberList(p_no);
 		request.setAttribute("memberList", list);
@@ -554,6 +555,7 @@ public class PostService {
 		request.setAttribute("tagMember", list);
 		return list;
 	}
+	
 	//알림가게 하기
 	public int insertTagNoticeService(HttpServletRequest request)throws Exception {
 		TagDTO tag = new TagDTO();
@@ -580,6 +582,32 @@ public class PostService {
 			//알람이 가도록한다
 			return dao.insertTagNotice(tag);
 		}
+		
+	}
+	
+	public void PostDragService(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		HttpSession session = request.getSession(); 
+		
+		// p_no를 session에서 가져온다.
+		int p_no = (Integer)session.getAttribute("p_no");
+		
+		// 옮긴 후의 card no를 가져와야 함
+		int new_c_no = Integer.parseInt(request.getParameter("new_c_no"));
+		System.out.println(new_c_no);
+		// 옮기기 전의 card no를 가져온다.
+		int old_c_no = Integer.parseInt(request.getParameter("old_c_no"));
+		System.out.println(old_c_no);
+		// 객체 생성
+		PostDragDTO postDragDTO = new PostDragDTO();
+		
+		// 가져온 값을 set
+		postDragDTO.setP_no(p_no);
+		postDragDTO.setNew_c_no(new_c_no);
+		postDragDTO.setOld_c_no(old_c_no);
+		
+		// mapping 한다.
+		dao.dragPost(postDragDTO);
 		
 	}
 	

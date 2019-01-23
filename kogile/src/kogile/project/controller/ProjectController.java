@@ -37,10 +37,17 @@ public class ProjectController extends HttpServlet {
 			int pjt_no = Integer.parseInt(request.getParameter("pjt_no"));
 			session.removeAttribute("pjt_no");
 			session.setAttribute("pjt_no", pjt_no);
+			System.out.println("session p_no =" + session.getAttribute("pjt_no"));
+		}
+		if(request.getParameter("p_no") != null) {
+			session.removeAttribute("p_no");
+			session.setAttribute("p_no", Integer.parseInt(request.getParameter("p_no")));
+			System.out.println("session p_no =" + session.getAttribute("p_no"));
 		}
 		
 		
 		String command = request.getRequestURI().substring(request.getContextPath().length()+6);
+		System.out.println("pjt" + command);
 		
 		Action action = null;
 		ActionForward forward = null;

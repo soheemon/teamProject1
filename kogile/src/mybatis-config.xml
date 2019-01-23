@@ -39,6 +39,9 @@
 		<typeAlias type="kogile.post.DTO.ReplyUpdateSearchDTO" alias="ReplyUpdateSearchDTO"/>
 		<typeAlias type="kogile.post.DTO.ReplyMemberDTO" alias="ReplyMemberDTO"/>
 		<typeAlias type="kogile.post.DTO.TagDTO" alias="TagDTO"/>
+		
+		<!-- drag -->
+		<typeAlias type="kogile.project.Model.PostDragDTO" alias="PostDragDTO"/>
 	</typeAliases>
 
 

@@ -42,6 +42,7 @@ import kogile.post.Service.UpdateDdateAction;
 import kogile.post.Service.UpdateDdateFormAction;
 import kogile.post.Service.UpdateLabelAction;
 import kogile.post.Service.UpdatePostAction;
+import kogile.post.Service.UpdatePostDragAction;
 import kogile.post.Service.UpdatePostFormAction;
 import kogile.post.Service.insertDescriptionAjax;
 import kogile.post.Service.updateLabelFormAction;
@@ -63,21 +64,21 @@ public class PostController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		
-		
+		System.out.println(command);
 		
 		HttpSession session = request.getSession();
 		
 		if(request.getParameter("pjt_no") != null) {
 			session.removeAttribute("pjt_no");
 			session.setAttribute("pjt_no", Integer.parseInt(request.getParameter("pjt_no")));
+			System.out.println("session pjt_no=" + session.getAttribute("pjt_no"));
 		}
 		
 		if(request.getParameter("p_no") != null) {
 			session.removeAttribute("p_no");
 			session.setAttribute("p_no", Integer.parseInt(request.getParameter("p_no")));
+			System.out.println("session p_no =" + session.getAttribute("p_no"));
 		}
-		System.out.println("session p_no =" + session.getAttribute("p_no"));
-		System.out.println("session pjt_no=" + session.getAttribute("pjt_no"));
 		
 		
 		// insertPostFormActon (Post를 생성하는 Form으로 이동)
@@ -360,6 +361,13 @@ public class PostController extends HttpServlet {
 			}
 		}else if(command.equals("insertDescriptionAjax.do")) {
 			action= new insertDescriptionAjax();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("updatePostDragAction.do")) {
+			action = new UpdatePostDragAction();
 			try {
 				forward = action.excute(request, response);
 			} catch (Exception e) {

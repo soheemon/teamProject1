@@ -162,7 +162,7 @@
 	<!-- list -->
 	<select id="listPost" parameterType="int" resultType="PostDTO">
 		select
-		p.p_no, p.p_title, p.c_no From post p
+		* From post p
 		join card c
 		on p.c_no = c.c_no
 		where c.pjt_no = #{pjt_no}
@@ -299,5 +299,11 @@
 
 		order by t.total_m_no
 	</select>
+	
+	<update id="dragPost" parameterType="PostDragDTO">
+		update post set c_no = #{new_c_no}
+		where c_no = #{old_c_no}
+		and p_no = #{p_no}
+	</update>
 	
 </mapper>

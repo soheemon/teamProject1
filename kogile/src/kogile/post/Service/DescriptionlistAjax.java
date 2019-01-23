@@ -20,12 +20,10 @@ public class DescriptionlistAjax implements Action {
 	//class Re
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("ajax action");
 		HttpSession session = request.getSession();
 		
 		PostDao dao = PostDao.getInstance();
 		int p_no= (Integer)session.getAttribute("p_no");
-		System.out.println(p_no);
 		List<ReplyMemberDTO> replyList = dao.replyMemberList(p_no);
 
 		//멤버를 포함한 리스트를 가져온다.

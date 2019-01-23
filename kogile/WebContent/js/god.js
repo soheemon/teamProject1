@@ -1,14 +1,35 @@
 (function($) {
+	
+	function DragPost(elementStatus, containerStatus, p_no) {
+    	  
+      	$.ajax({
+      		type : "POST",
+      		url : "updatePostDragAction.do",
+      		data : {
+      			old_c_no : elementStatus,
+      			new_c_no : containerStatus,
+      			p_no : p_no
+      			
+      		}
+      	
+      	}).then(function() {
+      		console.log("성공");
+      	}).catch(function(err){
+      		console.log("실패");
+      	})
+      }
+    
+	
   // drag 가 일어나고 있는 Container 를 담아둔다.
   var currentContainer = null;
 
   // event target list
   dragula(
     [
-      document.getElementById("to-do"),
-      document.getElementById("doing"),
-      document.getElementById("done"),
-      document.getElementById("close")
+      document.getElementById("1"),
+      document.getElementById("2"),
+      document.getElementById("3"),
+      document.getElementById("4")
     ],
     {
       removeOnSpill: false
@@ -22,7 +43,7 @@
       // drag event 가 끝났을때 update 여부를 판단한다.
 
       var $currentElement = $(el);
-
+      
       console.log("currentElement", $currentElement);
 
       // element 의 status 를 바탕으로 todo, doing 등 카테고리 체크를 한다.
@@ -33,7 +54,9 @@
       console.log("elementStatus", elementStatus);
       console.log("containerStatus", containerStatus);
 
-      // elementStatus 와 containerStatus 가 같지 않다는 것은 카테고리 이동이 있었다는 것이므로 update 를 한다.
+      var p_no = $($currentElement[0]).find('.select_pno').val();
+      // elementStatus 와 containerStatus 가 같지 않다는 것은 카테고리 이동이 있었다는 것이므로 update
+		// 를 한다.
       if (elementStatus !== containerStatus) {
         // 이동된 해당 카드의 status 를 update 될 카테고리의 status 로 변경한다.
         // todo (0) => done 으로 이동 => (0) => (1)
@@ -44,9 +67,17 @@
 
         // 여기서 ajax call 로 update 처리를 한다.
         console.log("update");
+        
+        
+        DragPost(elementStatus, containerStatus, p_no);
+        
       }
+      
     })
     .on("out", function(_, container) {
       currentContainer = container;
     });
+  
+
+  
 })(jQuery);

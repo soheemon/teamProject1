@@ -23,6 +23,7 @@ import kogile.post.Model.LabelInfoDTO;
 import kogile.post.Model.MemberDTO;
 import kogile.post.Model.PostDTO;
 import kogile.post.Model.PostMemberDTO;
+import kogile.project.Model.PostDragDTO;
 
 
 public class PostDao {
@@ -714,6 +715,25 @@ public class PostDao {
 			session.close();
 		}
 		return re;
+	}
+	
+	public void dragPost(PostDragDTO postDragDTO) {
+		SqlSession sql = getSql().openSession();
+		int re = -1;
+		
+		try {
+			re = sql.getMapper(PostMapper.class).dragPost(postDragDTO);
+			System.out.println(re);
+			if (re > 0) {
+				sql.commit();
+			} else {
+				sql.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sql.close();
+		}
 	}
 	
 }

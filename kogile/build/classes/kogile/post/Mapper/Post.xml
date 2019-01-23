@@ -28,6 +28,7 @@
 	
 	<select id="replyList" parameterType="int" resultType="ReplyDTO">
 		SELECT * from reply where p_no = #{p_no}
+		order by r_date
 	</select>
 	
 	<delete id="deleteReply" parameterType="ReplyDTO">
