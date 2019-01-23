@@ -14,7 +14,7 @@
                 <legend>kakao 회원가입</legend>
                     이름 : <input type = "text" name = "name"/><br><br>
                     이메일: <input type = "text" name = "email"/><br><br>
-               <input type = "submit" id= "submit" value="제출"/>
+               <input type = "submit" name= "submit" value="제출"/>
             </fieldset>
 	</form>
 </body>

@@ -17,7 +17,7 @@
                 <a href="signupMain.jsp">or create an account</a>
          email: <input type = "text" name = "email"/><br><br>
          password: <input type = "password" name = "password"/><br><br>
-               <input type = "submit" id= "submit" value="제출"/>
+               <input type = "submit" name= "submit" value="제출"/>
                <input type ="button" onclick="location.href='redirect.kakaoOauth'" value="Log in with Kakao"/>
             </fieldset>
 		</form>

@@ -10,7 +10,7 @@ function init() {
 	console.log(submit);
 	
 	//console.log(test);
-	submit.onclick = FormInputCk;
+	//submit.onclick = FormInputCk;
 }
 
 //submit의 부모(form)을 가져온다.

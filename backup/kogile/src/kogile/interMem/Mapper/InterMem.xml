@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kogile.interMem.Mapper.InterMemMapper">
+	<cache/>
+
+	<insert id="insertInterMember" parameterType="InterMember">
+		insert into inter_m_info values(mem_no_seq.nextval, #{password}, #{member_name}, #{email})
+	</insert>
+	
+	<select id="selectInterMember" resultType="InterMember" parameterType="String">
+		select * from inter_m_info where email = #{email}
+	</select>
+	
+	<select id="selectTotalMemNumWithInMem" resultType="int" parameterType="int">
+		select total_m_no from TOTAL_MEMBER where member_no = #{member_no}
+	</select>
+	
+
+	
+</mapper>

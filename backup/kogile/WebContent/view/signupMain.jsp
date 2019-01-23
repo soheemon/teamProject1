@@ -16,7 +16,7 @@
          name: <input type = "text" name = "name"/><br>
          Email: <input type = "text" name = "email"/><br>
          Password <input type = "password" name = "password"/><br><br>
-               <input type = "submit" id= "submit" value="새계정만들기"/>
+               <input type = "submit" name= "submit" value="새계정만들기"/>
                <input type ="button" onclick="location.href='redirect.kakaoOauth'" value="Sign up with Kakao"/>
             </fieldset>
 	</form>
