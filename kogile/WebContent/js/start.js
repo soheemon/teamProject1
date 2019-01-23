@@ -1,5 +1,7 @@
 (function($) {
 	$(function() {
+		$('#memberList').css('display', 'inline');
+		
 		$('#insertProjectForm').on(
 				'click',
 				function() {
@@ -92,6 +94,20 @@
 			$('.label_btn').removeClass('on');
 			$('.label_box').hide();
 		});
+		
+		$('#btn_inviteList').on('click', function(){
+			inviteList();
+			return false;
+		})
+		
+		$('#notice_btn').on('click', function(){
+			window.open('noticeAction.no', '알림', 'width= 500, height = 350, left=400, top=200;');
+			return false;
+		})
+		
+		
+		
+		
 
 	})
 
@@ -265,6 +281,40 @@
 		}).catch(function(err){
 			console.log('fail');
 		})
+	}
+	
+	function inviteList(){
+		const data = {};
+		
+		$.ajax({
+			type : 'get',
+			dataType : 'JSON',
+			url : 'inviteListAction.in'
+		}).then(function(res){
+			console.log(res);
+			var txt = '';
+			for(var i = 0; i<res.length; i++){
+				txt += '<span class="glyphicon glyphicon-user">'+ res[i].name +'</span>';
+			}
+			$('#inviteList').html(txt);
+		}).catch(function(err){
+			console.log('fail');
+		})
+	}
+	
+	function notice_execute(){
+		const data = $("form[name=notice_form]").serialize();
+		$.ajax({
+			data : data,
+			type : 'POST',
+			dataType : 'JSON',
+			url : 'noticeAction.no'
+		}).then(function(res){
+			window.open('noticeAction.no')
+		}).catch(function(err){
+			console.log('fail');
+		})
+		
 	}
 
 })(jQuery)

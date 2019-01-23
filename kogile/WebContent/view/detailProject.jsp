@@ -38,6 +38,11 @@
 	margin-left: 7px;
 }
 </style>
+<script type="text/javascript">
+	function winOpen(){
+		window.open('inviteSearch.jsp', '이메일 검색', 'width=550, height=150');
+	}
+</script>
 <title></title>
 </head>
 <body>
@@ -49,12 +54,27 @@
 			<div class="top_menu">
 				<div class="menu_left">
 					<h2>${project.pjt_title}</h2>
-					<span class="a_1"><a href="#n">Travidux</a></span> <span
-						class="a_2"><a href="#n"></a></span> <span class="a_3"><a
-						href="#n">Team Visible</a></span>
+					<span class="a_1">
+					<a href="#n">Travidux</a>
+					</span> 
+					<span class="a_3"><a href="#n" id="btn_inviteList" >Team Visible</a></span>
+						<div id="inviteList">
+						</div>
+						
+						
+						<%-- <c:forEach var="inviteList" items="${list3}">
+							<span class="glyphicon glyphicon-user">${inviteList.name }</span>
+						</c:forEach> --%>
+					<!-- <button class="btn btn-mini btn-primary" type="button" onclick="location.href='inviteListAction.in?pjt_no=2'">참가자</button> -->
 				</div>
 				<div class="menu_right">
+					<button class="btn btn-mini btn-primary pull-right" type="button" onclick="winOpen()" ><span class="glyphicon glyphicon-plus"></span></button>
+						<form action="noticeAction.no" method="post" name="notice_form">
+							<input type="hidden" name="no" value=5></input>
+							<a id="notice_btn" class="btn btn-mini btn-primary pull-right" value="알림 확인" ><span class="glyphicon glyphicon-bell"></span></button>
+						</form>
 					<span><a href="#n" class="menu_open">··· Show Menu</a></span>
+					
 					<div class="menu">
 						<h3 class="title_m">MENU</h3>
 						<ul class="sub_menu">

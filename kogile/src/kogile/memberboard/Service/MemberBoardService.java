@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.omg.CORBA.DynAnyPackage.Invalid;
 
@@ -23,10 +24,12 @@ public class MemberBoardService {
 
 	public int insertNoticeService(HttpServletRequest request){
 		MemberBoard board = new MemberBoard();
+		HttpSession session = request.getSession();
+		int pjt_no = (Integer)session.getAttribute("pjt_no");
 		
 		board.setNo(Integer.parseInt(request.getParameter("no")));
-		board.setPjt_no(Integer.parseInt(request.getParameter("pjt_no")));
-		System.out.println("board¿Í ¼­ºñ½º ºñ±³ : " + board);
+		board.setPjt_no(pjt_no);
+		System.out.println("boardï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : " + board);
 		dao.insertMemberBoard(board);
 		
 		board.getNo();
@@ -35,16 +38,16 @@ public class MemberBoardService {
 		InviteList invite = dao.selectInvite(board.getNo());
 		invite.setNo(board.getNo());
 		request.setAttribute("invite", invite);
-		System.out.println("invite °ª : " + invite);
+		System.out.println("invite ï¿½ï¿½ : " + invite);
 		invite.getNo();
 		invite.getInv_no();
-		System.out.println("invite.getNo°ª : "  + invite.getNo() +"\t" + "invite.getInv_no°ª : "  + invite.getInv_no());
+		System.out.println("invite.getNoï¿½ï¿½ : "  + invite.getNo() +"\t" + "invite.getInv_noï¿½ï¿½ : "  + invite.getInv_no());
 		
 		Notice notice = new Notice();
 
 		notice.setNo(invite.getNo());
 		notice.setInv_no(invite.getInv_no());
-		System.out.println("¼­ºñ½º notice" + notice);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ notice" + notice);
 		
 		return dao.insertNotice(notice);
 	}
