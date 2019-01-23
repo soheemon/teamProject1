@@ -1,6 +1,6 @@
 (function($) {
 	$(function() {
-		$('#memberList').css('display', 'inline');
+//		$('#memberList').css('display', 'inline');
 		
 		$('#insertProjectForm').on(
 				'click',
@@ -157,6 +157,7 @@
 //				$('#post_title').html(txt1);
 //			}
 		}).then(function(res){
+			console.log(res);
 			var txt1 ='';
 			txt1 += res[0].p_title;
 			console.log(txt1);
