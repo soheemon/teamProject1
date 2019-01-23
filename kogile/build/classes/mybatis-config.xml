@@ -52,6 +52,7 @@
 		</environment>
 	</environments>
 
+<<<<<<< HEAD
 
 	<mappers>
 		<mapper resource="kogile/chat/Mapper/Chat.xml" />
@@ -63,5 +64,33 @@
 		<mapper resource="kogile/invitelist/Mapper/InviteList.xml" />
 		<mapper resource="kogile/notice/Mapper/Notice.xml" />
 	</mappers>
+=======
+<configuration>
+	<typeAliases>
+		<typeAlias type="kogile.post.DTO.DescriptionDTO" alias="DescriptionDTO"/>
+		<typeAlias type="kogile.post.DTO.ReplyDTO" alias="ReplyDTO"/>
+		<typeAlias type="kogile.post.DTO.ReplyUpdateSearchDTO" alias="ReplyUpdateSearchDTO"/>
+		<typeAlias type="kogile.post.DTO.ReplyMemberDTO" alias="ReplyMemberDTO"/>
+		<typeAlias type="kogile.post.DTO.TagDTO" alias="TagDTO"/>
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver"
+					value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url"
+					value="jdbc:oracle:thin:@localhost:1521:XE" />
+				<property name="username" value="kogile" />
+				<property name="password" value="1234" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="kogile/post/Mapper/post.xml" />
+	</mappers>
+>>>>>>> refs/remotes/origin/cheol-hee-jung
 
 </configuration>

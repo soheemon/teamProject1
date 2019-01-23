@@ -33,7 +33,11 @@
 		<typeAlias type="kogile.memberboard.Service.MemberSearch" alias="MemberSearch"/>
 		<typeAlias type="kogile.invitelist.Service.InviteList" alias="InviteList"/>
 		<typeAlias type="kogile.notice.Service.Notice" alias="Notice"/>
-
+		<typeAlias type="kogile.post.DTO.DescriptionDTO" alias="DescriptionDTO"/>
+		<typeAlias type="kogile.post.DTO.ReplyDTO" alias="ReplyDTO"/>
+		<typeAlias type="kogile.post.DTO.ReplyUpdateSearchDTO" alias="ReplyUpdateSearchDTO"/>
+		<typeAlias type="kogile.post.DTO.ReplyMemberDTO" alias="ReplyMemberDTO"/>
+		<typeAlias type="kogile.post.DTO.TagDTO" alias="TagDTO"/>
 	</typeAliases>
 
 
@@ -63,5 +67,6 @@
 		<mapper resource="kogile/invitelist/Mapper/InviteList.xml" />
 		<mapper resource="kogile/notice/Mapper/Notice.xml" />
 	</mappers>
+
 
 </configuration>

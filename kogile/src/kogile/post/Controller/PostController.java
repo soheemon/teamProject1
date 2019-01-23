@@ -16,6 +16,13 @@ import kogile.post.Service.DeleteDdateAction;
 import kogile.post.Service.DeleteLabelAction;
 import kogile.post.Service.DeleteLabelInfoAction;
 import kogile.post.Service.DeletePostAction;
+import kogile.post.Service.DescriptionDeleteAction;
+import kogile.post.Service.DescriptionInsertAction;
+import kogile.post.Service.DescriptionInsertActionForm;
+import kogile.post.Service.DescriptionListAction;
+import kogile.post.Service.DescriptionUpdateAction;
+import kogile.post.Service.DescriptionUpdateActionForm;
+import kogile.post.Service.DescriptionlistAjax;
 import kogile.post.Service.DetailPostAction;
 import kogile.post.Service.InsertLabelAction;
 import kogile.post.Service.InsertLabelFormAction;
@@ -24,13 +31,20 @@ import kogile.post.Service.InsertPostFormAction;
 import kogile.post.Service.ListLabelAction;
 import kogile.post.Service.ListPostAction;
 import kogile.post.Service.PostDetailViewAction;
+import kogile.post.Service.ReplyDeleteAction;
+import kogile.post.Service.ReplyInsertAction;
+import kogile.post.Service.ReplyInsertAjax;
+import kogile.post.Service.ReplyUpdateAction;
+import kogile.post.Service.ReplyUpdateActionForm;
+import kogile.post.Service.ReplyUpdateAjax;
+import kogile.post.Service.ReplyUpdateFormAjax;
 import kogile.post.Service.UpdateDdateAction;
 import kogile.post.Service.UpdateDdateFormAction;
 import kogile.post.Service.UpdateLabelAction;
 import kogile.post.Service.UpdatePostAction;
 import kogile.post.Service.UpdatePostFormAction;
+import kogile.post.Service.insertDescriptionAjax;
 import kogile.post.Service.updateLabelFormAction;
-
 
 @WebServlet("*.do")
 public class PostController extends HttpServlet {
@@ -237,7 +251,123 @@ public class PostController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("insertDescriptionForm.do")) {
+			action = new DescriptionInsertActionForm();
+			try {
+				forward=action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			//설명 글쓰기
+		}else if(command.equals("insertDescription.do")) {
+			action = new DescriptionInsertAction();
+			try {
+				forward=action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			//내부페이지 설명,댓글,태그창 보여주기
+		}else if(command.equals("descriptionlist.do")) {
+			action = new DescriptionListAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			//설명 삭제
+		}else if(command.equals("descriptionDelete.do")) {
+			action = new DescriptionDeleteAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			//설명 수정 작성 폼으로 가기
+		}else if(command.equals("descriptionUpdate.do")) {
+			action = new DescriptionUpdateActionForm();
+			try {
+				forward=action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			//설명 수정
+		}else if(command.equals("descriptionUpdateForm.do")) {
+			action = new DescriptionUpdateAction();
+			try {
+				forward=action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			//댓글 작성
+		}else if(command.equals("insertReply.do")) {
+			action = new ReplyInsertAction();
+			try {
+				forward=action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			//댓글 삭제
+		}else if(command.equals("replyDelete.do")) {
+			action = new ReplyDeleteAction();
+			try {
+				forward=action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			//댓글 수정 폼으로 보내기
+		}else if(command.equals("replyUpdate.do")) {
+			action = new ReplyUpdateActionForm();
+			try {
+				forward=action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			//댓글 수정
+		}else if(command.equals("replyUpdateForm.do")) {
+			action= new ReplyUpdateAction();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("descriptionlistAjax.do")) {
+			action= new DescriptionlistAjax();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("insertReplyAjax.do")) {
+			action= new ReplyInsertAjax();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("UpdateReplyFormAjax.do")) {
+			action= new ReplyUpdateFormAjax();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("UpdateReplyAjax.do")) {
+			action= new ReplyUpdateAjax();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("insertDescriptionAjax.do")) {
+			action= new insertDescriptionAjax();
+			try {
+				forward = action.excute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		
+
 		
 		if(forward != null) {
 			if(forward.isRedirect()) {
