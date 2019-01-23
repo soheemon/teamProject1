@@ -18,6 +18,73 @@
 <link rel="stylesheet" type="text/css"
 	href="../bootstrap/css/bootstrap.min.css">
 <style>
+.column-button {
+	text-align: center;
+	padding: 0.1rem;
+}
+
+.button {
+	font-family: "Arimo", sans-serif;
+	font-weight: 700;
+	border: #000013 0.14rem solid;
+	border-radius: 0.2rem;
+	color: #000013;
+	padding: 0.6rem 1rem;
+	margin-bottom: 0.3rem;
+	cursor: pointer;
+}
+
+.delete-button {
+	background-color: #ff4444;
+	margin: 0.1rem auto 0.6rem auto;
+}
+
+.delete-button:hover {
+	background-color: #fa7070;
+}
+
+.add-button {
+	background-color: #ffcb1e;
+	padding: 0 1rem;
+	height: 2.8rem;
+	width: 10rem;
+	margin-top: 0.6rem;
+}
+
+.add-button:hover {
+	background-color: #ffdd6e;
+}
+
+/* Dragula CSS Release 3.2.0 from: https://github.com/bevacqua/dragula */
+.gu-mirror {
+	position: fixed !important;
+	margin: 0 !important;
+	z-index: 9999 !important;
+	opacity: 0.8;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	filter: alpha(opacity = 80);
+}
+
+.gu-hide {
+	display: none !important;
+}
+
+.gu-unselectable {
+	-webkit-user-select: none !important;
+	-moz-user-select: none !important;
+	-ms-user-select: none !important;
+	user-select: none !important;
+}
+
+.gu-transit {
+	opacity: 0.2;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+	filter: alpha(opacity = 20);
+}
+
+
+
+
 .myDetailList a {
 	background: #f1f1f1;
 	background-size: 12px;
@@ -79,7 +146,7 @@
 						<h3 class="title_m">MENU</h3>
 						<ul class="sub_menu">
 							<li><a href="#n">Project Delete</a></li>
-							<li><a href="listChatRoomAction.chat">Chat</a></li>
+							<li><a href="chat.jsp">Chat</a></li>
 							<li><a href="#n">Activity</a>
 								<ul>
 									<li><a href="#n">
@@ -129,14 +196,16 @@
 							<a href="#n" class="more">···</a>
 						</div>
 
-						<div class="item_content" id="${card.c_no }">
+						<div class="item_content" id="${card.c_title }" data-status="${card.c_no}">
 
 							<c:forEach var="post" items="${post}">
 
 								<c:if test="${card.c_no == post.c_no}">
+								
 									<a href="#n" class="detailPostView post ui-state-default">
-										<div class="post_item">
-											<input type="hidden" class="select_pno" value="${post.p_no}">
+										<div class="${card.c_no}">
+										
+											<input type="hidden" class="post_no" value="${post.p_no}">
 											<!-- <div class="progress"></div> -->
 											<h4>${post.p_title}</h4>
 											<div class="btn_box">

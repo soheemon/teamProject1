@@ -14,7 +14,7 @@
 <title>Insert title here</title>
 <%
 	//한글로 인코딩
-	request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8"); 
 
 JSONArray list = new JSONArray();
 JSONObject object = null;
