@@ -27,6 +27,7 @@
 //			window.open(url, '뷰 상세보기', 'width=740, height =600, left=400, top=200');
 			var p_no = $(this).find('.select_pno').val();
 			detailPostView(p_no);
+			showdescription();
 			return false;
 		})
 		
@@ -317,5 +318,18 @@
 		})
 		
 	}
-
+	
+	function showdescription() {
+		$.ajax({
+			type : 'GET',
+			dataType : 'JSON',
+			url : 'descriptionlist.do'
+		}).then(function(res){
+			console.log(res);
+		}).catch(function(err){
+			console.log('fail');
+		})
+		
+	}
+	
 })(jQuery)

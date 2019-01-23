@@ -4,18 +4,131 @@
 
 <mapper namespace="kogile.post.Mapper.PostMapper">
 	<cache />
+	<!-- 디스크립션 넘버 시퀀스,내용, 포스트넘바 -->
+	<insert id="insertDescription" parameterType="DescriptionDTO">
+		insert into description values(description_seq.nextval, #{d_contents}, #{p_no}) 
+	</insert>
+	
+	<select id="descriptionList" parameterType="int" resultType="DescriptionDTO">
+		select * from description where p_no = #{p_no}
+	</select>
+	
+	<delete id="deleteDescription" parameterType="DescriptionDTO">
+		delete from description where p_no=#{p_no}
+	</delete>
+	
+	<update id="updateDescription" parameterType="DescriptionDTO">
+		update description set d_contents = #{d_contents} where p_no = #{p_no}
+	</update>
+	<!-- 리플시퀀스, 내용, 작성일, 디스크립션 넘버,info넘버 -->
+	
+	<insert id="insertReply" parameterType="ReplyDTO">
+		insert into reply values(reply_seq.nextval,#{r_contents},sysdate,#{p_no},#{info_no})
+	</insert>
+	
+	<select id="replyList" parameterType="int" resultType="ReplyDTO">
+		SELECT * from reply where p_no = #{p_no}
+	</select>
+	
+	<delete id="deleteReply" parameterType="ReplyDTO">
+		delete from reply where r_no=#{r_no} and info_no=#{info_no}
+	</delete>
+	
+	<select id="replyUpdateSearch" parameterType="ReplyUpdateSearchDTO" resultType="ReplyDTO">
+		select * from reply where r_no = #{search_r_no} and info_no = #{search_info_no}
+	</select>
+	<update id="updateReply" parameterType="ReplyDTO">
+		update reply set r_contents = #{r_contents} 
+				where r_no = #{r_no} and info_no = #{info_no}
+	</update>
+	
+	<!-- 작성자때문에 멤버이름 가져오기 -->
+	<select id="replyMemberList" parameterType="int" resultType="ReplyMemberDTO">
+		select r.r_no, r.r_contents, r.r_date, r.p_no, r.info_no, e.exter_mem_name as name
+    From reply r
+    join prj_info p
+    on r.info_no = p.info_no
+    join invite i
+    on p.invite_no = i.invite_no
+    join total_member t
+    on i.total_m_no = t.total_m_no
+    join external_m_info e
+    on t.exter_m_no = e.exter_m_no
+    WHERE r.p_no =#{p_no}
+	</select>
+	<select id="replyMemberList2" parameterType="int" resultType="ReplyMemberDTO">
+	select r.r_no, r.r_contents, r.r_date, r.p_no, r.info_no, im.member_name as name
+    From reply r
+    join prj_info p
+    on r.info_no = p.info_no
+    join invite i
+    on p.invite_no = i.invite_no
+    join total_member t
+    on i.total_m_no = t.total_m_no
+    join inter_m_info im
+    on t.member_no = im.member_no
+    where r.p_no =#{p_no}
+	</select>
+	<!-- 태그 -->
+	<select id="replyNum" resultType="int">
+		select r_no from reply where ROWNUM=1 order by r_no desc
+	</select>
+	<insert id="insertTag" parameterType="TagDTO">
+		INSERT INTO tag VALUES (TAG_SEQ.nextval, #{r_no},#{info_no})
 
+	</insert>
+	<!-- 태그 될 맴버 가져오기 -->
+	<select id="tagMember" parameterType="int" resultType="TagDTO">
+	select DISTINCT p.info_no,tm.total_m_no ,e.exter_mem_name as name
+    from prj_info p
+    join invite i
+    on p.invite_no = i.invite_no
+    join total_member tm
+    on i.total_m_no = tm.total_m_no
+    join external_m_info e
+    on tm.exter_m_no = e.exter_m_no
+    where i.pjt_no =#{pjt_no}
+	</select>
+	
+	<select id="tagMember2" parameterType="int" resultType="TagDTO">
+	select DISTINCT p.info_no,tm.total_m_no ,im.member_name as name
+    from prj_info p
+    join invite i
+    on p.invite_no = i.invite_no
+    join total_member tm
+    on i.total_m_no = tm.total_m_no
+    join inter_m_info im
+    on tm.member_no = im.member_no
+    where i.pjt_no =#{pjt_no}
+	</select>
+	<!-- 태그된 사람에게 알림 보내기 -->
+	<insert id="insertTagNotice" parameterType="TagDTO">
+		insert  into notice values(NOTICE_SEQ.nextval,null,#{tag_no},'태그존나알림',sysdate,#{total_m_no})
+	</insert>
+	<!-- 태그된 사람에게 알림 보내기 위해서 태그 넘버가져오기 -->
+	<select id="tagNum" resultType="int">
+		select tag_no from tag where ROWNUM=1 order by tag_no desc
+	</select>
+	<!-- 태그된 사람에게 알림 보내기 위해 태그된 사람넘버 가져오기 -->
+	<select id="tag_total_m_no" resultType="int" parameterType="TagDTO">
+		select DISTINCT tm.total_m_no
+    from prj_info p
+    join invite i
+    on p.invite_no = i.invite_no
+    join total_member tm
+    on i.total_m_no = tm.total_m_no
+    where p.info_no =#{info_no}
+	</select>
+	
 	<!-- DML(insert, update, delete)은 resultType을 주지 않아도 된다. -->
 	<!-- DML은 DML 태그를 꼭 사용해서 resultType을 생략해야한다. -->
 	<!-- #{컬럼명}은 해당 컬럼의 정보를 참고하여 반응한다. -->
-
 
 	<!-- insert -->
 	<insert id="insertPost" parameterType="PostDTO">
 		insert into post
 		values(post_seq.nextval, #{p_title}, 1, #{c_no})
 	</insert>
-
 
 	<!-- 회원 정보를 Post까지 가져가기 -->
 	<!-- 가져가기 위해서 charge_info에 post, 회원 정보를 담는다. -->
@@ -24,13 +137,11 @@
 		values(charge_info_no_seq.nextval, #{info_no}, #{p_no})
 	</insert>
 
-
 	<!-- insert시 마감일 입력하기 -->
 	<insert id="ddateInsertPost" parameterType="DdateDTO">
 		insert into d_day
 		VALUES(d_day_no_seq.nextval, #{d_date}, #{p_no})
 	</insert>
-
 
 	<!-- 마감일 출력하기 -->
 	<select id="ddateInfo" resultType="DdateDTO">
@@ -38,7 +149,6 @@
 		from d_day
 		where p_no = #{p_no}
 	</select>
-
 
 	<!-- 가장 최근에 생긴 Post의 no를 구하기 -->
 	<select id="selectPost" resultType="int">
@@ -57,7 +167,6 @@
 		where c.pjt_no = #{pjt_no}
 		order by p_no
 	</select>
-
 
 	<!-- detail 제목 가져오기 -->
 	<select id="detailPost" resultType="PostDTO">
@@ -100,8 +209,7 @@
 	</delete>
 
 	<!-- 내부회원 checkbox -->
-	<select id="inter_member" parameterType="int"
-		resultType="MemberDTO">
+	<select id="inter_member" parameterType="int" resultType="MemberDTO">
 		select i.member_name as name, i.email as email,
 		t.total_m_no as total_no
 		from inter_m_info i
@@ -115,8 +223,7 @@
 
 
 	<!-- 외부회원 chechbox -->
-	<select id="exter_member" parameterType="int"
-		resultType="MemberDTO">
+	<select id="exter_member" parameterType="int" resultType="MemberDTO">
 		select e.exter_mem_name as name, e.exter_m_email as email,
 		t.total_m_no as total_no
 		from external_m_info e
@@ -191,6 +298,5 @@
 
 		order by t.total_m_no
 	</select>
-	
 	
 </mapper>

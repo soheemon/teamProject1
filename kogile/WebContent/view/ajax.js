@@ -140,9 +140,8 @@ function parse(data) {
 		var reply = replyArr[index];
 		//console.log(reply);
 		printData(reply);
-		
 	}
-//	var descriptionArr=JSON.parse(data);
+	var descriptionArr=JSON.parse(data);
 }
 function printMenu(table) {
 	

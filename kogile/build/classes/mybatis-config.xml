@@ -33,40 +33,7 @@
 		<typeAlias type="kogile.memberboard.Service.MemberSearch" alias="MemberSearch"/>
 		<typeAlias type="kogile.invitelist.Service.InviteList" alias="InviteList"/>
 		<typeAlias type="kogile.notice.Service.Notice" alias="Notice"/>
-
-	</typeAliases>
-
-
-
-	<environments default="development">
-		<environment id="development">
-			<transactionManager type="JDBC" />
-			<dataSource type="POOLED">
-				<property name="driver"
-					value="oracle.jdbc.driver.OracleDriver" />
-				<property name="url"
-					value="jdbc:oracle:thin:@localhost:1521:XE" />
-				<property name="username" value="kogile" />
-				<property name="password" value="1234" />
-			</dataSource>
-		</environment>
-	</environments>
-
-<<<<<<< HEAD
-
-	<mappers>
-		<mapper resource="kogile/chat/Mapper/Chat.xml" />
-		<mapper resource="kogile/project/Mapper/Project.xml" />
-		<mapper resource="kogile/post/Mapper/Post.xml" />
-		<mapper resource="kogile/example/Mapper/Example.xml" />
-		<mapper resource="kogile/post/Mapper/PostLabel.xml" />
-		<mapper resource="kogile/memberboard/Mapper/MemberBoard.xml" />
-		<mapper resource="kogile/invitelist/Mapper/InviteList.xml" />
-		<mapper resource="kogile/notice/Mapper/Notice.xml" />
-	</mappers>
-=======
-<configuration>
-	<typeAliases>
+		<!-- description, reply -->
 		<typeAlias type="kogile.post.DTO.DescriptionDTO" alias="DescriptionDTO"/>
 		<typeAlias type="kogile.post.DTO.ReplyDTO" alias="ReplyDTO"/>
 		<typeAlias type="kogile.post.DTO.ReplyUpdateSearchDTO" alias="ReplyUpdateSearchDTO"/>
@@ -74,6 +41,8 @@
 		<typeAlias type="kogile.post.DTO.TagDTO" alias="TagDTO"/>
 	</typeAliases>
 
+
+
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />
@@ -88,9 +57,15 @@
 		</environment>
 	</environments>
 
-	<mappers>
-		<mapper resource="kogile/post/Mapper/post.xml" />
-	</mappers>
->>>>>>> refs/remotes/origin/cheol-hee-jung
 
+	<mappers>
+		<mapper resource="kogile/chat/Mapper/Chat.xml" />
+		<mapper resource="kogile/project/Mapper/Project.xml" />
+		<mapper resource="kogile/example/Mapper/Example.xml" />
+		<mapper resource="kogile/post/Mapper/PostLabel.xml" />
+		<mapper resource="kogile/memberboard/Mapper/MemberBoard.xml" />
+		<mapper resource="kogile/invitelist/Mapper/InviteList.xml" />
+		<mapper resource="kogile/notice/Mapper/Notice.xml" />
+		<mapper resource="kogile/post/Mapper/Post.xml" />
+	</mappers>
 </configuration>

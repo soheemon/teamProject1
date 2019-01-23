@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kogile.chat.Mapper.ChatMapper">
+	<cache />
+
+	<insert id="insertChat" parameterType="ChatDTO">
+		insert into CHAT values(chat_no.nextval , #{info_no} , #{chat_contents} , sysdate ) 
+	</insert>
+	
+	<select id="listChat" resultType="ChatDTO">
+		select * from CHAT
+		order by chat_date
+	</select>
+	
+	<!-- <select id="mainDetail" resultType="ProjectBoard" parameterType="int">
+		select * from PROJECT where pjt_no = #{seq}
+	</select> -->
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

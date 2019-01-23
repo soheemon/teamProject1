@@ -13,15 +13,6 @@ import kogile.post.DTO.ReplyDTO;
 import kogile.post.DTO.ReplyMemberDTO;
 import kogile.post.DTO.ReplyUpdateSearchDTO;
 import kogile.post.DTO.TagDTO;
-import kogile.post.Mapper.PostMapper;
-import java.io.InputStream;
-import java.util.List;
-
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
 import kogile.post.Mapper.PostLabelMapper;
 import kogile.post.Mapper.PostMapper;
 import kogile.post.Model.CardDTO;

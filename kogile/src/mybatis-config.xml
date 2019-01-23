@@ -33,6 +33,7 @@
 		<typeAlias type="kogile.memberboard.Service.MemberSearch" alias="MemberSearch"/>
 		<typeAlias type="kogile.invitelist.Service.InviteList" alias="InviteList"/>
 		<typeAlias type="kogile.notice.Service.Notice" alias="Notice"/>
+		<!-- description, reply -->
 		<typeAlias type="kogile.post.DTO.DescriptionDTO" alias="DescriptionDTO"/>
 		<typeAlias type="kogile.post.DTO.ReplyDTO" alias="ReplyDTO"/>
 		<typeAlias type="kogile.post.DTO.ReplyUpdateSearchDTO" alias="ReplyUpdateSearchDTO"/>
@@ -60,13 +61,11 @@
 	<mappers>
 		<mapper resource="kogile/chat/Mapper/Chat.xml" />
 		<mapper resource="kogile/project/Mapper/Project.xml" />
-		<mapper resource="kogile/post/Mapper/Post.xml" />
 		<mapper resource="kogile/example/Mapper/Example.xml" />
 		<mapper resource="kogile/post/Mapper/PostLabel.xml" />
 		<mapper resource="kogile/memberboard/Mapper/MemberBoard.xml" />
 		<mapper resource="kogile/invitelist/Mapper/InviteList.xml" />
 		<mapper resource="kogile/notice/Mapper/Notice.xml" />
+		<mapper resource="kogile/post/Mapper/Post.xml" />
 	</mappers>
-
-
 </configuration>

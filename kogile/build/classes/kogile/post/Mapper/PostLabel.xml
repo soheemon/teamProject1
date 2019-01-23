@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kogile.post.Mapper.PostLabelMapper">
+	<cache />
+	<select id="labellist" parameterType="int" resultType="Label">
+		<!-- select distinct l.label_text,
+		l.color_no from label l
+		join post p on p.label_no = l.label_no
+		join card c on c.c_no = p.c_no
+		where c.pjt_no = #{pjt_no}
+		order by l.color_no -->
+		select * from label
+		where pjt_no = #{pjt_no}
+		order by color_no
+	</select>
+
+	<delete id="deletelabel" parameterType="Label">
+		delete from label
+		<where>
+			label_no = ${label_no}
+			<!-- label_text = #{label_text}
+			and color_no = #{color_no}
+			and pjt_no = #{pjt_no} -->
+		</where>
+	</delete>
+
+	<insert id="insertlabel" parameterType="Label">
+		insert into label
+		values(label_no_seq.nextval, #{label_text}, #{color_no}, #{pjt_no})
+	</insert>
+	
+	<update id="updatelabel" parameterType="Label">
+		update label set label_text = #{label_text}, color_no = #{color_no}
+		where label_no = #{label_no}
+	</update>
+	
+	<select id="searchlabel" parameterType="int" resultType="Label">
+		select * from label
+		where label_no = #{label_no}
+	</select>
+	<!-- 해당 포스트넘버로 지정된 라벨 찾기 -->
+	<select id="detialviewlabel" parameterType="int" resultType="Label">
+		select l.label_no, l.label_text, l.color_no from label l join label_info i
+		on l.label_no = i.label_no
+		where i.p_no = #{p_no}
+		order by l.color_no
+	</select>
+<!-- 	프로젝트 번호 찾 -->
+	<select id="searchpjt" parameterType="int" resultType="int">
+		select p.pjt_no from project p
+		join card c
+		on c.pjt_no = p.pjt_no
+		join post s
+		on c.c_no = s.c_no
+		where s.p_no = #{p_no}
+		
+	</select>
+	
+	<insert id="insertLabelInfo" parameterType="LabelInfo">
+		insert into label_info
+		values(label_info_no_seq.nextval, #{label_no}, #{p_no})
+	</insert>
+	
+	<delete id="deleteLabelInfo" parameterType="LabelInfo">
+		delete from label_info
+		where p_no = #{p_no}
+		and label_no = #{label_no}
+	</delete>
+ 
+	
+
+
+</mapper>

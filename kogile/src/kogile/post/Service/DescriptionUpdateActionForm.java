@@ -10,12 +10,12 @@ public class DescriptionUpdateActionForm implements Action {
 		//서비스 객체생성
 		PostService service = PostService.getInstance();
 		//설명 수정해주는 폼으로 이동하는 서비스
-		service.descriptionDetailService(request);
+		service.descriptionDetailService(request, response);
 		
-		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("updateDescription.jsp");
-		return forward;
+//		ActionForward forward = new ActionForward();
+//		forward.setRedirect(false);
+//		forward.setPath("updateDescription.jsp");
+		return null;
 	}
 
 }

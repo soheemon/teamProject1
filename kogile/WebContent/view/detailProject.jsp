@@ -328,12 +328,9 @@
 							<div class="holder_inner">
 								<span class="list_title">발표때 이거 포함하기</span>
 								<ul>
-									<li>아키텍쳐 구조</li>
-									<li>명명법</li>
-									<li>역할분담</li>
-									<li>요구분석</li>
-									<li>유스케이스</li>
-									<li>화면설계(주요페이지) = daum페이지 오븐?</li>
+									<li >
+									
+									</li>
 								</ul>
 							</div>
 						</div>

@@ -414,12 +414,20 @@ public class PostService {
 		return dao.insertDescription(description);
 	}
 	//포스트 내부페이지 보이기
-	public DescriptionDTO descriptionDetailService(HttpServletRequest request)throws Exception{
-		//훗날 수정필요 >>포스트 넘버 셋팅
-		int p_no=1;
+	public DescriptionDTO descriptionDetailService(HttpServletRequest request, HttpServletResponse response)throws Exception{
+		//session 에서pno 정보 받아서 설명 출력
+		HttpSession session = request.getSession();
+		
+		int p_no=(Integer)session.getAttribute("p_no");
 		DescriptionDTO detail = dao.descriptionDetail(p_no);
-		request.setAttribute("p_no", p_no);
-		request.setAttribute("detail", detail);
+//		request.setAttribute("p_no", p_no);
+//		request.setAttribute("detail", detail);
+		
+		JSONArray jsonarr = new JSONArray();
+		jsonarr.add(detail);
+		
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().print(jsonarr.toString());
 		
 		return detail;
 	}
