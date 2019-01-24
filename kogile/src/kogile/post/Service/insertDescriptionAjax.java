@@ -1,4 +1,4 @@
-package kogile.post.Controller;
+package kogile.post.Service;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -12,8 +12,6 @@ import org.json.simple.parser.JSONParser;
 
 import kogile.post.DAO.PostDao;
 import kogile.post.DTO.DescriptionDTO;
-import kogile.post.Service.Action;
-import kogile.post.Service.ActionForward;
 
 public class insertDescriptionAjax implements Action {
 

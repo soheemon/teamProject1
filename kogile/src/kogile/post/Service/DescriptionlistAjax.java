@@ -20,7 +20,7 @@ public class DescriptionlistAjax implements Action {
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("ajax action");
-		
+		System.out.println("여기타냐");
 		PostDao dao = PostDao.getInstance();
 		int p_no=1;
 		List<ReplyMemberDTO> replyList = dao.replyMemberList(p_no);

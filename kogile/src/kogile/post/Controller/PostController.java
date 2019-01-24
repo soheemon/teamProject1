@@ -25,6 +25,7 @@ import kogile.post.Service.ReplyUpdateAction;
 import kogile.post.Service.ReplyUpdateActionForm;
 import kogile.post.Service.ReplyUpdateAjax;
 import kogile.post.Service.ReplyUpdateFormAjax;
+import kogile.post.Service.insertDescriptionAjax;
 
 
 
